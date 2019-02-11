@@ -6,10 +6,40 @@ import Header from './components/Header'
 import Login from './components/Login'
 // import Signup from './components/Signup'
 import Profile from './components/Profile'
+import request from './utils/request'
 
 import store from './store'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      authentication: {
+        pending: true,
+        user: null,
+        search:false
+      }
+    }
+  }
+
+  setAuthentication = claim => {
+    this.setState({
+      authentication: {
+        pending: false,
+        user: claim
+      }
+    })
+  }
+
+  componentDidMount() {
+    request('/auth/login')
+      .then(response => this.setAuthentication(response.data))
+      .catch(err => {
+        console.log(err);
+        this.setAuthentication(null)
+      })
+  }
 
   render() {
     return (

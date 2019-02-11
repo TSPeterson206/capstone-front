@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-// import Reviews from '..Reviews/components/Reviews'
+import Reviews from './Reviews'
 
 
 class Providers extends Component {

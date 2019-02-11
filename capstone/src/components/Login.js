@@ -4,7 +4,6 @@ import Spinner from 'reactjs-simple-spinner'
 import request from '../utils/request'
 
 export default class Login extends Component {
-
     constructor(props) {
       super(props)
       this.state = {
@@ -35,7 +34,7 @@ export default class Login extends Component {
           return request('/auth/login')
         })
         .then(response => {
-          console.log("username", `${username.value}`)
+          console.log("username", `${username.value}`, this.props.history)
           this.props.setAuthentication(response.data)
           this.props.history.push({pathname:`/profile/${username.value}`, state: { username : username.value }})
         })
