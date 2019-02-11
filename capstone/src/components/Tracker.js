@@ -12,7 +12,7 @@ export default class Tracker extends Component {
   render () {
     return (
       <div>
-
+<p>THIS WILL BE THE USER Tracker</p>
       </div>
     )
   }
