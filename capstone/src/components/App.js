@@ -52,7 +52,7 @@ export default class App extends Component {
                   <Route path="/profile/:username" render={(props) => <Profile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />}  />
                   <Route path="/customize/:username" render={(props) => <CustomizeProfile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />} />
                   <Route path="/signup" render={(props) => <Signup {...props} setAuthentication={this.setAuthentication}/>} />
-                  <Route path="/" render={(props) => <Login setAuthentication={this.setAuthentication} {...props} setAuthentication={this.setAuthentication}/>} />
+                  <Route path="/" render={(props) => <Login {...props} setAuthentication={this.setAuthentication}/>} />
                 </Switch>
               </div>
             <footer className="text-center mt-5">&copy; Toby, Give Your Capstone A Name</footer>
