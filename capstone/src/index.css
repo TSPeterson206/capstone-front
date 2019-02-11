@@ -12,3 +12,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.navbar {
+	text-align:center;
+	justify-content:center;
+	font-size-adjust: 120px;
+	margin:0 auto;
+}
+
+header a.navbar-brand {
+  font-family: 'Knewave', sans-serif;
+  font-size: 2rem;
+  text-rendering: geometricPrecision; }
+
+@media only screen and (max-width: 575px) {
+  header .navbar-right,
+  header .navbar-brand {
+    width: 100%;
+    text-align: center; } }

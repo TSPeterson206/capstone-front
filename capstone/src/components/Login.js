@@ -21,7 +21,7 @@ export default class Login extends Component {
 
     handleLogin = event => {
       event.preventDefault()
-
+      console.log("hitting handlelogin")
       const { username, password } = event.target
 
       request('/auth/login', 'post', {
@@ -35,6 +35,7 @@ export default class Login extends Component {
           return request('/auth/login')
         })
         .then(response => {
+          console.log("username", `${username.value}`)
           this.props.setAuthentication(response.data)
           this.props.history.push({pathname:`/profile/${username.value}`, state: { username : username.value }})
         })
