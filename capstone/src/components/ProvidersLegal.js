@@ -2,7 +2,7 @@ import React, { Component} from 'react'
 import Reviews from './Reviews'
 
 
-class Providers extends Component {
+export default class ProvidersLegal extends Component {
   constructor (props) {
     super(props)
 
@@ -14,10 +14,8 @@ class Providers extends Component {
   render () {
     return (
       <div>
-        <p>ThIS IS THE PROVIDERS AREA</p>
+        <p>ThIS IS THE PROVIDERSLEGAL AREA</p>
       </div>
     )
   }
 }
-
-export default Providers

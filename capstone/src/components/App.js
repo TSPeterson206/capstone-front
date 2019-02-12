@@ -4,9 +4,10 @@ import Header from './Header'
 import Login from './Login'
 import Signup from './Signup'
 import Profile from './Profile'
-// import CustomizeProfile from './CustomizeProfile'
-// import Search from './Search'
+import EditProfile from './EditProfile'
+import Search from './Search'
 import request from '../utils/request'
+import ProvidersSUD from './ProvidersSUD';
 
 export default class App extends Component {
   constructor(props) {
@@ -22,7 +23,6 @@ export default class App extends Component {
   }
 
   setAuthentication = claim => {
-    console.log("this is setauthentication")
     this.setState({
       authentication: {
         pending: false,
@@ -48,11 +48,13 @@ export default class App extends Component {
               <Header setAuthentication={this.setAuthentication} user={this.state.authentication.user}/>
               <div className="container">
                 <Switch>
-                  {/* <Route path="/search" render={(props) => <Search {...props}/>} /> */}
+                  <Route path="/search" render={(props) => <Search {...props}/>} />
                   <Route path="/profile/:username" render={(props) => <Profile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />}  />
-                  {/* <Route path="/customize/:username" render={(props) => <CustomizeProfile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />} /> */}
+                  <Route path="/edit/:username" render={(props) => <EditProfile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />} />
                   <Route path="/signup" render={(props) => <Signup {...props} setAuthentication={this.setAuthentication}/>} />
                   <Route path="/" render={(props) => <Login {...props} setAuthentication={this.setAuthentication}/>} />
+                  <Route path="/ProvidersSUD" render={(props) => <ProvidersSUD {...props} setAuthentication={this.setAuthentication}/>} />
+
                 </Switch>
               </div>
             <footer className="text-center mt-5">&copy; Toby, Give Your Capstone A Name</footer>
