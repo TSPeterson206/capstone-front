@@ -77,10 +77,12 @@ export default class Profile extends Component {
 
 {this.state.type ? this.state.providers.map(ele => 
 <SearchedProviders
+id={ele.id}
 businessphoto={ele.businessphoto}
 companyname={ele.companyname}
 address={ele.address}
 phone={ele.phone}
+providerbio={ele.providerbio}
 />) : null} 
 </div>
 </div>
