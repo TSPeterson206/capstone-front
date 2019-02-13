@@ -58,7 +58,7 @@ export default class Login extends Component {
       :
       <div className="col-sm-6 mt-5 mr-auto ml-auto">
         <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
-          Invalid Username or Password
+          {/* Invalid Username or Password */}
         </div>
         <form className="border rounded p-5" onSubmit={this.handleLogin}>
           <h2>Account Login</h2>
