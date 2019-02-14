@@ -13,23 +13,23 @@ class SearchedProviders extends Component {
   
   }
   
-  seeReviews = async (id) => {
+  seeProfile = async (id) => {
     const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
     console.log(reviews.data)
-    // const filtered = reviews.
+    const profile = await axios.get(`http://localhost:8000/providers/${id}`)
+    console.log(profile.data[0].id)
   }
   render () {
   return (
-    <div className="media p-3">
-      {/* <a href={`/profile/${}`}> */}
-        <img className="img-thumbnail align-self-start mr-2 mb-1" src={this.props.businessphoto} alt={this.props.businessphoto} />
-        <div className="media-body">
+    <div className="">
+        <img className="" src={this.props.businessphoto} alt={this.props.businessphoto} />
+        <div className="">
           <div className="companyname">{this.props.companyname}</div>
           <small className="text-muted">{this.props.address}, {this.props.phone}</small>
           <small className="text-muted">{this.props.providerbio}</small>
         </div>
         <button onClick={()=>{this.addReview()}}>Add Review</button>
-        <button onClick={()=>{this.seeReviews(this.props.id)}}>See Reviews</button>
+        <button onClick={()=>{this.seeProfile(this.props.id)}}>View Profile</button>
     
     </div>
   )

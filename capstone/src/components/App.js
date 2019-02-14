@@ -7,7 +7,6 @@ import Profile from './Profile'
 import EditProfile from './EditProfile'
 import Search from './Search'
 import request from '../utils/request'
-import ProvidersSUD from './ProvidersSUD';
 
 export default class App extends Component {
   constructor(props) {
@@ -53,8 +52,6 @@ export default class App extends Component {
                   <Route path="/edit/:username" render={(props) => <EditProfile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />} />
                   <Route path="/signup" render={(props) => <Signup {...props} setAuthentication={this.setAuthentication}/>} />
                   <Route path="/" render={(props) => <Login {...props} setAuthentication={this.setAuthentication}/>} />
-                  <Route path="/ProvidersSUD" render={(props) => <ProvidersSUD {...props} setAuthentication={this.setAuthentication}/>} />
-
                 </Switch>
               </div>
             <footer className="text-center mt-5">&copy; Toby, Give Your Capstone A Name</footer>

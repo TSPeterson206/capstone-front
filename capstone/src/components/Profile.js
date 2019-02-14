@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 import Tracker from './Tracker'
-import Providers from './ProvidersSUD'
 import axios from 'axios'
-import ProvidersMedical from './ProvidersMedical';
-import ProvidersFinancial from './ProvidersFinancial';
-import ProvidersLegal from './ProvidersLegal';
-import ProvidersSUD from './ProvidersSUD'
-import ProvidersMH from './ProvidersMH'
-import { Link } from 'react-router-dom'
 import SearchedProviders from './SearchedProviders';
 
 
@@ -66,31 +59,31 @@ export default class Profile extends Component {
   )}
 
   <div className="container">
-  <div className="row">
-  <div className="col-md-8">
-  <div>
-<button onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">Substance Use Disorders</button>
-<button onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">Mental Health</button>
-<button onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">Medical</button>
-<button onClick={()=>{this.getProvidersByType(3)}} name="Legal" type="4">Legal</button>
-<button onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">Financial</button>
+    <div className="row">
+      <div className="col-lg-8">
+        <div>
+          <button onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">Substance Use Disorders</button>
+          <button onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">Mental Health</button>
+          <button onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">Medical</button>
+          <button onClick={()=>{this.getProvidersByType(3)}} name="Legal" type="4">Legal</button>
+          <button onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">Financial</button>
 
-{this.state.type ? this.state.providers.map(ele => 
-<SearchedProviders
-id={ele.id}
-businessphoto={ele.businessphoto}
-companyname={ele.companyname}
-address={ele.address}
-phone={ele.phone}
-providerbio={ele.providerbio}
-/>) : null} 
-</div>
-</div>
-<div className="col-md-4">
-<p>REVIEWS SECTION</p>
-</div>
-</div>
-</div>
+          {this.state.type ? this.state.providers.map(ele => 
+          <SearchedProviders
+          id={ele.id}
+          businessphoto={ele.businessphoto}
+          companyname={ele.companyname}
+          address={ele.address}
+          phone={ele.phone}
+          providerbio={ele.providerbio}
+          />) : null} 
+        </div>
+      </div>
+    <div className="col-lg-4">
+      <p>REVIEWS SECTION</p>
+    </div>
+    </div>
+  </div>
 </div>
 )
 }
