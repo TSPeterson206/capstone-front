@@ -20,7 +20,6 @@ export default class Login extends Component {
 
     handleLogin = event => {
       event.preventDefault()
-      console.log("hitting handlelogin")
       const { username, password } = event.target
 
       request('/auth/login', 'post', {

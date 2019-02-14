@@ -12,7 +12,6 @@ export default class Tracker extends Component {
   render () {
     return (
       <div>
-<p>THIS WILL BE THE USER Tracker</p>
 <img src={this.props.profilepic} alt={this.props.profilepic}/>
 <h3>{this.props.tagline}</h3>
       </div>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Tracker from './Tracker'
 import axios from 'axios'
-import SearchedProviders from './SearchedProviders';
+import SearchedProviders from './SearchedProviders'
+import ProviderProfile from './ProviderProfile'
 
 
 export default class Profile extends Component {
@@ -11,7 +12,8 @@ export default class Profile extends Component {
     this.state = {
       user: [],
       providers:[],
-      type:''
+      type:'',
+      selectedProviderID:''
     }
   }
 
@@ -60,7 +62,7 @@ export default class Profile extends Component {
 
   <div className="container">
     <div className="row">
-      <div className="col-lg-8">
+      <div className="col-8">
         <div>
           <button onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">Substance Use Disorders</button>
           <button onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">Mental Health</button>
@@ -76,11 +78,12 @@ export default class Profile extends Component {
           address={ele.address}
           phone={ele.phone}
           providerbio={ele.providerbio}
+          avgrating={ele.avgrating}
           />) : null} 
         </div>
       </div>
-    <div className="col-lg-4">
-      <p>REVIEWS SECTION</p>
+    <div className="col-4">
+      <p>Profile SECTION</p>
     </div>
     </div>
   </div>

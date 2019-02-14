@@ -6,7 +6,7 @@ const Search = (props) => {
       <form onChange={(event) => props.handleSearchSubmit(event)} className="my-lg-0 m-auto">
         <input className="form-control mr-2 searchBar" name="search"
           onChange={(event) => props.handleChange(event)} value={props.search}
-          type="search" placeholder="Search for your friends..." aria-label="Search for your friends..." />
+          type="search" placeholder="Search for providers" aria-label="Search for providers" />
       </form>
     </div>
   )
