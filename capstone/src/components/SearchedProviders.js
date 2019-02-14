@@ -25,8 +25,8 @@ class SearchedProviders extends Component {
     const profile = await axios.get(`http://localhost:8000/providers/${id}`)
     console.log(profile.data[0])
     this.setState({
-      selectedProvider:profile.data,
-      selectedProviderReviews:[reviews.data]
+      selectedProvider:profile.data[0],
+      // selectedProviderReviews:[reviews.data]
     })
     console.log(this.state.selectedProviderReviews)
   }
@@ -51,7 +51,7 @@ class SearchedProviders extends Component {
         phone={this.state.selectedProvider.phone}
         providerbio={this.state.selectedProvider.providerbio}
         avgrating={this.state.selectedProvider.avgrating}
-        reviews={this.state.selectedProviderReviews.map(ele=>{return ele})}/> : null}
+        reviews={this.state.selectedProviderReviews}/> : null}
     </div>
   )
 }
