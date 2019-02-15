@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Tracker from './Tracker'
 import axios from 'axios'
 import SearchedProviders from './SearchedProviders'
+import Collapsible from 'react-collapsible';
+import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
+
 import ProviderProfile from './ProviderProfile'
 
 
@@ -34,10 +37,10 @@ export default class Profile extends Component {
 
   getProvidersByType = async (type) =>{
      try {
-
       const found = await axios.get('http://localhost:8000/providers')
       const filtered =  await found.data.filter(ele => ele.typeID === type)
-      console.log(filtered)
+      // const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
+      // console.log(reviews.data)
       this.setState({
         providers:filtered,
           type:type
@@ -47,7 +50,17 @@ export default class Profile extends Component {
       console.log(err)
      }
     }
-
+    
+getAverage = async(id) =>{
+await axios.get(`http://localhost:8000/reviews/providers/${id}`)
+      .then((result)=>{
+      const ratings = result.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
+      const average = ratings/result.data.length
+      console.log(average)
+      return average
+      }
+      )
+}
   render() {
     return (
 <div>
@@ -62,7 +75,7 @@ export default class Profile extends Component {
 
   <div className="container">
     <div className="row">
-      <div className="col-8">
+      <div className="col-12">
         <div>
           <button onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">Substance Use Disorders</button>
           <button onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">Mental Health</button>
@@ -71,20 +84,22 @@ export default class Profile extends Component {
           <button onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">Financial</button>
 
           {this.state.type ? this.state.providers.map(ele => 
-          <SearchedProviders
+          <div>
+          
+          <Collapsible trigger={ele.companyname}>
+            <SearchedProviders
           id={ele.id}
           businessphoto={ele.businessphoto}
           companyname={ele.companyname}
           address={ele.address}
           phone={ele.phone}
           providerbio={ele.providerbio}
-          avgrating={ele.avgrating}
-          />) : null} 
+          getAverage={this.getAverage}
+          />
+          </Collapsible>
+          </div>) : null} 
         </div>
       </div>
-    <div className="col-4">
-      <p>Profile SECTION</p>
-    </div>
     </div>
   </div>
 </div>

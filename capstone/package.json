@@ -7,7 +7,10 @@
     "bootstrap": "^4.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.1",
+    "react-collapsible": "^2.5.0",
+    "react-collapsible-component": "^1.1.2",
     "react-dom": "^16.8.1",
     "react-dropzone": "^8.0.4",
     "react-html-parser": "^2.0.2",
@@ -36,5 +39,3 @@
     "not op_mini all"
   ]
 }
-
-
