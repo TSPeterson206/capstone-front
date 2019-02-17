@@ -7,6 +7,8 @@ import Profile from './Profile'
 import EditProfile from './EditProfile'
 import Search from './Search'
 import request from '../utils/request'
+import StickyFooter from 'react-sticky-footer';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -54,9 +56,11 @@ export default class App extends Component {
                   <Route path="/" render={(props) => <Login {...props} setAuthentication={this.setAuthentication}/>} />
                 </Switch>
               </div>
-            <footer className="text-center mt-5">&copy; Toby, Give Your Capstone A Name</footer>
             </div>
+
         </BrowserRouter>
+        <StickyFooter className="text-center mt-5">&copy; Toby, Give Your Capstone A Name</StickyFooter>
+
       </div>
     )
   }

@@ -10,9 +10,14 @@ import axios from 'axios'
 
 import SearchedProviders from './SearchedProviders'
 
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
+
 export default class Header extends Component {
   constructor(props) {
     super(props)
+
+    this.toggle = this.toggle.bind(this);
 
     this.state = {
       search: '',
@@ -24,8 +29,19 @@ export default class Header extends Component {
       loggedin: '',
       isLoading: true,
       data:[],
-      loggedinId: ''
+      loggedinId: '',
+      dropdownOpen: false
     }
+  }
+
+  toggle() {
+    console.log("hitting toggle")
+    // this.setState(prevState => ({
+    //   dropdownOpen: !prevState.dropdownOpen
+    // }));
+    this.setState({
+      dropdownOpen:true
+    })
   }
 
   SignInSignOutButton = () => {
@@ -74,7 +90,7 @@ export default class Header extends Component {
   render() {
     return (
       <header>
-        <nav className="navbar navbar-dark bg-primary">
+        <nav className="topnav navbar navbar-dark bg-primary" id="myTopnav">
           <div className="container mr-auto">
             <a className="navbar-brand" href={!this.props.user ? `/` : `/profile/${this.props.user.username}`}>Capstone!</a>
             <div className="navbar-right">
@@ -107,6 +123,18 @@ export default class Header extends Component {
                 phone={post.phone}
                 />)
           }
+   <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+  <DropdownToggle caret>
+    This dropdown's menu is right-aligned
+  </DropdownToggle>
+  <DropdownMenu right>
+    <DropdownItem header>Header</DropdownItem>
+    <DropdownItem disabled>Action</DropdownItem>
+    <DropdownItem>Another Action</DropdownItem>
+    <DropdownItem divider/>
+    <DropdownItem>Another Action</DropdownItem>
+  </DropdownMenu>
+</Dropdown>
 
           </div>
         </nav>
