@@ -102,7 +102,7 @@ handleChange = (event) => {
           <small className="text-muted">Average rating: {this.state.selectedProviderAvgRating}</small>
 
         </div>
-        <Collapsible className="addReviewForm" trigger="Add a review" open='true'>
+        <Collapsible className="addReviewForm" trigger="Add a review" open='false'>
         <div>
         <form className="addReviewForm" >
         <label>How would you describe your experience this with provider?</label>

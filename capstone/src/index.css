@@ -165,3 +165,19 @@ header a.navbar-brand {
     text-align: left;
   }
 }
+
+/* CAROUSEL */
+
+.carousel {
+  padding-top:15px;
+}
+.carouselImage{
+  width:100%;
+  height:300px;
+}
+
+/* TRACKER */
+
+.profilePic {
+  height:200px;
+}

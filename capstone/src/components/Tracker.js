@@ -12,7 +12,7 @@ export default class Tracker extends Component {
   render () {
     return (
       <div>
-<img src={this.props.profilepic} alt={this.props.profilepic}/>
+<img className="profilePic" src={this.props.profilepic} alt={this.props.profilepic}/>
 <h3>{this.props.tagline}</h3>
       </div>
     )
