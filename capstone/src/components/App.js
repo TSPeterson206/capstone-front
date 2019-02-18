@@ -59,7 +59,7 @@ export default class App extends Component {
             </div>
 
         </BrowserRouter>
-        <StickyFooter className="text-center mt-5">&copy; Toby, Give Your Capstone A Name</StickyFooter>
+        <StickyFooter className="text-center mt-5">&copy; Toby, Give Your Capstone A Name for real</StickyFooter>
 
       </div>
     )
