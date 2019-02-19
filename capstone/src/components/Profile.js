@@ -19,8 +19,12 @@ export default class Profile extends Component {
       user: [],
       providers:[],
       type:'',
-      selectedProviderID:''
+      selectedProviderID:'',
+      selectedProviderFavorites:[]
     }
+    console.log(this.state.selectedProviderFavorites)
+    console.log(this.state.user)
+
   }
 
   componentDidMount() {
@@ -31,7 +35,12 @@ export default class Profile extends Component {
     try {
       const response = await axios.get(`http://localhost:8000/users`)
       const user = await response.data.filter(user => user.username === this.props.match.params.username)
-      this.setState({ user: [...user] })
+      const favorites = await axios.get(`http://localhost:8000/favorites`)
+      const favs = favorites.data.filter(ele=>ele.user_id === user[0].id)
+      console.log(favs)
+      this.setState({ user: [...user],
+        selectedProviderFavorites:[...favs]
+      })
     } catch (err) {
       console.log(err)
     }
@@ -64,6 +73,11 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
       }
       )
 }
+
+getFavorites = async(id)=>{
+  const favorites = await axios.get(`http://localhost:8000/users/${id}/favorites`)
+}
+
   render() {
     return (
 <div>
@@ -73,6 +87,7 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
     id={user.id}
     tagline={user.tagline}
     profilepic={user.profilepic}
+    favorites={this.state.selectedProviderFavorites}
     />
   )}
 

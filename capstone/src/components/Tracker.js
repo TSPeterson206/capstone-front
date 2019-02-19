@@ -11,6 +11,7 @@ export default class Tracker extends Component {
       id:this.props.id,
       goals:[]
     }
+    console.log(this.props.favorites)
   }
 componentDidMount(){
   this.getGoals();
@@ -36,11 +37,11 @@ componentDidMount(){
     }
     console.log(goal)
     try {
-    await axios.post('http://localhost:8000/goals', { goal })
+    await axios.post('http://localhost:8000/goals', goal)
     this.setState({
       goals:[...this.state.goals, goal]
     })
-    // this.getGoals()
+console.log(this.state.goals)    
     } catch (err) {
       console.log(err)
       }
@@ -65,29 +66,43 @@ componentDidMount(){
   }
   render () {
     return (
-      <div>
-        {/* USERPROFILE */}
+      <div className="container tracker">
+      <div className="row">
+      <div className="col-3">
 <img className="profilePic" src={this.props.profilepic} alt={this.props.profilepic}/>
 <h3>{this.props.tagline}</h3>
+</div>
+
+{/* GOALS */}
+<div className="col-4">
+<p>Goals</p>
+{this.state.goals.map(ele=>
+<div className="goal">
+<Goals 
+userId={this.props.id}
+goalId={ele.id}
+goal={ele.goal}
+enddate={ele.enddate}
+deleteGoal={this.deleteGoal}
+getGoals={this.getGoals}
+/>
+</div>
+)}
 <Collapsible trigger="Add a goal">
-<form className="addGoalForm" onClick={()=>{this.addGoal()}}>
+<form className="addGoalForm" >
 <label>What is your goal?</label>
 <input type="text" name="goaldescription" placeholder="type here..." onChange={this.handleChange}></input>
 <label>What is your completion date?</label>
 <input type="date" name="enddate" onChange={this.handleChange}></input>
-<button type="button">Add</button>
+<button type="button" onClick={()=>{this.addGoal()}}>Add</button>
 </form>
 </Collapsible>
-{/* GOALS */}
-{this.state.goals.map(ele=>
-<Goals 
-id={this.props.id}
-goalId={ele.id}
-goal={ele.goal}
-deleteGoal={this.deleteGoal}
-/>
-
-)}
+</div>
+<div className="col-2">
+<p>Favorites</p>
+{/* // {this.props.favorites[0]} */}
+</div>
+      </div>
       </div>
     )
   }

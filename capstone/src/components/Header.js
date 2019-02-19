@@ -36,9 +36,10 @@ export default class Header extends Component {
 
   toggle() {
     console.log("hitting toggle")
-    // this.setState(prevState => ({
-    //   dropdownOpen: !prevState.dropdownOpen
-    // }));
+    console.log(this.state.dropdownOpen)
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
     this.setState({
       dropdownOpen:true
     })
@@ -125,7 +126,7 @@ export default class Header extends Component {
           }
    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
   <DropdownToggle caret>
-    This dropdown's menu is right-aligned
+    Resources
   </DropdownToggle>
   <DropdownMenu right>
     <DropdownItem header>Header</DropdownItem>

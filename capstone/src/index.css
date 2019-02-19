@@ -179,5 +179,25 @@ header a.navbar-brand {
 /* TRACKER */
 
 .profilePic {
-  height:200px;
+  height:20vh;
+  width:100%;
+}
+
+.tracker {
+  padding-top:25px;
+}
+
+.goal {
+  border:1px solid;
+}
+
+
+/* SEARCHEDPROVIDER */
+
+.searchedProvidersImg{
+  width:100%;
+}
+
+.providerRow, .reviewFormRow, .reviewsRow {
+  border:1px solid;
 }
