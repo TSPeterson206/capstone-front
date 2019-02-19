@@ -12,10 +12,14 @@ class SearchedProviders extends Component {
       selectedProvider:'',
       selectedProviderReviews:[],
       selectedProviderAvgRating:'',
+      selectedProviderFavorites:[],
       loggedIn:'',
       loggedInId:''
     }
-    console.log(props.open)
+    console.log(this.state.loggedInId)
+    console.log(this.state.loggedIn)
+    console.log(this.props.user[0].id)
+
   }
 
   getUser = async () => {
@@ -32,30 +36,6 @@ class SearchedProviders extends Component {
     } catch(err) {
       console.log(err)
     }
-  }
-
-  addReview = async () => {
-    const review = {
-      user_id:this.props.user[0].id,
-      provider_id:this.props.id,
-      content:this.state.addReviewText,
-      rating:this.state.addReviewRating
-    }
-    console.log(review)
-  try {
-    await axios.post('http://localhost:8000/reviews', review)
-    this.setState({
-      selectedProviderReviews:[...this.state.selectedProviderReviews, review]
-    })
-  } catch (err) {
-    console.log(err)
-  }
-  
-  }
-  
-  deleteReview = async (id) =>{
-    await axios.delete(`http://localhost:8000/reviews/${id}`)
-    this.getReviews(this.props.id)
   }
 
   getReviews = async (id) => {
@@ -75,7 +55,30 @@ class SearchedProviders extends Component {
   }
 }
 
-getAverage = async(id) =>{
+  addReview = async () => {
+    const review = {
+      user_id:this.props.user[0].id,
+      provider_id:this.props.id,
+      content:this.state.addReviewText,
+      rating:this.state.addReviewRating
+    }
+  try {
+    await axios.post('http://localhost:8000/reviews', review)
+    this.setState({
+      selectedProviderReviews:[...this.state.selectedProviderReviews, review]
+    })
+  } catch (err) {
+    console.log(err)
+  }
+  
+  }
+  
+  deleteReview = async (id) =>{
+    await axios.delete(`http://localhost:8000/reviews/${id}`)
+    this.getReviews(this.props.id)
+  }
+
+  getAverage = async(id) =>{
   const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
       const ratings = reviews.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
       const average = ratings/reviews.data.length
@@ -83,7 +86,31 @@ getAverage = async(id) =>{
       return average
 }
 
-handleChange = (event) => {
+  getFavorites = async(id)=>{
+    try {
+    const favorites = await axios.get(`http://localhost:8000/users/${id}/favorites`)
+  } catch (err) {
+    console.log(err)
+  }
+  }
+
+  addFavorite = async(id) => {
+    const favorite = {
+      user_id:this.props.user[0].id,
+      provider_id:this.props.id
+    }
+  try {
+    await axios.post('http://localhost:8000/user/${id}/favorites', favorite)
+    this.setState({
+      selectedProviderFavorites:[...this.state.selectedProviderFavorites, favorite]
+    })
+  } catch (err) {
+    console.log(err)
+  }
+  
+  }
+
+  handleChange = (event) => {
   this.setState({
     [event.target.name] : event.target.value
   })
@@ -93,27 +120,46 @@ handleChange = (event) => {
 }
   render () {
   return (
-    <div className="">
-        <img className="" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
-        <div className="">
-          {/* <div className="companyname">{this.props.companyname}</div> */}
-          <small className="text-muted">{this.props.address}, {this.props.phone}</small><br></br>
-          <small className="text-muted">{this.props.providerbio}</small><br></br>
-          <small className="text-muted">Average rating: {this.state.selectedProviderAvgRating}</small>
-
+    <div>
+      {/* Provider Profile */}
+    <div className="row providerRow">
+    <div className="col-2">
+              <div className="companyname">{this.props.companyname}</div>
+              <small className="text-muted">Average rating: {this.state.selectedProviderAvgRating}</small>
+    </div>
+    <div className="col-2">
+        <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
         </div>
-        <Collapsible className="addReviewForm" trigger="Add a review" open='false'>
+        <div className="col-2">
+          <small className="text-muted">{this.props.address}, {this.props.phone}</small><br></br>
+          </div>
+          <div className="col-4">
+          <small className="text-muted">{this.props.providerbio}</small><br></br>
+        </div>
+        <div className="col-2">
+        {/* <input type="radio" name="favoriteCheck" value="favorite">Add to favorites</input> */}
+        <button onClick={()=>{this.addFavorite(this.props.user[0].id)}}>Favorites</button>
+        <button>Contact</button>
+        </div>
+        </div>
+
+        {/* Add review form */}
+        <div className="row reviewFormRow">
+        <div className="col-12">
+        <Collapsible className="addReviewForm" trigger="Add a review">
         <div>
         <form className="addReviewForm" >
         <label>How would you describe your experience this with provider?</label>
-        <input type="text" name="addReviewText" onChange={this.handleChange}></input>
+        <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
         <label>How would you rate your experience?</label>
-        <input type="number" max="5" name="addReviewRating" onChange={this.handleChange}></input>
+        <input type="number" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
         <button type="button" onClick={()=>{this.addReview()}}>submit</button>
         </form>
         </div>
         </Collapsible>
-        {this.state.selectedProvider ? <ProviderProfile 
+        </div>
+        </div>
+        {/* {this.state.selectedProvider ? <ProviderProfile 
         id={this.state.selectedProvider.id}
         businessphoto={this.state.selectedProvider.businessphoto}
         companyname={this.state.selectedProvider.companyname}
@@ -121,7 +167,9 @@ handleChange = (event) => {
         phone={this.state.selectedProvider.phone}
         providerbio={this.state.selectedProvider.providerbio}
         avgrating={this.state.selectedProviderAvgRating}
-        reviews={this.state.selectedProviderReviews}/> : null}
+        reviews={this.state.selectedProviderReviews}/> : null} */}
+        <div className="row reviewsRow">
+        <div className="col-12">
         <Collapsible trigger="See Reviews Collapsible" onOpening={()=>this.getReviews(this.props.id)}>
       <div className="">
       <p>reviews go here</p>
@@ -139,8 +187,12 @@ handleChange = (event) => {
     </div>
     </Collapsible>
     </div>
+    </div>
+    
+    </div>
   )
 }
+
 }
 
 export default SearchedProviders
