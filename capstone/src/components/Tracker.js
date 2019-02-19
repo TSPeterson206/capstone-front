@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Goals from './Goals'
 import Collapsible from 'react-collapsible';
+import Favorite from './Favorite';
 
 export default class Tracker extends Component {
   constructor(props) {
@@ -9,12 +10,15 @@ export default class Tracker extends Component {
 
     this.state = {
       id:this.props.id,
-      goals:[]
+      goals:[],
+      favoriteProviders:[]
     }
     console.log(this.props.favorites)
+    console.log(this.state.favoriteProviders)
   }
 componentDidMount(){
   this.getGoals();
+  this.getFavorites();
 }
   getGoals = async()=> {
     try{
@@ -56,6 +60,33 @@ console.log(this.state.goals)
     }
   }
 
+  getFavorites = async() => {
+    try {
+      const providers = await axios.get('http://localhost:8000/providers')
+      const acc=[]
+      let arr1=providers.data
+      let arr2=this.props.favorites
+      for(let i=0; i<arr1.length; i++){
+        for(let j=0; j<arr2.length;j++){
+          if(arr1[i].id === arr2[j].provider_id){acc.push(arr1[i])}
+        }
+      }
+      console.log(acc)
+      this.setState({
+        favoriteProviders:acc
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  deleteFavorite = (id) => {
+    console.log('hittingdeletefavorite')
+    console.log(id)
+    axios.delete(`http://localhost:8000/favorites/${id}`)
+    this.getFavorites()
+  }
+
   handleChange = (event) => {
     this.setState({
       [event.target.name] : event.target.value
@@ -64,6 +95,8 @@ console.log(this.state.goals)
     console.log(this.state.goaldescription)
 
   }
+
+
   render () {
     return (
       <div className="container tracker">
@@ -100,7 +133,14 @@ getGoals={this.getGoals}
 </div>
 <div className="col-2">
 <p>Favorites</p>
-{/* // {this.props.favorites[0]} */}
+{this.state.favoriteProviders.map(ele=>
+<Favorite
+  id={ele.id}
+  companyname={ele.companyname}
+  deleteFavorite={this.deleteFavorite}
+  // businessphoto={ele.businessphoto}
+/>
+)}
 </div>
       </div>
       </div>

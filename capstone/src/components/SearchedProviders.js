@@ -14,11 +14,13 @@ class SearchedProviders extends Component {
       selectedProviderAvgRating:'',
       selectedProviderFavorites:[],
       loggedIn:'',
-      loggedInId:''
+      loggedInId:'',
+      addReviewFormOpenClose:false
     }
     console.log(this.state.loggedInId)
     console.log(this.state.loggedIn)
     console.log(this.props.user[0].id)
+    console.log(this.state.addReviewFormOpenClose)
 
   }
 
@@ -65,12 +67,14 @@ class SearchedProviders extends Component {
   try {
     await axios.post('http://localhost:8000/reviews', review)
     this.setState({
-      selectedProviderReviews:[...this.state.selectedProviderReviews, review]
+      selectedProviderReviews:[...this.state.selectedProviderReviews, review],
+      addReviewFormOpenClose:false
     })
   } catch (err) {
     console.log(err)
   }
-  
+  console.log(this.state.addReviewFormOpenClose)
+
   }
   
   deleteReview = async (id) =>{
@@ -99,8 +103,9 @@ class SearchedProviders extends Component {
       user_id:this.props.user[0].id,
       provider_id:this.props.id
     }
+    console.log('hittingaddfavorite',favorite)
   try {
-    await axios.post('http://localhost:8000/user/${id}/favorites', favorite)
+    await axios.post(`http://localhost:8000/favorites`, favorite)
     this.setState({
       selectedProviderFavorites:[...this.state.selectedProviderFavorites, favorite]
     })
@@ -110,6 +115,13 @@ class SearchedProviders extends Component {
   
   }
 
+  handleOpenClose = () => {
+    this.setState({
+      addReviewFormOpenClose:true
+    })
+    console.log(this.state.addReviewFormOpenClose)
+
+  }
   handleChange = (event) => {
   this.setState({
     [event.target.name] : event.target.value
@@ -146,7 +158,7 @@ class SearchedProviders extends Component {
         {/* Add review form */}
         <div className="row reviewFormRow">
         <div className="col-12">
-        <Collapsible className="addReviewForm" trigger="Add a review">
+        <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose} open={this.state.addReviewFormOpenClose}>
         <div>
         <form className="addReviewForm" >
         <label>How would you describe your experience this with provider?</label>
@@ -159,15 +171,6 @@ class SearchedProviders extends Component {
         </Collapsible>
         </div>
         </div>
-        {/* {this.state.selectedProvider ? <ProviderProfile 
-        id={this.state.selectedProvider.id}
-        businessphoto={this.state.selectedProvider.businessphoto}
-        companyname={this.state.selectedProvider.companyname}
-        address={this.state.selectedProvider.address}
-        phone={this.state.selectedProvider.phone}
-        providerbio={this.state.selectedProvider.providerbio}
-        avgrating={this.state.selectedProviderAvgRating}
-        reviews={this.state.selectedProviderReviews}/> : null} */}
         <div className="row reviewsRow">
         <div className="col-12">
         <Collapsible trigger="See Reviews Collapsible" onOpening={()=>this.getReviews(this.props.id)}>
@@ -188,33 +191,8 @@ class SearchedProviders extends Component {
     </Collapsible>
     </div>
     </div>
-    
     </div>
   )
 }
-
 }
-
 export default SearchedProviders
-
-
-// TODOS:
-// 
-
-// addBookHandler = (newTitle, newAuthor, newPages) => {
-//   const newBook = {
-//     title: newTitle,
-//     author: newAuthor,
-//     pages: newPages
-//     } 
-//     newBook.price = 5;
-//   axios.post(`${process.env.REACT_APP_API_URL}/books`, newBook
-//   )
-//   .then(()=>{
-//     const afterAdd = [...this.state.books, newBook]
-//     this.setState({books:afterAdd,
-//     addingBook:null})
-//     this.getBooks()
-//   })
-  
-//   }
