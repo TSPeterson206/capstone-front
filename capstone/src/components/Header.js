@@ -17,7 +17,7 @@ export default class Header extends Component {
   constructor(props) {
     super(props)
 
-    this.toggle = this.toggle.bind(this);
+    // this.toggle = this.toggle.bind(this);
 
     this.state = {
       search: '',
@@ -30,19 +30,19 @@ export default class Header extends Component {
       isLoading: true,
       data:[],
       loggedinId: '',
-      dropdownOpen: false
+      dropdownOpen: true
     }
   }
 
-  toggle() {
+  toggle = () => {
     console.log("hitting toggle")
     console.log(this.state.dropdownOpen)
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
     this.setState({
-      dropdownOpen:true
-    })
+      dropdownOpen: !this.state.dropdownOpen
+    });
+    // this.setState({
+    //   dropdownOpen:true
+    // })
   }
 
   SignInSignOutButton = () => {
@@ -125,17 +125,17 @@ export default class Header extends Component {
                 />)
           }
    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-  <DropdownToggle caret>
-    Resources
-  </DropdownToggle>
-  <DropdownMenu right>
-    <DropdownItem header>Header</DropdownItem>
-    <DropdownItem disabled>Action</DropdownItem>
-    <DropdownItem>Another Action</DropdownItem>
-    <DropdownItem divider/>
-    <DropdownItem>Another Action</DropdownItem>
-  </DropdownMenu>
-</Dropdown>
+      <DropdownToggle caret>
+        Resources
+      </DropdownToggle>
+      <DropdownMenu right>
+        <DropdownItem header>Header</DropdownItem>
+        <DropdownItem disabled>Action</DropdownItem>
+        <DropdownItem>Another Action</DropdownItem>
+        <DropdownItem divider/>
+        <DropdownItem>Another Action</DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
 
           </div>
         </nav>

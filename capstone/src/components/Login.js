@@ -111,7 +111,7 @@ export default class Login extends Component {
           key={item.src}
         >
           <img src={item.src} alt={item.altText} className="carouselImage" />
-          <CarouselCaption  captionHeader={item.caption} />
+          <CarouselCaption  captionHeader={item.caption} captionText={item.altText}/>
         </CarouselItem>
       );
     });

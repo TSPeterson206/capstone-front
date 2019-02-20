@@ -15,10 +15,11 @@ export default class Tracker extends Component {
     }
     console.log(this.props.favorites)
     console.log(this.state.favoriteProviders)
+    console.log(this.props.id)
   }
 componentDidMount(){
   this.getGoals();
-  this.getFavorites();
+  this.getFavorites(this.props.id);
 }
   getGoals = async()=> {
     try{
@@ -60,31 +61,22 @@ console.log(this.state.goals)
     }
   }
 
-  getFavorites = async() => {
+  getFavorites = async(userId) => {
     try {
-      const providers = await axios.get('http://localhost:8000/providers')
-      const acc=[]
-      let arr1=providers.data
-      let arr2=this.props.favorites
-      for(let i=0; i<arr1.length; i++){
-        for(let j=0; j<arr2.length;j++){
-          if(arr1[i].id === arr2[j].provider_id){acc.push(arr1[i])}
-        }
-      }
-      console.log(acc)
+      const favorites = await axios.get(`http://localhost:8000/favorites/${userId}`)
+      console.log(favorites)
       this.setState({
-        favoriteProviders:acc
+        favoriteProviders:favorites.data
       })
     } catch (err) {
       console.log(err)
     }
   }
 
-  deleteFavorite = (id) => {
-    console.log('hittingdeletefavorite')
-    console.log(id)
-    axios.delete(`http://localhost:8000/favorites/${id}`)
-    this.getFavorites()
+  deleteFavorite = (userId, favoriteId) => {
+    console.log('hittingdeletefavorite', userId, favoriteId)
+    axios.delete(`http://localhost:8000/favorites/${userId}/${favoriteId}`)
+    .then(()=>this.getFavorites(userId))
   }
 
   handleChange = (event) => {
@@ -93,9 +85,7 @@ console.log(this.state.goals)
     })
     console.log(this.state.enddate)
     console.log(this.state.goaldescription)
-
   }
-
 
   render () {
     return (
@@ -110,8 +100,9 @@ console.log(this.state.goals)
 <div className="col-4">
 <p>Goals</p>
 {this.state.goals.map(ele=>
-<div className="goal">
+<div className="goal" key={ele.id}>
 <Goals 
+key={ele.id}
 userId={this.props.id}
 goalId={ele.id}
 goal={ele.goal}
@@ -135,9 +126,11 @@ getGoals={this.getGoals}
 <p>Favorites</p>
 {this.state.favoriteProviders.map(ele=>
 <Favorite
-  id={ele.id}
+  favoriteId={ele.id}
+  key={ele.id}
   companyname={ele.companyname}
   deleteFavorite={this.deleteFavorite}
+  userId={ele.user_id}
   // businessphoto={ele.businessphoto}
 />
 )}
