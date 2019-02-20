@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import ProviderProfile from './ProviderProfile';
 import Collapsible from 'react-collapsible';
 import Review from './Review'
 
@@ -19,8 +18,9 @@ class SearchedProviders extends Component {
     }
     console.log(this.state.loggedInId)
     console.log(this.state.loggedIn)
-    console.log(this.props.user[0].id)
     console.log(this.state.addReviewFormOpenClose)
+    console.log(this.props.average)
+
 
   }
 
@@ -44,13 +44,9 @@ class SearchedProviders extends Component {
     try {
       const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
       console.log(reviews.data)
-      const ratings = reviews.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
-      console.log(ratings)
-      const average = ratings/reviews.data.length
-      console.log(average)
       this.setState({
-        selectedProviderReviews:reviews.data,
-        selectedProviderAvgRating:average
+        selectedProviderReviews:reviews.data
+        // selectedProviderAvgRating:average
       })
     } catch (err) {
     console.log(err)
@@ -90,13 +86,13 @@ class SearchedProviders extends Component {
       return average
 }
 
-  getFavorites = async(id)=>{
-    try {
-    const favorites = await axios.get(`http://localhost:8000/users/${id}/favorites`)
-  } catch (err) {
-    console.log(err)
-  }
-  }
+  // getFavorites = async(id)=>{
+  //   try {
+  //   const favorites = await axios.get(`http://localhost:8000/users/${id}/favorites`)
+  // } catch (err) {
+  //   console.log(err)
+  // }
+  // }
 
   addFavorite = async(id) => {
     const favorite = {
@@ -137,7 +133,7 @@ class SearchedProviders extends Component {
     <div className="row providerRow">
     <div className="col-2">
               <div className="companyname">{this.props.companyname}</div>
-              <small className="text-muted">Average rating: {this.state.selectedProviderAvgRating}</small>
+              <small className="text-muted">Average rating: {this.props.average}</small>
     </div>
     <div className="col-2">
         <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
@@ -154,13 +150,12 @@ class SearchedProviders extends Component {
         <button>Contact</button>
         </div>
         </div>
-
         {/* Add review form */}
         <div className="row reviewFormRow">
         <div className="col-12">
-        <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose} open={this.state.addReviewFormOpenClose}>
+        <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
         <div>
-        <form className="addReviewForm" >
+        <form className="addReviewForm">
         <label>How would you describe your experience this with provider?</label>
         <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
         <label>How would you rate your experience?</label>

@@ -3,12 +3,8 @@ import Tracker from './Tracker'
 import axios from 'axios'
 import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
-import {CollapsibleComponent, CollapsibleHead, CollapsibleContent} from 'react-collapsible-component'
-
-import ProviderProfile from './ProviderProfile'
 import { Button } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody } from 'reactstrap';
 
 
 export default class Profile extends Component {
@@ -20,7 +16,8 @@ export default class Profile extends Component {
       providers:[],
       type:'',
       selectedProviderID:'',
-      selectedProviderFavorites:[]
+      selectedProviderFavorites:[],
+      average:''
     }
     console.log(this.state.selectedProviderFavorites)
     console.log(this.state.user)
@@ -35,7 +32,9 @@ export default class Profile extends Component {
     try {
       const response = await axios.get(`http://localhost:8000/users`)
       const user = await response.data.filter(user => user.username === this.props.match.params.username)
-      const favorites = await axios.get(`http://localhost:8000/favorites`)
+      console.log(user[0].id)
+      const favorites = await axios.get(`http://localhost:8000/favorites/${user[0].id}`)
+      console.log(favorites)
       const favs = favorites.data.filter(ele=>ele.user_id === user[0].id)
       console.log(favs)
       this.setState({ user: [...user],
@@ -50,9 +49,7 @@ export default class Profile extends Component {
   getProvidersByType = async (type) =>{
      try {
       const found = await axios.get('http://localhost:8000/providers')
-      const filtered =  await found.data.filter(ele => ele.typeID === type)
-      // const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
-      // console.log(reviews.data)
+      const filtered = await found.data.filter(ele => ele.typeID === type)
       this.setState({
         providers:filtered,
           type:type
@@ -69,13 +66,11 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
       const ratings = result.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
       const average = ratings/result.data.length
       console.log(average)
-      return average
+      this.setState({
+        average:average
+      })
       }
       )
-}
-
-getFavorites = async(id)=>{
-  const favorites = await axios.get(`http://localhost:8000/users/${id}/favorites`)
 }
 
   render() {
@@ -150,7 +145,7 @@ getFavorites = async(id)=>{
           {this.state.type ? this.state.providers.map(ele => 
           <div key={ele.id}>
           
-          <Collapsible trigger={ele.companyname}>
+          <Collapsible trigger={ele.companyname} onOpening={()=>{this.getAverage(ele.id)}}>
             <SearchedProviders
             key={ele.id}
           id={ele.id}
@@ -161,6 +156,7 @@ getFavorites = async(id)=>{
           providerbio={ele.providerbio}
           getAverage={this.getAverage}
           user={this.state.user}
+          average={this.state.average}
           />
           </Collapsible>
           </div>) : null} 
