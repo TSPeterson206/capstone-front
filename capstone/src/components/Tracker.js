@@ -3,6 +3,8 @@ import axios from 'axios';
 import Goals from './Goals'
 import Collapsible from 'react-collapsible';
 import Favorite from './Favorite';
+import Search from './Search'
+import SearchedProviders from './SearchedProviders'
 
 export default class Tracker extends Component {
   constructor(props) {
@@ -11,15 +13,17 @@ export default class Tracker extends Component {
     this.state = {
       id:this.props.id,
       goals:[],
-      favoriteProviders:[]
+      favoriteProviders:this.props.favorites
     }
     console.log(this.props.favorites)
     console.log(this.state.favoriteProviders)
     console.log(this.props.id)
+    console.log(this.state.id)
+    console.log(this.props.user)
   }
 componentDidMount(){
   this.getGoals();
-  this.getFavorites(this.props.id);
+  // this.getFavorites(this.props.id);
 }
   getGoals = async()=> {
     try{
@@ -71,6 +75,7 @@ console.log(this.state.goals)
     } catch (err) {
       console.log(err)
     }
+    console.log(this.state.favoriteProviders)
   }
 
   deleteFavorite = (userId, favoriteId) => {
@@ -83,8 +88,6 @@ console.log(this.state.goals)
     this.setState({
       [event.target.name] : event.target.value
     })
-    console.log(this.state.enddate)
-    console.log(this.state.goaldescription)
   }
 
   render () {
@@ -125,18 +128,22 @@ getGoals={this.getGoals}
 <div className="col-2">
 <p>Favorites</p>
 {this.state.favoriteProviders.map(ele=>
-<Favorite
-  favoriteId={ele.id}
-  key={ele.id}
-  companyname={ele.companyname}
-  deleteFavorite={this.deleteFavorite}
-  userId={ele.user_id}
-  // businessphoto={ele.businessphoto}
-/>
+  <div>
+      <img src={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
+    <button onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}>X</button>
+    </div>
+    
+// />
 )}
 </div>
+      </div>
+      <div className="row">
+      <div className="col-12">
+          </div>
       </div>
       </div>
     )
   }
 }
+
+{/* <Favorite */}
