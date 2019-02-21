@@ -5,7 +5,6 @@ import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
 import { Button } from 'reactstrap';
 import { Card, CardImg, CardText, CardBody } from 'reactstrap';
-import Search from './Search'
 import UserTracker from './UserTracker';
 
 
@@ -49,7 +48,7 @@ export default class Profile extends Component {
     console.log(this.state.user)
   }
 
-  getProvidersByType = async (type) =>{
+  getProvidersByType = async(type) =>{
      try {
       const found = await axios.get('http://localhost:8000/providers')
       const filtered = await found.data.filter(ele => ele.typeID === type)
@@ -76,103 +75,34 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
       )
 }
 
-addFavorite = async(providerId) => {
-  const favorite = {
-    user_id:this.state.user[0].id,
-    provider_id:providerId
-  }
-  console.log('hittingaddfavorite', favorite)
-  await axios.post(`http://localhost:8000/favorites`, favorite)
-  .then(()=>
-  this.setState({
-    selectedProviderFavorites:[...this.state.selectedProviderFavorites, favorite]
-  })
-  )
-console.log(this.state.selectedProviderFavorites)
-this.getAccount();
-}
-
-handleSearchSubmit = async (event) => {
-  event.preventDefault()
-  try {
-    const response = await axios.get(`http://localhost:8000/providers`)
-    const data = await response.data.filter(post =>
-      Object.values(post).reduce((i, b) => i || (typeof b === 'string' ?
-        b.toLowerCase().includes(this.state.search.toLowerCase()) : false), false)
-    )
-    console.log(data)
-
-    this.setState({
-      searchedProviders: data,
-      submittedSearch: true
-    })
-
-    if(this.state.search.length <2) {
-      this.setState({
-        submittedSearch:false
-      })
-    }
-    console.log(this.state.submittedSearch)
-
-    return data
-  } catch (err) {
-    console.log(err)
-  }
-}
-
-handleChange = (event) => {
-  this.setState({
-    [event.target.name] : event.target.value
-  })
-}
- getFavorites = async(userId) => {
-    try {
-      const favorites = await axios.get(`http://localhost:8000/favorites/${userId}`)
-      console.log(favorites)
-      this.setState({
-        favoriteProviders:favorites.data
-      })
-    } catch (err) {
-      console.log(err)
-    }
-    console.log(this.state.favoriteProviders)
-  }
-
-deleteFavorite = (userId, favoriteId) => {
-  console.log('hittingdeletefavorite', userId, favoriteId)
-  axios.delete(`http://localhost:8000/favorites/${userId}/${favoriteId}`)
-  .then(()=>this.getFavorites(userId))
-}
-
   render() {
     return (
 <div>
-<Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
-<div className="tracker">
-  <UserTracker 
-  user={this.state.user}
-  favorites={this.state.selectedProviderFavorites}
-  deleteFavorite={this.deleteFavorite}
-  getFavorites={this.getFavorites}
-  addFavorite={this.addFavorite}
-  />
+  <div className="tracker">
+    <UserTracker 
+    user={this.state.user}
+    favorites={this.state.selectedProviderFavorites}
+    deleteFavorite={this.deleteFavorite}
+    getFavorites={this.getFavorites}
+    addFavorite={this.addFavorite}
+    />
   </div>
   {
-            this.state.submittedSearch && this.state.searchedProviders.map(ele =>
-              <SearchedProviders
-                businessphoto={ele.businessphoto}
-                companyname={ele.companyname}
-                address={ele.address}
-                phone={ele.phone}
-                key={ele.id}
-                id={ele.id}
-                providerbio={ele.providerbio}
-                getAverage={this.getAverage}
-                user={this.state.user}
-                average={this.state.average}
-                addFavorite={this.addFavorite}
-                />)
-          }
+    this.state.submittedSearch && this.state.searchedProviders.map(ele =>
+      <SearchedProviders
+        businessphoto={ele.businessphoto}
+        companyname={ele.companyname}
+        address={ele.address}
+        phone={ele.phone}
+        key={ele.id}
+        id={ele.id}
+        providerbio={ele.providerbio}
+        getAverage={this.getAverage}
+        user={this.state.user}
+        average={this.state.average}
+        addFavorite={this.addFavorite}
+        />)
+    }
   {this.state.type ? this.state.providers.map(ele => 
     <div key={ele.id}>
     

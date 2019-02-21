@@ -144,8 +144,8 @@ class SearchedProviders extends Component {
           <small className="text-muted">{this.props.providerbio}</small><br></br>
         </div>
         <div className="col-2">
-        <button onClick={()=>{this.props.addFavorite(this.props.id)}}>Favorites</button>
-        <button>Contact</button>
+        {/* <button onClick={()=>{this.props.addFavorite(this.props.id)}}>Favorites</button> */}
+        {/* <button>Contact</button> */}
         </div>
         </div>
         {/* Add review form */}
