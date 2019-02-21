@@ -30,7 +30,7 @@ export default class Header extends Component {
       isLoading: true,
       data:[],
       loggedinId: '',
-      dropdownOpen: true
+      dropdownOpen: false
     }
   }
 
@@ -91,7 +91,7 @@ export default class Header extends Component {
   render() {
     return (
       <header>
-        <nav className="topnav navbar navbar-dark bg-primary" id="myTopnav">
+        <nav className="topnav navbar navbar-dark bg-secondary" id="myTopnav">
           <div className="container mr-auto">
             <a className="navbar-brand" href={!this.props.user ? `/` : `/profile/${this.props.user.username}`}>Capstone!</a>
             <div className="navbar-right">
@@ -114,7 +114,7 @@ export default class Header extends Component {
               }
 
             </div>
-            <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange} />
+            {/* <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange} />
             {
             this.state.submittedSearch && this.state.searchedProviders.map(post =>
               <SearchedProviders
@@ -123,7 +123,7 @@ export default class Header extends Component {
                 address={post.address}
                 phone={post.phone}
                 />)
-          }
+          } */}
    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
       <DropdownToggle caret>
         Resources

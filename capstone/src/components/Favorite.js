@@ -10,8 +10,12 @@ export default class Favorite extends Component {
 render(){
   return(
     <div>
-      {this.props.companyname}
-      {/* {this.props.businessphoto} */}
+      <div>
+      {/* {this.props.companyname} */}
+      </div>
+      <div>
+      <img src={this.props.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
+      </div>
     <button onClick={()=>{this.props.deleteFavorite(this.props.userId, this.props.favoriteId)}}>X</button>
     </div>
   )

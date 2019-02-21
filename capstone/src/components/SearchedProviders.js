@@ -20,8 +20,7 @@ class SearchedProviders extends Component {
     console.log(this.state.loggedIn)
     console.log(this.state.addReviewFormOpenClose)
     console.log(this.props.average)
-
-
+    console.log(this.props.user)
   }
 
   getUser = async () => {
@@ -145,8 +144,7 @@ class SearchedProviders extends Component {
           <small className="text-muted">{this.props.providerbio}</small><br></br>
         </div>
         <div className="col-2">
-        {/* <input type="radio" name="favoriteCheck" value="favorite">Add to favorites</input> */}
-        <button onClick={()=>{this.addFavorite(this.props.user[0].id)}}>Favorites</button>
+        <button onClick={()=>{this.props.addFavorite(this.props.id)}}>Favorites</button>
         <button>Contact</button>
         </div>
         </div>

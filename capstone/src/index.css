@@ -53,7 +53,6 @@ header a.navbar-brand {
   /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
-  /* overflow: hidden; */
 }
 
 /* Style the links inside the navigation bar */
@@ -191,6 +190,10 @@ header a.navbar-brand {
   border:1px solid;
 }
 
+/* FAVORITES */
+.favoritesImg {
+  height:20px;
+}
 
 /* SEARCHEDPROVIDER */
 
