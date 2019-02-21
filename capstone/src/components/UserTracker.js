@@ -15,29 +15,6 @@ export default class UserTracker extends Component{
     console.log(this.state.user)
 
   }
-componentDidMount(){
-  console.log(this.props.user)
-
-  this.getFavorites(this.props.user)
-}
-  getFavorites = async(userId) => {
-    try {
-      const favorites = await axios.get(`http://localhost:8000/favorites/${userId}`)
-      console.log(favorites)
-      this.setState({
-        favoriteProviders:favorites.data
-      })
-    } catch (err) {
-      console.log(err)
-    }
-    console.log(this.state.favoriteProviders)
-  }
-
-  // deleteFavorite = (userId, favoriteId) => {
-  //   console.log('hittingdeletefavorite', userId, favoriteId)
-  //   axios.delete(`http://localhost:8000/favorites/${userId}/${favoriteId}`)
-  //   .then(()=>this.getFavorites(userId))
-  // }
 
   render(){
     return (
@@ -52,6 +29,7 @@ componentDidMount(){
         user={this.props.user}
         deleteFavorite={this.props.deleteFavorite}
         getFavorites={this.props.getFavorites}
+        addFavorite={this.props.addFavorite}
         />
       )}
       </div>

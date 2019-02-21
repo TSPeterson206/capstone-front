@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Goals from './Goals'
 import Collapsible from 'react-collapsible';
-import Favorite from './Favorite';
 import Search from './Search'
 import SearchedProviders from './SearchedProviders'
 
@@ -13,7 +12,10 @@ export default class Tracker extends Component {
     this.state = {
       id:this.props.id,
       goals:[],
-      favoriteProviders:this.props.favorites
+      favoriteProviders:this.props.favorites,
+      submittedSearch: false,
+      searchedProviders:[],
+      selectedProviderFavorites:[]
     }
     console.log(this.props.favorites)
     console.log(this.state.favoriteProviders)
@@ -23,7 +25,7 @@ export default class Tracker extends Component {
   }
 componentDidMount(){
   this.getGoals();
-  // this.getFavorites(this.props.id);
+  this.getFavorites(this.props.id);
 }
   getGoals = async()=> {
     try{
@@ -31,7 +33,6 @@ componentDidMount(){
     const goals = await axios.get(`http://localhost:8000/goals/${id}`)
     console.log(goals.data)
     this.setState({ goals: goals.data })
-
     } catch (err) {
       console.log(err)
     }
@@ -78,6 +79,22 @@ console.log(this.state.goals)
     console.log(this.state.favoriteProviders)
   }
 
+  addFavorite = async(providerId) => {
+    const favorite = {
+      user_id:this.props.id,
+      provider_id:providerId
+    }
+    console.log('hittingaddfavorite', favorite)
+    await axios.post(`http://localhost:8000/favorites`, favorite)
+    .then(()=>
+    this.setState({
+      favoriteProviders:[...this.state.favoriteProviders, favorite]
+    })
+    )
+  console.log(this.state.favoriteProviders)
+  this.getFavorites(this.props.id);
+  }
+
   deleteFavorite = (userId, favoriteId) => {
     console.log('hittingdeletefavorite', userId, favoriteId)
     axios.delete(`http://localhost:8000/favorites/${userId}/${favoriteId}`)
@@ -88,6 +105,31 @@ console.log(this.state.goals)
     this.setState({
       [event.target.name] : event.target.value
     })
+  }
+
+  handleSearchSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const response = await axios.get(`http://localhost:8000/providers`)
+      const data = await response.data.filter(post =>
+        Object.values(post).reduce((i, b) => i || (typeof b === 'string' ?
+          b.toLowerCase().includes(this.state.search.toLowerCase()) : false), false)
+      )
+      console.log(data)
+      this.setState({
+        searchedProviders: data,
+        submittedSearch: true
+      })
+      if(this.state.search.length <2) {
+        this.setState({
+          submittedSearch:false
+        })
+      }
+      console.log(this.state.submittedSearch)
+      return data
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   render () {
@@ -130,20 +172,55 @@ getGoals={this.getGoals}
 {this.state.favoriteProviders.map(ele=>
   <div>
       <img src={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
+      <small>{ele.companyname}</small>
     <button onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}>X</button>
     </div>
-    
-// />
 )}
-</div>
-      </div>
+<Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
+
+  </div>
+    </div>
       <div className="row">
-      <div className="col-12">
+        <div className="col-12">
+          {this.state.submittedSearch && this.state.searchedProviders.map(ele =>
+          <div className="row">
+          <div className="col-10">
+          <SearchedProviders
+              businessphoto={ele.businessphoto}
+              companyname={ele.companyname}
+              address={ele.address}
+              phone={ele.phone}
+              key={ele.id}
+              id={ele.id}
+              providerbio={ele.providerbio}
+              getAverage={this.getAverage}
+              user={this.state.user}
+              average={this.state.average}
+              addFavorite={this.addFavorite}
+              />
+              </div>
+              
+              <div className="col-2">
+          <button onClick={()=>{this.addFavorite(ele.id)}}>Favorites</button>
+          <button>Contact</button>
           </div>
+          </div>
+          )}
+        </div>
       </div>
-      </div>
+    </div>
     )
   }
 }
 
-{/* <Favorite */}
+// var tickTickBoom = document.getElementById("calendar1");
+
+// function tallyDays () {
+//     var days = Date.now()-new Date(tickTickBoom.value).getTime();
+//     document.querySelector('.timeTicker').textContent = Math.round(days/86400000) + " days";
+//     var storedDate = Math.round(days/86400000) + " days";
+//     localStorage.setItem("savedDate", storedDate);
+//     document.querySelector('.timeTicker').textContent = localStorage.getItem("savedDate");
+// }
+
+// tickTickBoom.addEventListener('change', tallyDays)
