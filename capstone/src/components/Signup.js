@@ -12,13 +12,14 @@ export default class Signup extends Component {
 
   handleSignUp = event => {
     event.preventDefault()
-    const { username, password, tagline, profilepic } = event.target
+    const { username, password, tagline, profilepic, soberdate } = event.target
 
     request('/users', 'post', {
       username: username.value,
       password: password.value,
       tagline:tagline.value,
-      profilepic:profilepic.value
+      profilepic:profilepic.value,
+      soberdate:soberdate.value
     })
       .then(response => {
         this.setState({ showErrorMessage: false })
@@ -64,6 +65,10 @@ export default class Signup extends Component {
           <div className="form-group">
             <label htmlFor="displayname">Profile Picture</label>
             <input type="text" className="form-control" id="profilepic" name="profilepic" placeholder="Upload a picture of yourself" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="soberdate">Sobriety Date</label>
+            <input type="date" className="form-control" id="soberdate" name="soberdate" placeholder="What is your sobriety date?" required />
           </div>
           <button type="submit" className="btn btn-outline-info mr-3">Submit</button>
           <Link className="small" to="/">Already have an account?</Link>
