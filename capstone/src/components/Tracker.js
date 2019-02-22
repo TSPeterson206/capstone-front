@@ -4,6 +4,8 @@ import Goals from './Goals'
 import Collapsible from 'react-collapsible';
 import Search from './Search'
 import SearchedProviders from './SearchedProviders'
+import Moment from 'react-moment';
+
 
 export default class Tracker extends Component {
   constructor(props) {
@@ -17,15 +19,12 @@ export default class Tracker extends Component {
       searchedProviders:[],
       selectedProviderFavorites:[]
     }
-    console.log(this.props.favorites)
-    console.log(this.state.favoriteProviders)
-    console.log(this.props.id)
-    console.log(this.state.id)
-    console.log(this.props.user)
+    console.log(this.props.soberDays)
   }
 componentDidMount(){
   this.getGoals();
   this.getFavorites(this.props.id);
+  console.log(this.props.soberDate)
 }
   getGoals = async()=> {
     try{
@@ -48,9 +47,10 @@ componentDidMount(){
     console.log(goal)
     try {
     await axios.post('http://localhost:8000/goals', goal)
-    this.setState({
-      goals:[...this.state.goals, goal]
-    })
+    await this.getGoals()
+    // this.setState({
+    //   goals:[...this.state.goals, goal]
+    // })
 console.log(this.state.goals)    
     } catch (err) {
       console.log(err)
@@ -105,6 +105,7 @@ console.log(this.state.goals)
     this.setState({
       [event.target.name] : event.target.value
     })
+    console.log(this.state.enddate, typeof this.state.enddate)
   }
 
   handleSearchSubmit = async (event) => {
@@ -151,6 +152,7 @@ key={ele.id}
 userId={this.props.id}
 goalId={ele.id}
 goal={ele.goal}
+createdAt={ele.created_at}
 enddate={ele.enddate}
 deleteGoal={this.deleteGoal}
 getGoals={this.getGoals}
@@ -178,6 +180,18 @@ getGoals={this.getGoals}
 )}
 <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
 
+  </div>
+  <div className="col-3">
+  <h5>As of your last login, you have been sober for:</h5>
+<div>
+  <p><Moment diff={this.props.soberDate} unit="days"></Moment> days</p>
+  </div>
+  <div>
+  <p><Moment diff={this.props.soberDate} unit="hours"></Moment> hours</p>
+  </div>
+  <div>
+  <p><Moment diff={this.props.soberDate} unit="minutes"></Moment> minutes</p>
+  </div>
   </div>
     </div>
       <div className="row">
