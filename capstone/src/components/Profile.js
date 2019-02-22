@@ -20,10 +20,6 @@ export default class Profile extends Component {
       selectedProviderFavorites:[],
       average:''
     }
-    console.log(this.state.selectedProviderFavorites)
-    console.log(this.state.selectedProviderID)
-    console.log(this.state.user)
-
   }
 
   componentDidMount() {
@@ -34,18 +30,21 @@ export default class Profile extends Component {
     try {
       const response = await axios.get(`http://localhost:8000/users`)
       const user = await response.data.filter(user => user.username === this.props.match.params.username)
-      console.log(user[0].id)
       const favorites = await axios.get(`http://localhost:8000/favorites/${user[0].id}`)
-      console.log(favorites)
       const favs = favorites.data.filter(ele=>ele.user_id === user[0].id)
-      console.log(favs)
       this.setState({ user: [...user],
         selectedProviderFavorites:[...favs]
       })
     } catch (err) {
       console.log(err)
     }
-    console.log(this.state.user)
+    let days = Date.now()-new Date(this.state.user[0].soberdate).getTime();
+    const total = Math.round(days/86400000) + " days";
+    this.setState({
+      soberDays:total,
+      soberDate:this.state.user[0].soberdate
+    })
+    console.log(this.state.user, this.state.soberDate)
   }
 
   getProvidersByType = async(type) =>{
@@ -67,7 +66,6 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
       .then((result)=>{
       const ratings = result.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
       const average = ratings/result.data.length
-      console.log(average)
       this.setState({
         average:average
       })
@@ -85,6 +83,8 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
     deleteFavorite={this.deleteFavorite}
     getFavorites={this.getFavorites}
     addFavorite={this.addFavorite}
+    soberDays={this.state.soberDays}
+    soberDate={this.state.soberDate}
     />
   </div>
   {
@@ -105,7 +105,6 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
     }
   {this.state.type ? this.state.providers.map(ele => 
     <div key={ele.id}>
-    
     <Collapsible trigger={ele.companyname} onOpening={()=>{this.getAverage(ele.id)}}>
       <SearchedProviders
       key={ele.id}
@@ -184,3 +183,15 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
 )
 }
 }
+
+// var tickTickBoom = document.getElementById("calendar1");
+
+// function tallyDays () {
+//     var days = Date.now()-new Date(tickTickBoom.value).getTime();
+//     document.querySelector('.timeTicker').textContent = Math.round(days/86400000) + " days";
+//     var storedDate = Math.round(days/86400000) + " days";
+//     localStorage.setItem("savedDate", storedDate);
+//     document.querySelector('.timeTicker').textContent = localStorage.getItem("savedDate");
+// }
+
+// tickTickBoom.addEventListener('change', tallyDays)

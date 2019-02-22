@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Tracker from './Tracker'
-import axios from 'axios'
 
 export default class UserTracker extends Component{
   constructor(props){
@@ -8,12 +7,9 @@ export default class UserTracker extends Component{
 
     this.state ={
       favoriteProviders:[],
-      user:this.props.user
+      user:this.props.user,
+      soberDays:this.props.soberDays
     }
-    console.log(this.props.favorites)
-    console.log(this.props.user)
-    console.log(this.state.user)
-
   }
 
   render(){
@@ -30,6 +26,8 @@ export default class UserTracker extends Component{
         deleteFavorite={this.props.deleteFavorite}
         getFavorites={this.props.getFavorites}
         addFavorite={this.props.addFavorite}
+        soberDays={this.props.soberDays}
+        soberDate={this.props.soberDate}
         />
       )}
       </div>
