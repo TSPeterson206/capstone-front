@@ -124,7 +124,7 @@ render() {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} className="carouselImage" />
-        <CarouselCaption  captionHeader={item.caption} captionText={item.altText}/>
+        <CarouselCaption  captionHeader={item.caption}/>
       </CarouselItem>
     );
   });
