@@ -74,17 +74,9 @@ export default class ProviderSignup extends Component {
             </select>
           </div>
           <button type="submit" className="btn btn-outline-info mr-3">Submit</button>
+          <button type="reset" className="btn btn-outline-info mr-3">Start Over</button>
         </form>
       </div>
     )
   }
 }
-
-// table.string('companyname').notNullable().defaultsTo('');
-//       table.text('providerbio').notNullable().defaultsTo('');
-//       table.string('services').notNullable().defaultsTo('');
-//       table.text('address');
-//       table.string('avgrating');
-//       table.string('phone');
-//       table.text('businessphoto');
-//       table.integer('typeID').notNullable().defaultsTo(0).references('type.id').onDelete('CASCADE')

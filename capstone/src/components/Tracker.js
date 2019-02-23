@@ -159,7 +159,7 @@ export default class Tracker extends Component {
             <div className="col-2">
               <p>Favorites</p>
                 {this.state.favoriteProviders.map(ele=>
-                  <div>
+                  <div key={ele.id}>
                     <img src={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     <small>{ele.companyname}</small>
                     <button onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}>X</button>
