@@ -3,7 +3,7 @@ import axios from 'axios'
 import Collapsible from 'react-collapsible';
 import Review from './Review'
 
-class SearchedProviders extends Component {
+export default class SearchedProviders extends Component {
   constructor(props) {
     super(props)
 
@@ -37,6 +37,7 @@ class SearchedProviders extends Component {
     } catch(err) {
       console.log(err)
     }
+    console.log(this.state.id)
   }
 
   getReviews = async (id) => {
@@ -85,14 +86,6 @@ class SearchedProviders extends Component {
       return average
 }
 
-  // getFavorites = async(id)=>{
-  //   try {
-  //   const favorites = await axios.get(`http://localhost:8000/users/${id}/favorites`)
-  // } catch (err) {
-  //   console.log(err)
-  // }
-  // }
-
   addFavorite = async(id) => {
     const favorite = {
       user_id:this.props.user[0].id,
@@ -114,8 +107,6 @@ class SearchedProviders extends Component {
     this.setState({
       addReviewFormOpenClose:true
     })
-    console.log(this.state.addReviewFormOpenClose)
-
   }
   handleChange = (event) => {
   this.setState({
@@ -123,69 +114,72 @@ class SearchedProviders extends Component {
   })
   console.log(this.state.addReviewText)
   console.log(this.state.addReviewRating)
+}
 
+deleteProvider = (id) => {
+console.log('hittingdeleteprovider')
+axios.delete(`http://localhost:8000/providers/${id}`)
+.then(result=>{return result})
 }
   render () {
   return (
     <div>
-      {/* Provider Profile */}
-    <div className="row providerRow">
-    <div className="col-2">
-              <div className="companyname">{this.props.companyname}</div>
-              <small className="text-muted">Average rating: {this.props.average}</small>
-    </div>
-    <div className="col-2">
-        <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
+      <div className="row providerRow">
+        <div className="col-2">
+          <div className="companyname">{this.props.companyname}</div>
+            <small className="text-muted">Average rating: {this.props.average}</small>
+        </div>
+        <div className="col-2">
+          <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
         </div>
         <div className="col-2">
           <small className="text-muted">{this.props.address}, {this.props.phone}</small><br></br>
-          </div>
-          <div className="col-4">
+        </div>
+        <div className="col-4">
           <small className="text-muted">{this.props.providerbio}</small><br></br>
         </div>
         <div className="col-2">
-        {/* <button onClick={()=>{this.props.addFavorite(this.props.id)}}>Favorites</button> */}
+        {/* {this.props.user[0].id === 1 ? <button onClick={()=>{this.deleteProvider(this.props.id)}}>DELETE</button>: null} */}
         {/* <button>Contact</button> */}
         </div>
-        </div>
+      </div>
         {/* Add review form */}
-        <div className="row reviewFormRow">
+      <div className="row reviewFormRow">
         <div className="col-12">
-        <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
-        <div>
-        <form className="addReviewForm">
-        <label>How would you describe your experience this with provider?</label>
-        <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
-        <label>How would you rate your experience?</label>
-        <input type="number" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
-        <button type="button" onClick={()=>{this.addReview()}}>submit</button>
-        </form>
+          <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
+            <div>
+              <form className="addReviewForm">
+                <label>How would you describe your experience this with provider?</label>
+                <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
+                <label>How would you rate your experience?</label>
+                <input type="number" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
+                <button type="button" onClick={()=>{this.addReview()}}>submit</button>
+              </form>
+            </div>
+          </Collapsible>
         </div>
-        </Collapsible>
-        </div>
-        </div>
+      </div>
         <div className="row reviewsRow">
-        <div className="col-12">
-        <Collapsible trigger="See Reviews Collapsible" onOpening={()=>this.getReviews(this.props.id)}>
-      <div className="">
-      <p>reviews go here</p>
-      {this.state.selectedProviderReviews ? this.state.selectedProviderReviews.map((ele)=>
-        <Review 
-        id={ele.id}
-        key={ele.id}
-        content={ele.content}
-        rating={ele.rating}
-        deleteReview={this.deleteReview}
-        user={this.props.user}
-        reviewUserId={ele.user_id}
-        />
-      ):null}
-    </div>
-    </Collapsible>
-    </div>
-    </div>
-    </div>
-  )
-}
-}
-export default SearchedProviders
+          <div className="col-12">
+            <Collapsible trigger="See Reviews Collapsible" onOpening={()=>this.getReviews(this.props.id)}>
+          <div className="">
+            <p>reviews go here</p>
+              {this.state.selectedProviderReviews ? this.state.selectedProviderReviews.map((ele)=>
+                <Review 
+                id={ele.id}
+                key={ele.id}
+                content={ele.content}
+                rating={ele.rating}
+                deleteReview={this.deleteReview}
+                user={this.props.user}
+                reviewUserId={ele.user_id}
+                />
+              ):null}
+          </div>
+            </Collapsible>
+          </div>
+        </div>
+      </div>
+        )
+      }
+    }

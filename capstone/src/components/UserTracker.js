@@ -5,11 +5,12 @@ export default class UserTracker extends Component{
   constructor(props){
     super(props)
 
-    this.state ={
+    this.state = {
       favoriteProviders:[],
       user:this.props.user,
       soberDays:this.props.soberDays
     }
+    
   }
 
   render(){
