@@ -16,21 +16,21 @@ export default class UserTracker extends Component{
   render(){
     return (
       <div>
-      {this.props.user.map(user =>
-        <Tracker 
-        key={user.id}
-        id={user.id}
-        tagline={user.tagline}
-        profilepic={user.profilepic}
-        favorites={this.props.favorites}
-        user={this.props.user}
-        deleteFavorite={this.props.deleteFavorite}
-        getFavorites={this.props.getFavorites}
-        addFavorite={this.props.addFavorite}
-        soberDays={this.props.soberDays}
-        soberDate={this.props.soberDate}
-        />
-      )}
+        {this.props.user.map(user =>
+          <Tracker 
+          key={user.id}
+          id={user.id}
+          tagline={user.tagline}
+          profilepic={user.profilepic}
+          favorites={this.props.favorites}
+          user={this.props.user}
+          deleteFavorite={this.props.deleteFavorite}
+          getFavorites={this.props.getFavorites}
+          addFavorite={this.props.addFavorite}
+          soberDays={this.props.soberDays}
+          soberDate={this.props.soberDate}
+          />
+        )}
       </div>
     )
   }

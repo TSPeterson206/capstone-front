@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import request from '../utils/request'
 import axios from 'axios'
 
 export default class ProviderSignup extends Component {
@@ -24,6 +22,8 @@ export default class ProviderSignup extends Component {
     console.log(newProvider)
     axios.post('http://localhost:8000/providers', newProvider)
     .then((result)=> {return result})
+    this.props.history.push({pathname:'/'})
+
   }
 
   handleChange = (event) => {
@@ -39,7 +39,7 @@ export default class ProviderSignup extends Component {
         <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
           Username not available!
         </div>
-        <form className="border rounded p-5" onSubmit={this.handleProviderSignUp}>
+        <form className="border rounded p-5 box" onSubmit={this.handleProviderSignUp}>
         <h2>Provider Entry</h2>
         <div className="form-group">
             <label htmlFor="tagline">Company Name</label>

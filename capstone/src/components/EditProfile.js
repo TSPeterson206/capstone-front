@@ -45,8 +45,8 @@ export default class EditProfile extends Component {
             Incorrect format
           </div>
         }
-        <h2>Edit Your Profile</h2>
-        <form onSubmit={this.handleEdit}>
+        <form className="box" onSubmit={this.handleEdit}>
+        <h1>Edit Your Profile</h1>
           <br/>
           <div className="form-group">
             <label htmlFor="username">Username</label>

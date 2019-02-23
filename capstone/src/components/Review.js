@@ -7,6 +7,7 @@ class Review extends Component{
     this.state = {
       loggedInUser:this.props.user[0].id
     }
+    
   }
 
 render(){
