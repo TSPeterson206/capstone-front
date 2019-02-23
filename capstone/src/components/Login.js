@@ -151,19 +151,21 @@ render() {
             Invalid Username or Password
           </div>
           <div className="clientlogin">
-            <form className="border rounded p-5" onSubmit={this.handleLogin}>
-              <h2>Client Login</h2>
+            <form className="box border rounded p-5" onSubmit={this.handleLogin}>
+              <h1>Client Login</h1>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Username</label>
-                <input type="text" className="form-control" id="username" name="username" aria-describedby="usernameHelp" placeholder="enter username" required />
+                <input type="text" className="form-control" id="username" name="username" placeholder="enter username" required />
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputPassword1">Password</label>
-                <input type="password" className="form-control" id="password" name="password" placeholder="password" required />
+                <input type="password" className="form-control" id="password" name="password" placeholder="enter password" required />
               </div>
-              <button type="submit" className="btn btn-outline-info mr-3">Submit</button>
+              <button type="submit" className="btn btn-outline-info mr-3" value="Login">Submit</button>
+              <div>
               <Link className="small" to="/signup">Create an Account</Link><br></br>
               <Link className="small" to="/providerSignup">Are you a provider? Add your business here!</Link>
+              </div>
             </form>
           </div>
         </div>

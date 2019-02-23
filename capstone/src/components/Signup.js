@@ -47,30 +47,33 @@ export default class Signup extends Component {
         <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
           Username not available!
         </div>
-        <form className="border rounded p-5" onSubmit={this.handleSignUp}>
-          <p>Client Sign Up</p>
+        <form className="border rounded p-5 box" onSubmit={this.handleSignUp}>
+          <h1>Client Sign Up</h1>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            {/* <label htmlFor="username">Username</label> */}
             <input type="text" className="form-control" id="username" name="username" aria-describedby="usernameHelp" placeholder="enter username" required />
-            <small id="usernameHelp" className="form-text text-muted">Usernames must be unique!</small>
+            {/* <small id="usernameHelp" className="form-text text-muted">Usernames must be unique!</small> */}
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            {/* <label htmlFor="password">Password</label> */}
             <input type="password" className="form-control" id="password" name="password" placeholder="password" required />
           </div>
           <div className="form-group">
-            <label htmlFor="displayname">Bio</label>
-            <input type="text" className="form-control" id="tagline" name="tagline" placeholder="What do you want to say about yourself?" required />
+            {/* <label htmlFor="displayname">Bio</label> */}
+            <input type="text" className="form-control" id="tagline" name="tagline" placeholder="enter your motto" required />
           </div>
           <div className="form-group">
-            <label htmlFor="displayname">Profile Picture</label>
-            <input type="text" className="form-control" id="profilepic" name="profilepic" placeholder="Upload a picture of yourself" required />
+            {/* <label htmlFor="displayname">Profile Picture</label> */}
+            <input type="text" className="form-control" id="profilepic" name="profilepic" placeholder="link a picture of yourself" required />
           </div>
           <div className="form-group">
             <label htmlFor="soberdate">Sobriety Date</label>
             <input type="date" className="form-control" id="soberdate" name="soberdate" placeholder="What is your sobriety date?" required />
           </div>
+          <div>
           <button type="submit" className="btn btn-outline-info mr-3">Submit</button>
+          <button type="reset" className="btn btn-outline-info mr-3">Start Over</button>
+          </div>
           <Link className="small" to="/">Already have an account?</Link>
         </form>
       </div>

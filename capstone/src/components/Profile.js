@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Tracker from './Tracker'
 import axios from 'axios'
 import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
@@ -75,7 +74,8 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
 
   render() {
     return (
-<div>
+      <div>
+<div className="container">
   <div className="tracker">
     <UserTracker 
       user={this.state.user}
@@ -104,10 +104,10 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
         />
       </Collapsible>
     </div>) : null} 
+    </div>
     <div className="container">
       <div className="row cardRow">
         <div className="col-12">
-          <div>
             <div className="categoryCards">
               <div className="cardDiv">
                 <Card className="card">
@@ -154,12 +154,20 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
                 </CardBody>
               </Card>
             </div>
+            <div className="cardDiv">
+                <Card className="card">
+                  <CardImg src="https://amp.businessinsider.com/images/5b43ccf31335b831008b4c1c-750-563.jpg" className="cardImage"></CardImg>
+                  <CardBody>
+                    <CardText>Check out fitness providers</CardText>
+                    <Button onClick={()=>{this.getProvidersByType(6)}} name="Financial" type="6">Fitness</Button>
+                </CardBody>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
   )
   }
   }
