@@ -48,7 +48,7 @@ export default class Signup extends Component {
           Username not available!
         </div>
         <form className="border rounded p-5" onSubmit={this.handleSignUp}>
-          
+          <p>Client Sign Up</p>
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input type="text" className="form-control" id="username" name="username" aria-describedby="usernameHelp" placeholder="enter username" required />
