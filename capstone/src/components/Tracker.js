@@ -130,7 +130,7 @@ export default class Tracker extends Component {
           <div className="row">
             <div className="col-3">
               <img className="profilePic" src={this.props.profilepic} alt={this.props.profilepic}/>
-              <strong><p>"{this.props.tagline}"</p></strong>
+              <p className="motto"><strong>"{this.props.tagline}"</strong></p>
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
             </div>
             <div className="col-4">
@@ -167,7 +167,7 @@ export default class Tracker extends Component {
                   <div key={ele.id}>
                     <img src={ele.businessphoto} alt={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     <small>{ele.companyname}</small>
-                    <button href="#" className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></button>
+                    <a href="#" className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></a>
                   </div>
                 )}
 

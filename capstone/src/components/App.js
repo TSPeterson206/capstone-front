@@ -7,6 +7,7 @@ import ProviderSignup from './ProviderSignup'
 import Profile from './Profile'
 import EditProfile from './EditProfile'
 import request from '../utils/request'
+import Footer from 'react-footer-comp'
 
 
 export default class App extends Component {
@@ -47,7 +48,7 @@ export default class App extends Component {
           <BrowserRouter>
               <div>
                 <Header setAuthentication={this.setAuthentication} user={this.state.authentication.user}/>
-                <div className="container">
+                {/* <div className="container"> */}
                   <Switch>
                     <Route path="/profile/:username" render={(props) => <Profile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />}  />
                     <Route path="/edit/:username" render={(props) => <EditProfile {...props} authentication={this.state.authentication} user={this.state.authentication.user} />} />
@@ -55,9 +56,10 @@ export default class App extends Component {
                     <Route path="/providerSignup" render={(props) => <ProviderSignup {...props} setAuthentication={this.setAuthentication}/>} />
                     <Route path="/" render={(props) => <Login {...props} setAuthentication={this.setAuthentication}/>} />
                   </Switch>
-                </div>
+                {/* </div> */}
               </div>
           </BrowserRouter>
+          <Footer className="footer text-center mt-5" bgColor={'grey'} height={75} text={"Capstone"}>&copy; Toby, Give Your Capstone A Name for real</Footer>
         </div>
       )
     }

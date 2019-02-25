@@ -42,29 +42,23 @@ export default class ProviderSignup extends Component {
         <form className="border rounded p-5 box" onSubmit={this.handleProviderSignUp}>
         <h2>Provider Entry</h2>
         <div className="form-group">
-            <label htmlFor="tagline">Company Name</label>
-            <input type="text" className="form-control" onChange={this.handleChange} id="companyname" name="companyname" placeholder="What is the name of your business?" required />
+            <input type="text" className="form-control" onChange={this.handleChange} id="companyname" name="companyname" placeholder="Business name?" required />
           </div>
           <div className="form-group">
-            <label htmlFor="tagline">Company Bio</label>
-            <input type="text" className="form-control" onChange={this.handleChange} id="providerbio" name="providerbio" placeholder="What do you want to say about company and its services?" required />
+            <input type="text" className="form-control" onChange={this.handleChange} id="providerbio" name="providerbio" placeholder="Bio?" required />
           </div>
           <div className="form-group">
-            <label htmlFor="profilepic">Profile Picture</label>
-            <input type="text" className="form-control" onChange={this.handleChange} id="businessphoto" name="businessphoto" placeholder="Link a picture to your profile" required />
+            <input type="text" className="form-control" onChange={this.handleChange} id="businessphoto" name="businessphoto" placeholder="Link a picture" required />
           </div>
           <div className="form-group">
-            <label htmlFor="address">Address</label>
-            <input type="text" className="form-control" onChange={this.handleChange} id="address" name="address" placeholder="Where are you located?" required />
+            <input type="text" className="form-control" onChange={this.handleChange} id="address" name="address" placeholder="Business address?" required />
           </div>
           <div className="form-group">
-            <label htmlFor="phone">Phone</label>
-            <input type="text" className="form-control" onChange={this.handleChange} id="phone" name="phone" placeholder="What is your phone number?" required />
+            <input type="text" className="form-control" onChange={this.handleChange} id="phone" name="phone" placeholder="Phone number?" required />
           </div>
-          <div className="form-group">
-            <label htmlFor="type">Type</label>
-            <select className="form-control" onChange={this.handleChange} id="typeID" name="typeID" placeholder="Please select your service genre">
-              <option selected>(Please select your service genre)</option>
+          <div className="serviceSelector">
+            <select className="providerTypeSelector" onChange={this.handleChange} id="typeID" name="typeID">
+              <option selected>(Select service genre)</option>
               <option name="sud" value="1">Substance User Disorder</option>
               <option name="mh" value="5">Mental Health</option>
               <option name="medical" value="2">Medical</option>
