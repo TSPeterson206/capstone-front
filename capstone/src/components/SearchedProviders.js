@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Collapsible from 'react-collapsible';
 import Review from './Review'
+import { Rating } from 'reactstrap'
 
 export default class SearchedProviders extends Component {
   constructor(props) {
@@ -16,11 +17,7 @@ export default class SearchedProviders extends Component {
       loggedInId:'',
       addReviewFormOpenClose:false
     }
-    console.log(this.state.loggedInId)
-    console.log(this.state.loggedIn)
-    console.log(this.state.addReviewFormOpenClose)
-    console.log(this.props.average)
-    console.log(this.props.user)
+    
   }
 
   getUser = async () => {
@@ -37,7 +34,6 @@ export default class SearchedProviders extends Component {
     } catch(err) {
       console.log(err)
     }
-    console.log(this.state.id)
   }
 
   getReviews = async (id) => {
@@ -46,7 +42,6 @@ export default class SearchedProviders extends Component {
       console.log(reviews.data)
       this.setState({
         selectedProviderReviews:reviews.data
-        // selectedProviderAvgRating:average
       })
     } catch (err) {
     console.log(err)
@@ -68,9 +63,7 @@ export default class SearchedProviders extends Component {
     })
   } catch (err) {
     console.log(err)
-  }
-  console.log(this.state.addReviewFormOpenClose)
-
+    }
   }
   
   deleteReview = async (id) =>{
@@ -99,8 +92,7 @@ export default class SearchedProviders extends Component {
     })
   } catch (err) {
     console.log(err)
-  }
-  
+    }
   }
 
   handleOpenClose = () => {
@@ -112,8 +104,6 @@ export default class SearchedProviders extends Component {
   this.setState({
     [event.target.name] : event.target.value
   })
-  console.log(this.state.addReviewText)
-  console.log(this.state.addReviewRating)
 }
 
 deleteProvider = (id) => {
@@ -121,6 +111,7 @@ console.log('hittingdeleteprovider')
 axios.delete(`http://localhost:8000/providers/${id}`)
 .then(result=>{return result})
 }
+
   render () {
   return (
     <div>
@@ -148,7 +139,7 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <div className="col-12">
           <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
             <div>
-              <form className="addReviewForm">
+              <form className="">
                 <label>How would you describe your experience this with provider?</label>
                 <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
                 <label>How would you rate your experience?</label>
@@ -161,9 +152,9 @@ axios.delete(`http://localhost:8000/providers/${id}`)
       </div>
         <div className="row reviewsRow">
           <div className="col-12">
-            <Collapsible trigger="See Reviews Collapsible" onOpening={()=>this.getReviews(this.props.id)}>
+            <Collapsible className="seeReviewsHeader" trigger="Reviews" onOpening={()=>this.getReviews(this.props.id)}>
           <div className="">
-            <p>reviews go here</p>
+            <p></p>
               {this.state.selectedProviderReviews ? this.state.selectedProviderReviews.map((ele)=>
                 <Review 
                 id={ele.id}

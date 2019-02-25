@@ -1,3 +1,5 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
 body {
   margin: 0;
   padding: 0;
@@ -31,21 +33,40 @@ header a.navbar-brand {
     width: 100%;
     text-align: center; } }
 
+    /* CARDS CONTAINER */
+
+.container{
+  /* display:flex; */
+  /* border:1px solid; */
+}
+.cardContainer{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .cardDiv {
   padding-left:10px;
   padding-right:10px;
 }
+
 .card {
-  width:200px;
+  width:165px;
 }
-  .cardImage {
+
+.cardImage {
     height:100px;
     width:100px;
-  }
+}
 
-  .categoryCards {
-    display:inline-flex;;
-  }
+.categoryCards {
+    display:flex;
+    border:1px solid;
+}
+
+.cardBody{
+font-size:16px;
+text-align:center;
+}
 
 
   /* HEADER DROPDOWN */
@@ -225,8 +246,6 @@ transition:0.25s;
 
 .box button[type="submit"], .box button[type="reset"]{
 border:0;
-/* background:none; */
-/* display:block; */
 margin:20px auto;
 text-align:center;
 border:2px solid #3498db;
@@ -257,6 +276,17 @@ cursor:pointer;
   border:1px solid;
 }
 
+.addGoal {
+  margin:0 auto;
+  align-content:center;
+  justify-content:center;
+}
+
+.trackerColumnHeader {
+  text-align:center;
+  font-size:25px;
+}
+
 /* FAVORITES */
 .favoritesImg {
   height:20px;
@@ -273,3 +303,49 @@ cursor:pointer;
 }
 
 /* PROGRESSBARS FOR GOALS */
+
+
+/* ADDREVIEWFORM */
+.addReviewForm, .seeReviewsHeader {
+  font-size:25px;
+}
+.companyname{
+  /* font-size:40px; */
+}
+
+.providerCollapsibleName {
+  font-size:40px;
+  text-align:center;
+}
+
+/* SEARCHBAR */
+
+.searchForm{
+  margin:0 auto;
+  align-content:center;
+  justify-content:center;
+  right:50%;
+}
+.searchBar{
+  width:45px;
+  align-content:center;
+  margin:0 auto;
+  justify-content:center;
+  border-radius:40px;
+  font-family: FontAwesome,'Merriweather Sans', sans-serif;
+  text-align:center;
+}
+
+.searchBar:hover {
+  width:150px;
+  transition:.75s;
+  background:white;
+}
+
+.search{
+  display:flex;
+}
+.favorites{
+  margin:0 auto;
+  align-content:center;
+}
