@@ -15,28 +15,6 @@ code {
     monospace;
 }
 
-.navbar {
-  text-align: center;
-  justify-content: center;
-  font-size-adjust: 120px;
-  margin: 0 auto;
-}
-
-header a.navbar-brand {
-  font-family: 'Knewave', sans-serif;
-  font-size: 2rem;
-  text-rendering: geometricPrecision;
-}
-
-@media only screen and (max-width: 575px) {
-
-  header .navbar-right,
-  header .navbar-brand {
-    width: 100%;
-    text-align: center;
-  }
-}
-
 /* CARDS CONTAINER */
 
 .container {
@@ -45,7 +23,8 @@ header a.navbar-brand {
 
 .cardContainer {
   display: flex;
-  flex-wrap: nowrap;
+  align-items:center;
+  justify-content:center;
 }
 
 .cardDiv {
@@ -54,12 +33,12 @@ header a.navbar-brand {
 }
 
 .card {
-  width: 165px;
+  width: 250px;
 }
 
 .cardImage {
-  height: 100px;
-  width: 100px;
+  /* height: 100px; */
+  width: 100%;
 }
 
 .cardText {
@@ -67,7 +46,6 @@ header a.navbar-brand {
 }
 .categoryCards {
   display: flex;
-  /* border:1px solid; */
 }
 
 .cardBody {
@@ -297,8 +275,8 @@ header a.navbar-brand {
 /* TRACKER */
 
 .profilePic {
-  height: 20vh;
-  width: 100%;
+  width:200px;
+  margin:0 auto;
 }
 
 .tracker {
@@ -408,4 +386,41 @@ a, a:hover {
   color:white;
     cursor:pointer;
     color:black;
+}
+
+.motto {
+  margin-top:8px;
+  text-align:center;
+}
+
+.providerTypeSelector{
+  border-radius:40px;
+  text-align:center;
+}
+
+.serviceSelector {
+  text-align:center;
+}
+
+select { 
+    width: 400px;
+   text-align-last:center; 
+  }
+
+  .reviewedByColumn{
+    display:block;
+  }
+
+.navbar-right a  {
+float:none;
+}
+
+.navbar-right {
+  display:flex;
+  align-items:center;
+}
+
+.card-img-top {
+  background-size:cover;
+  height:200px;
 }

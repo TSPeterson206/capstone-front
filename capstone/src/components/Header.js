@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import '../index.css'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -40,24 +40,14 @@ render() {
             }
             {
               this.props.user ?
-                <span>
-                  &nbsp;<Link className="btn text-white" to={`/edit/${this.props.user.username}`}>&nbsp; Edit Profile</Link>
-                  <Link className="btn text-white" to="/" onClick={() => this.SignInSignOutButton()}>&nbsp; Sign Out</Link>
-                </span>
+              <Fragment>
+                <Link className="btn text-white" to={`/edit/${this.props.user.username}`}>&nbsp; Edit Profile</Link>
+                <Link className="btn text-white" to="/" onClick={() => this.SignInSignOutButton()}>&nbsp; Sign Out</Link>
+                </Fragment>
                 :
                 <Link className="btn text-white" to="/signup"> Sign up </Link>
             }
           </div>
-          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle caret>Resources</DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem header>Header</DropdownItem>
-                <DropdownItem disabled>Action</DropdownItem>
-                <DropdownItem>Another Action</DropdownItem>
-                <DropdownItem divider/>
-                <DropdownItem>Another Action</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
         </div>
       </nav>
     </header>

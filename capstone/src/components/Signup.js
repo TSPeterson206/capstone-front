@@ -56,7 +56,7 @@ export default class Signup extends Component {
             <input type="password" className="form-control" id="password" name="password" placeholder="password" required />
           </div>
           <div className="form-group">
-            <input type="text" className="form-control" id="tagline" name="tagline" placeholder="enter your motto" required />
+            <input type="text" className="form-control" id="tagline" name="tagline" placeholder="enter your motto" max="40" required />
           </div>
           <div className="form-group">
             <input type="text" className="form-control" id="profilepic" name="profilepic" placeholder="link a picture of yourself" required />
