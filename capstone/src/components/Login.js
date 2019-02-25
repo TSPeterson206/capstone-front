@@ -161,7 +161,7 @@ render() {
                 <label htmlFor="exampleInputPassword1">Password</label>
                 <input type="password" className="form-control" id="password" name="password" placeholder="enter password" required />
               </div>
-              <button type="submit" className="btn btn-outline-info mr-3" value="Login">Submit</button>
+              <button type="submit" className="btn btn-outline-info" value="Login">Submit</button>
               <div>
               <Link className="small" to="/signup">Create an Account</Link><br></br>
               <Link className="small" to="/providerSignup">Are you a provider? Add your business here!</Link>

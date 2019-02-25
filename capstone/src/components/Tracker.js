@@ -130,7 +130,7 @@ export default class Tracker extends Component {
           <div className="row">
             <div className="col-3">
               <img className="profilePic" src={this.props.profilepic} alt={this.props.profilepic}/>
-              <p>{this.props.tagline}</p>
+              <strong><p>"{this.props.tagline}"</p></strong>
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
             </div>
             <div className="col-4">
@@ -149,7 +149,7 @@ export default class Tracker extends Component {
                 />
               </div>
               )}
-              <Collapsible trigger="Add a goal">
+              <Collapsible trigger="+ Add a goal">
               <div className="addGoal">
                 <form className="addGoalForm" >
                   <label>What is your goal?</label>
@@ -165,9 +165,9 @@ export default class Tracker extends Component {
               <p className="trackerColumnHeader">Favorites</p>
                 {this.state.favoriteProviders.map(ele=>
                   <div key={ele.id}>
-                    <img src={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
+                    <img src={ele.businessphoto} alt={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     <small>{ele.companyname}</small>
-                    <a className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></a>
+                    <button href="#" className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></button>
                   </div>
                 )}
 
@@ -189,7 +189,7 @@ export default class Tracker extends Component {
           <div className="row">
             <div className="col-12">
               {this.state.submittedSearch && this.state.searchedProviders.map(ele =>
-            <div className="row">
+            <div className="row" key={ele.id}>
               <div className="col-10">
                 <SearchedProviders
                   businessphoto={ele.businessphoto}
@@ -206,10 +206,10 @@ export default class Tracker extends Component {
                 />
               </div>
               <div className="col-2">
-              <div className="box">
-                <button onClick={()=>{this.addFavorite(ele.id)}}>Favorites</button>
-                <button>Contact</button>
-                </div>
+              <form className="box">
+                <button type="button" onClick={()=>{this.addFavorite(ele.id)}}>+ Favorites</button>
+                <button type="button">Contact</button>
+                </form>
               </div>
             </div>
             )}

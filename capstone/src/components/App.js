@@ -7,7 +7,6 @@ import ProviderSignup from './ProviderSignup'
 import Profile from './Profile'
 import EditProfile from './EditProfile'
 import request from '../utils/request'
-import Footer from 'react-footer-comp'
 
 
 export default class App extends Component {
@@ -59,7 +58,6 @@ export default class App extends Component {
                 </div>
               </div>
           </BrowserRouter>
-          <Footer className="text-center mt-5" bgColor={'grey'} height={75} text={"Capstone"}>&copy; Toby, Give Your Capstone A Name for real</Footer>
         </div>
       )
     }

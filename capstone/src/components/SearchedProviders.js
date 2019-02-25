@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Collapsible from 'react-collapsible';
 import Review from './Review'
-import { Rating } from 'reactstrap'
+// import Ratings from 'react-ratings-declarative';
+
 
 export default class SearchedProviders extends Component {
   constructor(props) {
@@ -119,6 +120,10 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <div className="col-2">
           <div className="companyname">{this.props.companyname}</div>
             <small className="text-muted">Average rating: {this.props.average}</small>
+        {/* <Ratings
+        rating={this.props.average}
+        widgetRatedColors="blue"
+        ></Ratings> */}
         </div>
         <div className="col-2">
           <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>

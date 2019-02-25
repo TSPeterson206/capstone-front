@@ -63,7 +63,7 @@ export default class ProviderSignup extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="type">Type</label>
-            <select name="type" className="form-control" onChange={this.handleChange} id="typeID" name="typeID" placeholder="Please select your service genre">
+            <select className="form-control" onChange={this.handleChange} id="typeID" name="typeID" placeholder="Please select your service genre">
               <option selected>(Please select your service genre)</option>
               <option name="sud" value="1">Substance User Disorder</option>
               <option name="mh" value="5">Mental Health</option>

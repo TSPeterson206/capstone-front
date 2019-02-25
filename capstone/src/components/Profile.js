@@ -5,6 +5,7 @@ import Collapsible from 'react-collapsible';
 import { Button } from 'reactstrap';
 import { Card, CardImg, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
+import Footer from 'react-footer-comp'
 
 
 export default class Profile extends Component {
@@ -19,6 +20,7 @@ export default class Profile extends Component {
       selectedProviderFavorites:[],
       average:''
     }
+
   }
 
   componentDidMount() {
@@ -72,101 +74,117 @@ await axios.get(`http://localhost:8000/reviews/providers/${id}`)
   )
 }
 
+closeProviderWindow= () => {
+this.setState({
+  type:''
+})
+}
+
   render() {
     return (
-      <div>
-<div className="container">
-  <div className="tracker">
-    <UserTracker 
-      user={this.state.user}
-      favorites={this.state.selectedProviderFavorites}
-      deleteFavorite={this.deleteFavorite}
-      getFavorites={this.getFavorites}
-      addFavorite={this.addFavorite}
-      soberDays={this.state.soberDays}
-      soberDate={this.state.soberDate}
-    />
-  </div>
-  {this.state.type ? this.state.providers.map(ele => 
-    <div key={ele.id}>
-      <Collapsible className="providerCollapsibleName" trigger={ele.companyname} onOpening={()=>{this.getAverage(ele.id)}}>
-        <SearchedProviders
-          key={ele.id}
-          id={ele.id}
-          businessphoto={ele.businessphoto}
-          companyname={ele.companyname}
-          address={ele.address}
-          phone={ele.phone}
-          providerbio={ele.providerbio}
-          getAverage={this.getAverage}
-          user={this.state.user}
-          average={this.state.average}
-        />
-      </Collapsible>
-    </div>) : null} 
+<div>
+  <div className="container">
+    <div className="tracker">
+      <UserTracker 
+        user={this.state.user}
+        favorites={this.state.selectedProviderFavorites}
+        deleteFavorite={this.deleteFavorite}
+        getFavorites={this.getFavorites}
+        addFavorite={this.addFavorite}
+        soberDays={this.state.soberDays}
+        soberDate={this.state.soberDate}
+      />
     </div>
-    {/* <div className="flex-container cardContainer"> */}
-      <div className="row cardRow">
-        <div className="col-12">
-            <div className="categoryCards">
-              <div className="cardDiv">
-                <Card className="card">
-                  <CardImg src="https://www.allmyrelationscounseling.com/wp-content/uploads/2014/12/Individual-Counseling-e1420327034910.jpg" className="cardImage"></CardImg>
-                  <CardBody className="cardBody">
-                    <CardText>Substance Use</CardText>
-                    <Button onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">SUD</Button>
+    <div className="providersContainerHeader">
+    <a href="#" onClick={this.closeProviderWindow}>Providers</a>
+    </div>
+    {this.state.type ? this.state.providers.map(ele => 
+      <div key={ele.id}>
+        <Collapsible className="providerCollapsibleName" trigger={ele.companyname} onOpening={()=>{this.getAverage(ele.id)}}>
+          <SearchedProviders
+            key={ele.id}
+            id={ele.id}
+            businessphoto={ele.businessphoto}
+            companyname={ele.companyname}
+            address={ele.address}
+            phone={ele.phone}
+            providerbio={ele.providerbio}
+            getAverage={this.getAverage}
+            user={this.state.user}
+            average={this.state.average}
+          />
+        </Collapsible>
+      </div>) : null} 
+      </div>
+      <div className="flex-container cardContainer">
+        <div className="row cardRow">
+          <div className="col-12">
+              <div className="categoryCards">
+                <div className="cardDiv">
+                <a onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">
+                  <Card className="card">
+                    <CardImg src="https://www.allmyrelationscounseling.com/wp-content/uploads/2014/12/Individual-Counseling-e1420327034910.jpg" className="cardImage"></CardImg>
+                    <CardBody className="cardBody">
+                      <CardText className="cardText">Substance Use</CardText>
+                    </CardBody>
+                  </Card>
+                  </a>
+                </div>
+                <div className="cardDiv">
+                <a onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">
+                  <Card className="card">
+                    <CardImg src="http://www.counselingpsychology.org/wp-content/uploads/2014/10/Therapist-Therapy-300x200.jpg" className="cardImage"></CardImg>
+                    <CardBody className="cardBody">
+                      <CardText className="cardText">Mental Health</CardText>
+                    </CardBody>
+                  </Card>
+                  </a>
+                </div>
+                <div className="cardDiv">
+                <a onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">
+                  <Card className="card">
+                    <CardImg src="https://bestdoctors.com/wp-content/uploads/2016/11/Doctor-with-Tablet.jpg" className="cardImage"></CardImg>
+                    <CardBody className="cardBody">
+                      <CardText className="cardText">Medical</CardText>
+                    </CardBody>
+                  </Card>
+                  </a>
+                </div>
+                <div className="cardDiv">
+                <a onClick={()=>{this.getProvidersByType(3)}} name="Legal" type="4">
+                  <Card className="card">
+                    <CardImg src="http://www.yosukekashiwagi.net/file/2018/07/get_help_for_your_small_law_firm.jpg" className="cardImage"></CardImg>
+                    <CardBody className="cardBody">
+                      <CardText className="cardText">Legal</CardText>
+                    </CardBody>
+                  </Card>
+                  </a>
+                </div>
+                <div className="cardDiv">
+                <a onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">
+                  <Card className="card">
+                    <CardImg src="https://www.groupon.com/merchant/wp-content/uploads/2017/12/accountantfees_121317_blog.jpg" className="cardImage"></CardImg>
+                    <CardBody className="cardBody">
+                      <CardText className="cardText">Financial</CardText>
                   </CardBody>
                 </Card>
+                </a>
               </div>
               <div className="cardDiv">
-                <Card className="card">
-                  <CardImg src="http://www.counselingpsychology.org/wp-content/uploads/2014/10/Therapist-Therapy-300x200.jpg" className="cardImage"></CardImg>
-                  <CardBody className="cardBody">
-                    <CardText>Mental Health</CardText>
-                    <Button onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">Mental Health</Button>
+              <a onClick={()=>{this.getProvidersByType(6)}} name="Financial" type="6">
+                  <Card className="card">
+                    <CardImg src="https://amp.businessinsider.com/images/5b43ccf31335b831008b4c1c-750-563.jpg" className="cardImage"></CardImg>
+                    <CardBody className="cardBody">
+                      <CardText className="cardText">Fitness</CardText>
                   </CardBody>
                 </Card>
+                </a>
               </div>
-              <div className="cardDiv">
-                <Card className="card">
-                  <CardImg src="https://bestdoctors.com/wp-content/uploads/2016/11/Doctor-with-Tablet.jpg" className="cardImage"></CardImg>
-                  <CardBody className="cardBody">
-                    <CardText>Medical</CardText>
-                    <Button onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">Medical</Button>
-                  </CardBody>
-                </Card>
-              </div>
-              <div className="cardDiv">
-                <Card className="card">
-                  <CardImg src="http://www.yosukekashiwagi.net/file/2018/07/get_help_for_your_small_law_firm.jpg" className="cardImage"></CardImg>
-                  <CardBody className="cardBody">
-                    <CardText>Legal</CardText>
-                    <Button onClick={()=>{this.getProvidersByType(3)}} name="Legal" type="4">Legal</Button>
-                  </CardBody>
-                </Card>
-              </div>
-              <div className="cardDiv">
-                <Card className="card">
-                  <CardImg src="https://www.groupon.com/merchant/wp-content/uploads/2017/12/accountantfees_121317_blog.jpg" className="cardImage"></CardImg>
-                  <CardBody className="cardBody">
-                    <CardText>Financial</CardText>
-                    <Button onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">Financial</Button>
-                </CardBody>
-              </Card>
-            </div>
-            <div className="cardDiv">
-                <Card className="card">
-                  <CardImg src="https://amp.businessinsider.com/images/5b43ccf31335b831008b4c1c-750-563.jpg" className="cardImage"></CardImg>
-                  <CardBody className="cardBody">
-                    <CardText>Fitness</CardText>
-                    <Button onClick={()=>{this.getProvidersByType(6)}} name="Financial" type="6">Fitness</Button>
-                </CardBody>
-              </Card>
             </div>
           </div>
         </div>
       </div>
-    {/* </div> */}
+      <Footer className="footer text-center mt-5" bgColor={'grey'} height={75} text={"Capstone"}>&copy; Toby, Give Your Capstone A Name for real</Footer>
     </div>
   )
   }
