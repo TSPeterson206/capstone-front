@@ -8,13 +8,15 @@ class Search extends Component{
   render(){
   return (
     <div className="search p-0 mb-3">
-      <form onChange={(event) => this.props.handleSearchSubmit(event)} className="my-lg-0 m-auto">
-        <input className="form-control mr-2 searchBar" name="search"
+    <p>Search</p>
+      <form onChange={(event) => this.props.handleSearchSubmit(event)} className="searchForm my-lg-0 m-auto">
+        <input className="searchBar" name="search"
           onChange={(event) => this.props.handleChange(event)} value={this.props.search}
-          type="search" placeholder="Search for providers" aria-label="Search for providers" />
+  type="search" placeholder="&nbsp; &#61442;"/>
       </form>
     </div>
   )
 }
 }
 export default Search
+

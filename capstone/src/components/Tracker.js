@@ -5,6 +5,8 @@ import Collapsible from 'react-collapsible';
 import Search from './Search'
 import SearchedProviders from './SearchedProviders'
 import Moment from 'react-moment';
+import { Button } from 'reactstrap'
+import { FaTimes } from 'react-icons/fa'
 
 
 export default class Tracker extends Component {
@@ -128,10 +130,11 @@ export default class Tracker extends Component {
           <div className="row">
             <div className="col-3">
               <img className="profilePic" src={this.props.profilepic} alt={this.props.profilepic}/>
-              <h3>{this.props.tagline}</h3>
+              <p>{this.props.tagline}</p>
+              <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
             </div>
             <div className="col-4">
-              <p>Goals</p>
+              <p className="trackerColumnHeader">Goals</p>
               {this.state.goals.map(ele=>
               <div className="goal" key={ele.id}>
                 <Goals 
@@ -147,28 +150,30 @@ export default class Tracker extends Component {
               </div>
               )}
               <Collapsible trigger="Add a goal">
+              <div className="addGoal">
                 <form className="addGoalForm" >
                   <label>What is your goal?</label>
                   <input type="text" name="goaldescription" placeholder="type here..." onChange={this.handleChange}></input>
                   <label>What is your completion date?</label>
                   <input type="date" name="enddate" onChange={this.handleChange}></input>
-                  <button type="button" onClick={()=>{this.addGoal()}}>Add</button>
+                  <Button className="addFavorite" type="button" onClick={()=>{this.addGoal()}}>Add</Button>
                 </form>
+                </div>
               </Collapsible>
             </div>
-            <div className="col-2">
-              <p>Favorites</p>
+            <div className="col-3 favorites">
+              <p className="trackerColumnHeader">Favorites</p>
                 {this.state.favoriteProviders.map(ele=>
                   <div key={ele.id}>
                     <img src={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     <small>{ele.companyname}</small>
-                    <button onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}>X</button>
+                    <a className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></a>
                   </div>
                 )}
 
-              <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
             </div>
-            <div className="col-3">
+            <div className="col-2">
+            <p className="trackerColumnHeader">Sober Time</p>
               <h5>As of your last login, you have been sober for:</h5>
               <div>
                 <p><Moment diff={this.props.soberDate} unit="days"></Moment> days</p>
@@ -201,8 +206,10 @@ export default class Tracker extends Component {
                 />
               </div>
               <div className="col-2">
+              <div className="box">
                 <button onClick={()=>{this.addFavorite(ele.id)}}>Favorites</button>
                 <button>Contact</button>
+                </div>
               </div>
             </div>
             )}

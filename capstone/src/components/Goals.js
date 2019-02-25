@@ -64,13 +64,12 @@ export default class Goals extends Component {
   render(){
     return(
       <div>
+        <div className="goal">
         {this.state.goals} 
         Due by: {this.props.enddate} 
         <button onClick={()=>{this.deleteGoal(this.state.goalId)}}>X</button>
-        <Progress className="goalProgressBar" multi>
-        <Progress animated bar color="success" value={this.state.percentage}>{this.state.percentage}%</Progress>
-        {/* <Progress animated bar color="danger" value="100" /> */}
-      </Progress>
+        <Progress className="goalProgressBar" animated bar color="success" value={this.state.percentage}>{this.state.percentage}%</Progress>
+        </div>
         </div>
     )
   }
