@@ -180,14 +180,13 @@ export default class Tracker extends Component {
             </div>
             <div className="col-2">
             <p className="trackerColumnHeader">Sober Time</p>
-              <h5>As of your last login, you have been sober for:</h5>
-              <div>
+              <div className="soberTime">
                 <p><Moment diff={this.props.soberDate} unit="days"></Moment> days</p>
               </div>
-              <div>
+              <div className="soberTime">
                 <p><Moment diff={this.props.soberDate} unit="hours"></Moment> hours</p>
               </div>
-              <div>
+              <div className="soberTime">
                 <p><Moment diff={this.props.soberDate} unit="minutes"></Moment> minutes</p>
               </div>
             </div>

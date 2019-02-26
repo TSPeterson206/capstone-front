@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Spinner from 'reactjs-simple-spinner'
 import request from '../utils/request'
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import { FaShoePrints } from 'react-icons/fa'
 
 const items = [{
     src: 'https://www.westcountyservices.org/wp-content/uploads/2016/09/helping-1024x478.jpg',
@@ -151,17 +152,23 @@ render() {
             Invalid Username or Password
           </div>
           <div className="clientlogin">
+          <strong><div className="loginLogo"><FaShoePrints size="3em"/>NextSteps</div></strong>
+          
+
             <form className="box border rounded p-5" onSubmit={this.handleLogin}>
               <h1>Client Login</h1>
               <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Username</label>
+                {/* <label htmlFor="exampleInputEmail1">Username</label> */}
                 <input type="text" className="form-control" id="username" name="username" placeholder="enter username" required />
               </div>
               <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
+                {/* <label htmlFor="exampleInputPassword1">Password</label> */}
                 <input type="password" className="form-control" id="password" name="password" placeholder="enter password" required />
               </div>
+              <div className="submitandreset">
               <button type="submit" className="btn btn-outline-info" value="Login">Submit</button>
+              <button type="reset" className="btn btn-outline-info">Start Over</button>
+              </div>
               <div>
               <Link className="small" to="/signup">Create an Account</Link><br></br>
               <Link className="small" to="/providerSignup">Are you a provider? Add your business here!</Link>

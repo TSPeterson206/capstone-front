@@ -126,10 +126,13 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         ></Ratings> */}
         </div>
         <div className="col-2">
-          <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
+        <div className="provider-img-top" style={{backgroundImage:`url(${this.props.businessphoto})`}}></div>
+          {/* <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br> */}
         </div>
         <div className="col-2">
-          <small className="text-muted">{this.props.address}, {this.props.phone}</small><br></br>
+          <small className="text-muted">{this.props.address}</small><br></br>
+          <small className="text-muted">{this.props.phone}</small><br></br>
+
         </div>
         <div className="col-4">
           <small className="text-muted">{this.props.providerbio}</small><br></br>
