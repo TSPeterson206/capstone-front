@@ -136,7 +136,6 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         </div>
         <div className="col-2">
         {/* {this.props.user[0].id === 1 ? <button onClick={()=>{this.deleteProvider(this.props.id)}}>DELETE</button>: null} */}
-        {/* <button>Contact</button> */}
         </div>
       </div>
         {/* Add review form */}

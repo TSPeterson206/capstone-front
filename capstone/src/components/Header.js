@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import '../index.css'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { FaShoePrints } from 'react-icons/fa'
 
 export default class Header extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ render() {
     <header>
       <nav className="topnav navbar navbar-dark bg-secondary" id="myTopnav">
         <div className="container mr-auto">
-          <a className="navbar-brand" href={!this.props.user ? `/` : `/profile/${this.props.user.username}`}>Capstone!</a>
+          <a className="header-title" href={!this.props.user ? `/` : `/profile/${this.props.user.username}`}><FaShoePrints className="fa-2x" size="2em"/> <strong>NextSteps</strong></a>
           <div className="navbar-right">
             {
               this.props.user ?

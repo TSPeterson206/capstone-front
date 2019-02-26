@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
-import { Button } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody } from 'reactstrap';
+import { Card, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
 
 
@@ -85,7 +84,7 @@ this.setState({
   <div className="container">
   <div className="row">
   <div className="col-12">
-    <div className="tracker">
+    <div className="">
       <UserTracker 
         user={this.state.user}
         favorites={this.state.selectedProviderFavorites}
@@ -97,7 +96,10 @@ this.setState({
       />
     </div>
     <div className="providersContainerHeader">
-    <a href="#" onClick={this.closeProviderWindow}>Providers</a>
+    <span href="#" onClick={this.closeProviderWindow}>Providers</span>
+    </div>
+    </div>
+    </div>
     </div>
     {this.state.type ? this.state.providers.map(ele => 
       <div key={ele.id}>
@@ -116,72 +118,72 @@ this.setState({
           />
         </Collapsible>
       </div>) : null} 
-      </div>
-      </div>
-      </div>
+      
+      
+      
       <div className="flex-container cardContainer">
         <div className="row cardRow">
           <div className="col-12">
               <div className="categoryCards">
                 <div className="cardDiv">
-                <a onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">
+                <span onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">
                   <Card className="card">
                   <div className="card-img-top" style={{backgroundImage:'url(https://www.allmyrelationscounseling.com/wp-content/uploads/2014/12/Individual-Counseling-e1420327034910.jpg)'}}></div>
                     <CardBody className="cardBody"> 
                       <CardText className="cardText">Substance Use</CardText>
                     </CardBody>
                   </Card>
-                  </a>
+                  </span>
                 </div>
                 <div className="cardDiv">
-                <a onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">
+                <span onClick={()=>{this.getProvidersByType(5)}} name="MH" type="2">
                   <Card className="card">
                   <div className="card-img-top" style={{backgroundImage:'url(http://www.counselingpsychology.org/wp-content/uploads/2014/10/Therapist-Therapy-300x200.jpg)'}}></div>
                     <CardBody className="cardBody">
                       <CardText className="cardText">Mental Health</CardText>
                     </CardBody>
                   </Card>
-                  </a>
+                  </span>
                 </div>
                 <div className="cardDiv">
-                <a onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">
+                <span onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">
                   <Card className="card">
                   <div className="card-img-top" style={{backgroundImage:'url(https://bestdoctors.com/wp-content/uploads/2016/11/Doctor-with-Tablet.jpg)'}}></div>
                     <CardBody className="cardBody">
                       <CardText className="cardText">Medical</CardText>
                     </CardBody>
                   </Card>
-                  </a>
+                  </span>
                 </div>
                 <div className="cardDiv">
-                <a onClick={()=>{this.getProvidersByType(3)}} name="Legal" type="4">
+                <span onClick={()=>{this.getProvidersByType(3)}} name="Legal" type="4">
                   <Card className="card">
                     <div className="card-img-top" style={{backgroundImage:'url(http://www.yosukekashiwagi.net/file/2018/07/get_help_for_your_small_law_firm.jpg)'}}></div>
                     <CardBody className="cardBody">
                       <CardText className="cardText">Legal</CardText>
                     </CardBody>
                   </Card>
-                  </a>
+                  </span>
                 </div>
                 <div className="cardDiv">
-                <a onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">
+                <span onClick={()=>{this.getProvidersByType(4)}} name="Financial" type="5">
                   <Card className="card">
                   <div className="card-img-top" style={{backgroundImage:'url(https://www.groupon.com/merchant/wp-content/uploads/2017/12/accountantfees_121317_blog.jpg)'}}></div>
                     <CardBody className="cardBody">
                       <CardText className="cardText">Financial</CardText>
                   </CardBody>
                 </Card>
-                </a>
+                </span>
               </div>
               <div className="cardDiv">
-              <a onClick={()=>{this.getProvidersByType(6)}} name="Financial" type="6">
+              <span onClick={()=>{this.getProvidersByType(6)}} name="Financial" type="6">
                   <Card className="card">
                   <div className="card-img-top" style={{backgroundImage:'url(https://amp.businessinsider.com/images/5b43ccf31335b831008b4c1c-750-563.jpg)'}}></div>
                     <CardBody className="cardBody">
                       <CardText className="cardText">Fitness</CardText>
                   </CardBody>
                 </Card>
-                </a>
+                </span>
               </div>
             </div>
           </div>
