@@ -28,6 +28,13 @@ code {
   margin: 30px;
 }
 
+.trackerContainer {
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+  border:2px solid;
+}
+
 .cardDiv {
   padding-left: 10px;
   padding-right: 10px;
@@ -214,6 +221,7 @@ code {
 .box {
   /* width:400px; */
   padding-bottom: 40px;
+  margin-bottom:40px;
   border-radius: 45px;
   /* position: absolute; */
   /* top:50%; */
@@ -304,19 +312,21 @@ code {
 }
 
 .addGoal {
-  margin: 0 auto;
-  align-content: center;
-  justify-content: center;
+ text-align:center;
 }
 
 .trackerColumnHeader {
   text-align: center;
-  font-size: 25px;
+  font-size: 35px;
 }
 
 /* FAVORITES */
 .favoritesImg {
   height: 20px;
+}
+
+.favorites {
+  text-align:center;
 }
 
 /* SEARCHEDPROVIDER */
@@ -338,6 +348,7 @@ code {
 .addReviewForm,
 .seeReviewsHeader {
   font-size: 25px;
+  text-align:center;
 }
 
 .companyname {
@@ -395,7 +406,7 @@ code {
 
 .providersContainerHeader {
   text-align: center;
-  font-size: 35px;
+  font-size: 75px;
   text-decoration: none !important;
 }
 
@@ -451,6 +462,7 @@ select {
 .profile-img-top {
   background-size: cover;
   height: 300px;
+  margin:25px;
 }
 
 .provider-img-top {
@@ -488,4 +500,39 @@ div .loginLogo {
 
 .soberTime {
   text-align: center;
+  font-size:25px;
+  margin-top:40px;
+}
+
+.cancelGoalBtn {
+  position: relative;
+    top: 0;
+    right: 0;
+}
+
+.addGoalCollapsible {
+  text-align: center;
+  font-style:oblique;
+}
+
+.deleteFavoriteBtn {
+  float:right;
+}
+
+.userFavorite {
+  font-size:25px;
+  border:1px solid;
+}
+
+.addReviewBtn {
+  font-size:20px;
+}
+
+.addButton:hover {
+  font-size:35;
+  color:lightblue;
+}
+
+.closeButton:hover {
+color:maroon;
 }

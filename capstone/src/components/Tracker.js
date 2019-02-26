@@ -5,9 +5,7 @@ import Collapsible from 'react-collapsible';
 import Search from './Search'
 import SearchedProviders from './SearchedProviders'
 import Moment from 'react-moment';
-import { Button } from 'reactstrap'
-import { FaTimes } from 'react-icons/fa'
-// import { url } from 'inspector';
+import { FaTimes, FaPlus } from 'react-icons/fa'
 
 
 export default class Tracker extends Component {
@@ -132,7 +130,7 @@ export default class Tracker extends Component {
   }
     render () {
       return (
-        <div className="container tracker">
+        <div>
           <div className="row">
             <div className="col-3">
               <div className="profile-img-top" style={{backgroundImage:`url(${this.props.profilepic}`}}></div>
@@ -155,14 +153,14 @@ export default class Tracker extends Component {
                 />
               </div>
               )}
-              <Collapsible trigger="+ Add a goal">
+              <Collapsible className="addGoalCollapsible addButton" trigger={<FaPlus />}>
               <div className="addGoal">
                 <form className="addGoalForm" >
-                  <label>What is your goal?</label>
-                  <input type="text" name="goaldescription" placeholder="type here..." onChange={this.handleChange}></input>
-                  <label>What is your completion date?</label>
-                  <input type="date" name="enddate" onChange={this.handleChange}></input>
-                  <Button className="addFavorite" type="button" onClick={()=>{this.addGoal()}}>Add</Button>
+                  <label>What is your goal?</label><br></br>
+                  <input type="text" name="goaldescription" placeholder="type here..." onChange={this.handleChange} required></input><br></br>
+                  <label>What is your completion date?</label><br></br>
+                  <input type="date" name="enddate" onChange={this.handleChange} required></input><br></br>
+                  <span className="addGoal addButton" onClick={()=>{this.addGoal()}}><FaPlus /></span>
                 </form>
                 </div>
               </Collapsible>
@@ -170,10 +168,10 @@ export default class Tracker extends Component {
             <div className="col-3 favorites">
               <p className="trackerColumnHeader">Favorites</p>
                 {this.state.favoriteProviders.map(ele=>
-                  <div key={ele.id}>
+                  <div className="userFavorite" key={ele.id}>
                     <img src={ele.businessphoto} alt={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     <small>{ele.companyname}</small>
-                    <span href="#" className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></span>
+                    <span href="#" className="deleteFavoriteBtn closeButton" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></span>
                   </div>
                 )}
 
@@ -191,8 +189,9 @@ export default class Tracker extends Component {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-12">
+          <div className="container">
+          {/* <div className="row">
+            <div className="col-12"> */}
               {this.state.submittedSearch && this.state.searchedProviders.map(ele =>
             <div className="row" key={ele.id}>
               <div className="col-10">
@@ -211,14 +210,16 @@ export default class Tracker extends Component {
                 />
               </div>
               <div className="col-2">
-              <form className="box">
-                <button type="button" onClick={()=>{this.addFavorite(ele.id)}}>+ Favorites</button>
-                <span type="button" onClick={this.closeSearch}><FaTimes /></span>
+              <form className="">
+              <span onClick={this.closeSearch}><FaTimes /></span><br></br>
+                <span onClick={()=>{this.addFavorite(ele.id)}}><FaPlus /></span>
+                
                 </form>
               </div>
             </div>
             )}
-            </div>
+            {/* </div>
+          </div> */}
           </div>
         </div>
       )
