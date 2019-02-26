@@ -4,9 +4,6 @@ import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
 import { Card, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
-import { FaShoePrints } from 'react-icons/fa'
-
-
 
 export default class Profile extends Component {
   constructor(props) {
@@ -83,25 +80,25 @@ this.setState({
   render() {
     return (
 <div>
-  <div className="container">
-  <div className="row">
-  <div className="col-12">
-    <div className="">
-      <UserTracker 
-        user={this.state.user}
-        favorites={this.state.selectedProviderFavorites}
-        deleteFavorite={this.deleteFavorite}
-        getFavorites={this.getFavorites}
-        addFavorite={this.addFavorite}
-        soberDays={this.state.soberDays}
-        soberDate={this.state.soberDate}
-      />
+  <div className="trackerContainer">
+    <div className="row">
+      <div className="col-12">
+        <div className="">
+          <UserTracker 
+            user={this.state.user}
+            favorites={this.state.selectedProviderFavorites}
+            deleteFavorite={this.deleteFavorite}
+            getFavorites={this.getFavorites}
+            addFavorite={this.addFavorite}
+            soberDays={this.state.soberDays}
+            soberDate={this.state.soberDate}
+          />
+        </div>
+      </div>
     </div>
+  </div>
     <div className="providersContainerHeader">
     <span href="#" onClick={this.closeProviderWindow}>Providers</span>
-    </div>
-    </div>
-    </div>
     </div>
     {this.state.type ? this.state.providers.map(ele => 
       <div key={ele.id}>
@@ -120,9 +117,6 @@ this.setState({
           />
         </Collapsible>
       </div>) : null} 
-      
-      
-      
       <div className="flex-container cardContainer">
         <div className="row cardRow">
           <div className="col-12">
@@ -192,6 +186,6 @@ this.setState({
         </div>
       </div>
     </div>
-  )
+    )
   }
-  }
+}

@@ -3,6 +3,7 @@ import axios from 'axios'
 import Collapsible from 'react-collapsible';
 import Review from './Review'
 // import Ratings from 'react-ratings-declarative';
+import { FaTimes, FaPlus } from 'react-icons/fa'
 
 
 export default class SearchedProviders extends Component {
@@ -17,7 +18,7 @@ export default class SearchedProviders extends Component {
       loggedIn:'',
       loggedInId:'',
       addReviewFormOpenClose:false
-    }
+        }
     
   }
 
@@ -146,12 +147,12 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <div className="col-12">
           <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
             <div>
-              <form className="">
-                <label>How would you describe your experience this with provider?</label>
+              <form className="addReviewForm">
+                <label>How would you describe your experience this with provider?</label><br></br>
                 <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
-                <label>How would you rate your experience?</label>
+                <label>How would you rate your experience?</label><br></br>
                 <input type="number" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
-                <button type="button" onClick={()=>{this.addReview()}}>submit</button>
+                <span className="addReviewBtn addButton" onClick={()=>{this.addReview()}}><FaPlus /></span>
               </form>
             </div>
           </Collapsible>
@@ -160,7 +161,7 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <div className="row reviewsRow">
           <div className="col-12">
             <Collapsible className="seeReviewsHeader" trigger="Reviews" onOpening={()=>this.getReviews(this.props.id)}>
-          <div className="">
+          <div className="seeReviewsHeader">
             <p></p>
               {this.state.selectedProviderReviews ? this.state.selectedProviderReviews.map((ele)=>
                 <Review 
