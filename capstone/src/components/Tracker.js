@@ -134,8 +134,10 @@ export default class Tracker extends Component {
           <div className="row">
             <div className="col-3">
               <div className="profile-img-top" style={{backgroundImage:`url(${this.props.profilepic}`}}></div>
+              {/* <div className="row"> */}
               <p className="motto"><strong>"{this.props.tagline}"</strong></p>
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
+              {/* </div> */}
             </div>
             <div className="col-4">
               <p className="trackerColumnHeader">Goals</p>
