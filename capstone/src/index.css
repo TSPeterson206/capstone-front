@@ -18,14 +18,14 @@ code {
 /* CARDS CONTAINER */
 
 .container {
-  width:100%;
+  width: 100%;
 }
 
 .cardContainer {
   display: flex;
-  align-items:center;
-  justify-content:center;
-  margin:30px;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
 }
 
 .cardDiv {
@@ -43,8 +43,9 @@ code {
 }
 
 .cardText {
-  font-size:20px;
+  font-size: 20px;
 }
+
 .categoryCards {
   display: flex;
 }
@@ -59,7 +60,7 @@ code {
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color:lightblue;
+  background-color: lightblue;
 }
 
 /* Style the links inside the navigation bar */
@@ -70,7 +71,7 @@ code {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size:25px;
+  font-size: 25px;
 }
 
 .topnav span {
@@ -80,7 +81,7 @@ code {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size:30px;
+  font-size: 30px;
 }
 
 /* Add an active class to highlight the current page */
@@ -213,12 +214,12 @@ code {
 .box {
   /* width:400px; */
   padding-bottom: 40px;
-  border-radius:45px;
+  border-radius: 45px;
   /* position: absolute; */
   /* top:50%; */
   /* left:50%; */
   /* transform:translate(-50%,-50%); */
-
+  background: lightgrey;
   text-align: center;
 }
 
@@ -257,14 +258,14 @@ code {
 .box input[type="password"]:focus {
   width: 280px;
   border-color: lightgrey;
-  background:lightblue;
+  background: lightblue;
 }
 
 .box button[type="submit"],
 .box button[type="reset"],
 .box button[type="button"] {
   border: 0;
-  background:lightblue;
+  background: lightblue;
   margin: 20px auto;
   text-align: center;
   border: 2px solid #3498db;
@@ -288,14 +289,14 @@ code {
 /* TRACKER */
 
 .profilePic {
-  width:200px;
-  margin:0 auto;
+  width: 200px;
+  margin: 0 auto;
 }
 
 .tracker {
   margin-top: 25px;
-  padding-top:20px;
-  border:2px solid;
+  padding-top: 20px;
+  border: 2px solid;
 }
 
 .goal {
@@ -383,6 +384,8 @@ code {
 }
 
 .footer {
+  background-color: lightblue;
+
   /* width: 100%;
   position: absolute;
   left: 0;
@@ -392,94 +395,97 @@ code {
 
 .providersContainerHeader {
   text-align: center;
-  font-size:35px;
-  text-decoration:none !important;
+  font-size: 35px;
+  text-decoration: none !important;
 }
 
-a, a:hover {
-  text-decoration:none !important;
-  color:white;
-    cursor:pointer;
-    color:black;
+a,
+a:hover {
+  text-decoration: none !important;
+  color: white;
+  cursor: pointer;
+  color: black;
 }
 
 .motto {
-  margin-top:8px;
-  text-align:center;
+  margin-top: 8px;
+  text-align: center;
 }
 
-.providerTypeSelector{
-  border-radius:40px;
-  text-align:center;
+.providerTypeSelector {
+  border-radius: 40px;
+  text-align: center;
 }
 
 .serviceSelector {
-  text-align:center;
+  text-align: center;
 }
 
-select { 
-    width: 400px;
-   text-align-last:center; 
-  }
+select {
+  width: 400px;
+  text-align-last: center;
+}
 
-  .reviewedByColumn{
-    display:block;
-  }
+.reviewedByColumn {
+  display: block;
+}
 
-.navbar-right a  {
-float:none;
+.navbar-right a {
+  float: none;
 }
 
 .navbar-right {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 }
 
 .header-title {
-  font-size:50px;
+  font-size: 50px;
 }
 
 .card-img-top {
-  background-size:cover;
-  height:200px;
+  background-size: cover;
+  height: 200px;
 }
 
 .profile-img-top {
-  background-size:cover;
-  height:300px;
+  background-size: cover;
+  height: 300px;
 }
 
 .provider-img-top {
-  background-size:cover;
-  height:100%;
+  background-size: cover;
+  height: 100%;
 }
 
 .carousel {
-  margin:25px;
+  margin: 25px;
 }
 
-.clientlogin, .providerSignupForm {
-  margin-bottom:75px;
-  background-color:lightgrey;
+.clientlogin,
+.providerSignupForm {
+  margin-bottom: 75px;
+  background-color: lightgrey;
 }
 
 .fa-shoe-prints {
-  color:white;
+  color: white;
 }
 
 div .loginLogo {
-  font-size:50px;
-  margin:0 auto;
-  align-content:center;
-  justify-content:center;
-  text-align:center;
+  font-size: 50px;
+  margin: 0 auto;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .submitandreset {
-  display:flex;;
-  justify-content:space-between;
+  display: flex;
+  ;
+  justify-content: space-between;
 }
 
 .soberTime {
-  text-align:center;
+  text-align: center;
 }

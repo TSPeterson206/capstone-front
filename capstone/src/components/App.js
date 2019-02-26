@@ -58,7 +58,7 @@ export default class App extends Component {
                   </Switch>
               </div>
           </BrowserRouter>
-          <Footer className="footer text-center mt-5" bgColor={'grey'} height={75} text={"NextSteps"}>HI</Footer>
+          <Footer className="footer text-center mt-5" bgColor={'lightblue'} height={75}text={<FaShoePrints />}></Footer>
         </div>
       )
     }
