@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Collapsible from 'react-collapsible';
 import Review from './Review'
-// import Ratings from 'react-ratings-declarative';
+import Ratings from 'react-ratings-declarative';
 import { FaTimes, FaPlus } from 'react-icons/fa'
+
+import { FaArrow } from 'react-icons/fa'
 
 
 export default class SearchedProviders extends Component {
@@ -121,22 +123,29 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <div className="col-2">
           <div className="companyname">{this.props.companyname}</div>
             <small className="text-muted">Average rating: {this.props.average}</small>
-        {/* <Ratings
-        rating={this.props.average}
-        widgetRatedColors="blue"
-        ></Ratings> */}
+            <Ratings
+        rating={3.5}
+        widgetDimensions="40px"
+        widgetSpacings="5px"
+      >
+        <Ratings.Widget widgetRatedColor="blue" />
+        <Ratings.Widget widgetRatedColor="blue" />
+        <Ratings.Widget widgetRatedColor="blue" />
+        <Ratings.Widget widgetRatedColor="blue" />
+        <Ratings.Widget widgetRatedColor="blue" />
+      </Ratings>
         </div>
         <div className="col-2">
-        <div className="provider-img-top" style={{backgroundImage:`url(${this.props.businessphoto})`}}></div>
-          {/* <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br> */}
+        {/* <div className="provider-img-top" style={{backgroundImage:`url(${this.props.businessphoto})`}}></div> */}
+          <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
         </div>
         <div className="col-2">
-          <small className="text-muted">{this.props.address}</small><br></br>
-          <small className="text-muted">{this.props.phone}</small><br></br>
+          <p className="text-muted">{this.props.address}</p>
+          <p className="text-muted">{this.props.phone}</p>
 
         </div>
         <div className="col-4">
-          <small className="text-muted">{this.props.providerbio}</small><br></br>
+          <p className="text-muted">{this.props.providerbio}</p>
         </div>
         <div className="col-2">
         {/* {this.props.user[0].id === 1 ? <button onClick={()=>{this.deleteProvider(this.props.id)}}>DELETE</button>: null} */}

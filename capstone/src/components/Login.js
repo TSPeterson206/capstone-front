@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from 'reactjs-simple-spinner'
 import request from '../utils/request'
-import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import { Carousel, CarouselItem, CarouselCaption } from 'reactstrap';
 import { FaShoePrints } from 'react-icons/fa'
 
 const items = [{
@@ -14,7 +14,7 @@ const items = [{
     caption: 'Mend what has become damaged'
   },
   {
-    src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTF3aNUtNjVtiEgvQ9EQim7NIGrZWmnvAcWPUeguW6uXJDDcIqT',
+    src: 'https://static1.squarespace.com/static/59779c0fe4fcb5628a339a58/59779d3d37c581c4facdd509/5991b7f0bebafb01ec36b94c/1502722494733/puzzle.jpg?format=2500w',
     caption: 'Reconnect what has been separated'
   }
 ];
@@ -124,8 +124,8 @@ render() {
         onExited={this.onExited}
         key={item.src}
       >
+      <CarouselCaption  captionHeader={item.caption}/>
         <img src={item.src} alt={item.altText} className="carouselImage" />
-        <CarouselCaption  captionHeader={item.caption}/>
       </CarouselItem>
     );
   });
@@ -142,10 +142,7 @@ render() {
           previous={this.previous}
           className="carousel"
         >
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
           {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
         <div className="col-sm-6 mt-5 mr-auto ml-auto">
           <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
