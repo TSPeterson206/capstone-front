@@ -28,24 +28,24 @@ export default class Header extends Component {
 render() {
   return (
     <header>
-      <nav className="topnav navbar navbar-dark bg-secondary" id="myTopnav">
+      <nav className="topnav navbar" id="myTopnav">
         <div className="container mr-auto">
-          <a className="header-title" href={!this.props.user ? `/` : `/profile/${this.props.user.username}`}><FaShoePrints className="fa-2x" size="2em"/> <strong>NextSteps</strong></a>
+          <div className="header-title"><a className="header-title" href={!this.props.user ? `/` : `/profile/${this.props.user.username}`}><FaShoePrints className="fa-2x"/> <strong>NextSteps</strong></a></div>
           <div className="navbar-right">
             {
               this.props.user ?
-              <span className="ml-2 text-white username"> Hi {this.props.user.username}! </span>
+              <span className="ml-2 username"> Hi {this.props.user.username}! </span>
               :
-              <Link className="btn text-white ml-2" to="/">Sign In </Link>
+              <Link className="btn ml-2" to="/">Sign In </Link>
             }
             {
               this.props.user ?
               <Fragment>
-                <Link className="btn text-white" to={`/edit/${this.props.user.username}`}>&nbsp; Edit Profile</Link>
-                <Link className="btn text-white" to="/" onClick={() => this.SignInSignOutButton()}>&nbsp; Sign Out</Link>
+                <Link className="btn" to={`/edit/${this.props.user.username}`}>&nbsp; Edit Profile</Link>
+                <Link className="btn" to="/" onClick={() => this.SignInSignOutButton()}>&nbsp; Sign Out</Link>
                 </Fragment>
                 :
-                <Link className="btn text-white" to="/signup"> Sign up </Link>
+                <Link className="btn" to="/signup"> Sign up </Link>
             }
           </div>
         </div>

@@ -59,18 +59,28 @@ code {
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color:lightblue;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size:25px;
+}
+
+.topnav span {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:30px;
 }
 
 /* Add an active class to highlight the current page */
@@ -203,6 +213,7 @@ code {
 .box {
   /* width:400px; */
   padding-bottom: 40px;
+  border-radius:45px;
   /* position: absolute; */
   /* top:50%; */
   /* left:50%; */
@@ -214,7 +225,7 @@ code {
 .box input[type="text"],
 .box input[type="password"] {
   border: 0;
-  background: none;
+  background-color: lightblue;
   display: block;
   margin: 20px auto;
   text-align: center;
@@ -246,13 +257,14 @@ code {
 .box input[type="password"]:focus {
   width: 280px;
   border-color: lightgrey;
+  background:lightblue;
 }
 
 .box button[type="submit"],
 .box button[type="reset"],
 .box button[type="button"] {
   border: 0;
-  background:none;
+  background:lightblue;
   margin: 20px auto;
   text-align: center;
   border: 2px solid #3498db;
@@ -424,7 +436,7 @@ float:none;
 }
 
 .header-title {
-  font-size:30px;
+  font-size:50px;
 }
 
 .card-img-top {
@@ -435,6 +447,11 @@ float:none;
 .profile-img-top {
   background-size:cover;
   height:300px;
+}
+
+.provider-img-top {
+  background-size:cover;
+  height:100%;
 }
 
 .carousel {
@@ -448,4 +465,21 @@ float:none;
 
 .fa-shoe-prints {
   color:white;
+}
+
+div .loginLogo {
+  font-size:50px;
+  margin:0 auto;
+  align-content:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.submitandreset {
+  display:flex;;
+  justify-content:space-between;
+}
+
+.soberTime {
+  text-align:center;
 }

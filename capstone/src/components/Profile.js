@@ -4,6 +4,8 @@ import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
 import { Card, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
+import { FaShoePrints } from 'react-icons/fa'
+
 
 
 export default class Profile extends Component {
