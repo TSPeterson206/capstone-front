@@ -7,6 +7,7 @@ import SearchedProviders from './SearchedProviders'
 import Moment from 'react-moment';
 import { Button } from 'reactstrap'
 import { FaTimes } from 'react-icons/fa'
+// import { url } from 'inspector';
 
 
 export default class Tracker extends Component {
@@ -124,12 +125,17 @@ export default class Tracker extends Component {
     }
   }
 
+  closeSearch=()=>{
+    this.setState({
+      submittedSearch:false
+    })
+  }
     render () {
       return (
         <div className="container tracker">
           <div className="row">
             <div className="col-3">
-              <img className="profilePic" src={this.props.profilepic} alt={this.props.profilepic}/>
+              <div className="profile-img-top" style={{backgroundImage:`url(${this.props.profilepic}`}}></div>
               <p className="motto"><strong>"{this.props.tagline}"</strong></p>
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
             </div>
@@ -167,7 +173,7 @@ export default class Tracker extends Component {
                   <div key={ele.id}>
                     <img src={ele.businessphoto} alt={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     <small>{ele.companyname}</small>
-                    <a href="#" className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></a>
+                    <span href="#" className="deleteFavoriteBtn" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></span>
                   </div>
                 )}
 
@@ -208,7 +214,7 @@ export default class Tracker extends Component {
               <div className="col-2">
               <form className="box">
                 <button type="button" onClick={()=>{this.addFavorite(ele.id)}}>+ Favorites</button>
-                <button type="button">Contact</button>
+                <span type="button" onClick={this.closeSearch}><FaTimes /></span>
                 </form>
               </div>
             </div>

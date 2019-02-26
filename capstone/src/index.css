@@ -25,6 +25,7 @@ code {
   display: flex;
   align-items:center;
   justify-content:center;
+  margin:30px;
 }
 
 .cardDiv {
@@ -267,7 +268,7 @@ code {
 .box button[type="submit"]:hover,
 .box button[type="reset"]:hover,
 .box button[type="button"]:hover {
-  background: lightgrey;
+  background: white;
   margin: 20px auto;
 
 }
@@ -280,7 +281,9 @@ code {
 }
 
 .tracker {
-  padding-top: 25px;
+  margin-top: 25px;
+  padding-top:20px;
+  border:2px solid;
 }
 
 .goal {
@@ -368,11 +371,11 @@ code {
 }
 
 .footer {
-  width: 100%;
+  /* width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;
-  right: 0;
+  right: 0; */
 }
 
 .providersContainerHeader {
@@ -420,7 +423,29 @@ float:none;
   align-items:center;
 }
 
+.header-title {
+  font-size:30px;
+}
+
 .card-img-top {
   background-size:cover;
   height:200px;
+}
+
+.profile-img-top {
+  background-size:cover;
+  height:300px;
+}
+
+.carousel {
+  margin:25px;
+}
+
+.clientlogin, .providerSignupForm {
+  margin-bottom:75px;
+  background-color:lightgrey;
+}
+
+.fa-shoe-prints {
+  color:white;
 }

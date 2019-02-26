@@ -39,7 +39,7 @@ export default class ProviderSignup extends Component {
         <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
           Username not available!
         </div>
-        <form className="border rounded p-5 box" onSubmit={this.handleProviderSignUp}>
+        <form className="border providerSignupForm rounded p-5 box" onSubmit={this.handleProviderSignUp}>
         <h2>Provider Entry</h2>
         <div className="form-group">
             <input type="text" className="form-control" onChange={this.handleChange} id="companyname" name="companyname" placeholder="Business name?" required />
