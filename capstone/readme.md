@@ -21,7 +21,7 @@ Substance use disorder treatment providers are very specialized in what they do.
 
 Factors such as limited time, resources, cost, infrastructure and expertise limits providers from being able to justify offering services outside of their scope. A centralized database of providers is a great accompaniment to any individual seeking to keep the ground that they have already gained. 
 
-<img src="https://github.com/TSPeterson206/capstone-front/tree/master/capstone/nextstepscreenshot.png">
+<img src="https://github.com/TSPeterson206/capstone-front/blob/master/capstone/nextstepscreenshot.png">
 
 ## Installation
 - You must have Node.js and `create-react-app` installed in your system to run NextSteps locally.
