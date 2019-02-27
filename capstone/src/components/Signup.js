@@ -43,7 +43,7 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className="col-sm-6 mt-5 mr-auto ml-auto">
+      <div className="rounded col-sm-6 mt-5 mr-auto ml-auto">
         <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
           Username not available!
         </div>

@@ -196,7 +196,7 @@ export default class Tracker extends Component {
             <div className="col-12"> */}
               {this.state.submittedSearch && this.state.searchedProviders.map(ele =>
             <div className="row" key={ele.id}>
-              <div className="col-10">
+              <div className="col-11">
                 <SearchedProviders
                   businessphoto={ele.businessphoto}
                   companyname={ele.companyname}
@@ -211,7 +211,7 @@ export default class Tracker extends Component {
                   addFavorite={this.addFavorite}
                 />
               </div>
-              <div className="col-2">
+              <div className="col-1">
               <form className="">
               <span onClick={this.closeSearch}><FaTimes /></span><br></br>
                 <span onClick={()=>{this.addFavorite(ele.id)}}><FaPlus /></span>

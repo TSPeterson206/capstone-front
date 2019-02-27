@@ -1,7 +1,6 @@
-import React, {
-  Component
-} from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
+import { FaTimes } from 'react-icons/fa'
 
 class Review extends Component {
   constructor(props) {
@@ -39,7 +38,7 @@ class Review extends Component {
         </div>
         <div className="col-3 reviewedByColumn">
         <span>Reviewed by: {this.state.reviewer}</span>
-        {this.state.loggedInUser === this.props.reviewUserId ? <button onClick={()=>{this.props.deleteReview(this.props.id)}}>X</button>:null}
+        {this.state.loggedInUser === this.props.reviewUserId ? <span className="reviewDeleteSpan" onClick={()=>{this.props.deleteReview(this.props.id)}}><FaTimes /></span>:null}
         </div>
       
       </div>

@@ -10,6 +10,10 @@ const items = [{
     caption: 'Rejuvenate what has been neglected'
   },
   {
+    src:'https://www.craigbeck.com/wp-content/uploads/2018/07/positive-energy.jpeg',
+    caption:'Increase your positivity'
+  },
+  {
     src: 'https://www.safehavenofashland.org/upload/hope.jpg',
     caption: 'Mend what has become damaged'
   },
@@ -148,7 +152,7 @@ render() {
           <div className={this.state.showErrorMessage ? "error-handler alert alert-danger" : "error-handler alert alert-danger invisible"}>
             Invalid Username or Password
           </div>
-          <div className="clientlogin">
+          <div className="rounded clientlogin">
           <strong><div className="loginLogo"><FaShoePrints size="3em"/>NextSteps</div></strong>
           
 

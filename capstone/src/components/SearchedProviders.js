@@ -108,7 +108,6 @@ export default class SearchedProviders extends Component {
 }
 
 deleteProvider = (id) => {
-console.log('hittingdeleteprovider')
 axios.delete(`http://localhost:8000/providers/${id}`)
 .then(result=>{return result})
 }
@@ -140,12 +139,12 @@ axios.delete(`http://localhost:8000/providers/${id}`)
           <p className="text-muted">{this.props.phone}</p>
 
         </div>
-        <div className="col-4">
+        <div className="col-6">
           <p className="text-muted">{this.props.providerbio}</p>
         </div>
-        <div className="col-2">
+        {/* <div className="col-2">
         {/* {this.props.user[0].id === 1 ? <button onClick={()=>{this.deleteProvider(this.props.id)}}>DELETE</button>: null} */}
-        </div>
+        {/* </div> */}
       </div>
       <div className="row reviewFormRow">
         <div className="col-12">
