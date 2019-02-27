@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Progress } from 'reactstrap'
 import { FaTimes} from 'react-icons/fa'
+const url = 'https://enigmatic-bayou-83491.herokuapp.com'
 
 
 export default class Goals extends Component {
@@ -52,7 +53,7 @@ export default class Goals extends Component {
 
   deleteGoal = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/goals/goals/${id}`)
+      await axios.delete(`${url}/goals/goals/${id}`)
       clearInterval(this.state.id);
       this.props.getGoals()
       this.setState({

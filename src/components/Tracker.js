@@ -6,6 +6,7 @@ import Search from './Search'
 import SearchedProviders from './SearchedProviders'
 import Moment from 'react-moment';
 import { FaTimes, FaPlus } from 'react-icons/fa'
+const url = 'https://enigmatic-bayou-83491.herokuapp.com'
 
 
 export default class Tracker extends Component {
@@ -32,7 +33,7 @@ export default class Tracker extends Component {
   getGoals = async () => {
     try {
       const id = this.props.id
-      const goals = await axios.get(`http://localhost:8000/goals/${id}`)
+      const goals = await axios.get(`${url}/goals/${id}`)
       this.setState({
         goals: goals.data
       })
@@ -48,7 +49,7 @@ export default class Tracker extends Component {
       enddate: this.state.enddate
     }
     try {
-      await axios.post('http://localhost:8000/goals', goal)
+      await axios.post(`${url}/goals`, goal)
       await this.getGoals()
     } catch (err) {
       console.log(err)
@@ -57,7 +58,7 @@ export default class Tracker extends Component {
 
   deleteGoal = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/goals/goals/${id}`)
+      await axios.delete(`${url}/goals/goals/${id}`)
       this.getGoals();
     } catch (err) {
       console.log(err)
@@ -66,7 +67,7 @@ export default class Tracker extends Component {
 
   getFavorites = async (userId) => {
     try {
-      const favorites = await axios.get(`http://localhost:8000/favorites/${userId}`)
+      const favorites = await axios.get(`${url}/favorites/${userId}`)
       this.setState({
         favoriteProviders: favorites.data
       })
@@ -80,7 +81,7 @@ export default class Tracker extends Component {
       user_id: this.props.id,
       provider_id: providerId
     }
-    await axios.post(`http://localhost:8000/favorites`, favorite)
+    await axios.post(`${url}/favorites`, favorite)
       .then(() =>
         this.setState({
           favoriteProviders: [...this.state.favoriteProviders, favorite]
@@ -90,7 +91,7 @@ export default class Tracker extends Component {
   }
 
   deleteFavorite = (userId, favoriteId) => {
-    axios.delete(`http://localhost:8000/favorites/${userId}/${favoriteId}`)
+    axios.delete(`${url}/favorites/${userId}/${favoriteId}`)
       .then(() => this.getFavorites(userId))
   }
 
@@ -103,7 +104,7 @@ export default class Tracker extends Component {
   handleSearchSubmit = async (event) => {
     event.preventDefault()
     try {
-      const response = await axios.get(`http://localhost:8000/providers`)
+      const response = await axios.get(`${url}/providers`)
       const data = await response.data.filter(post =>
         Object.values(post).reduce((i, b) => i || (typeof b === 'string' ?
           b.toLowerCase().includes(this.state.search.toLowerCase()) : false), false)

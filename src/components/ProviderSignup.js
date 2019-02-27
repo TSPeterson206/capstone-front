@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+const url = 'https://enigmatic-bayou-83491.herokuapp.com'
 
 export default class ProviderSignup extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class ProviderSignup extends Component {
       typeID:this.state.typeID
     }  
     console.log(newProvider)
-    axios.post('http://localhost:8000/providers', newProvider)
+    axios.post(`${url}/providers`, newProvider)
     .then((result)=> {return result})
     this.props.history.push({pathname:'/'})
 

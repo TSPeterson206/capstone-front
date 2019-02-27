@@ -4,6 +4,7 @@ import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
 import { Card, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
+const url = 'https://enigmatic-bayou-83491.herokuapp.com'
 
 export default class Profile extends Component {
   constructor(props) {
@@ -26,9 +27,10 @@ export default class Profile extends Component {
 
   getAccount = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/users`)
+      const response = await axios.get(`${url}/users`)
+      console.log(response)
       const user = await response.data.filter(user => user.username === this.props.match.params.username)
-      const favorites = await axios.get(`http://localhost:8000/favorites/${user[0].id}`)
+      const favorites = await axios.get(`${url}/favorites/${user[0].id}`)
       const favs = favorites.data.filter(ele=>ele.user_id === user[0].id)
       this.setState({ user: [...user],
         selectedProviderFavorites:[...favs]
@@ -36,6 +38,7 @@ export default class Profile extends Component {
     } catch (err) {
       console.log(err)
     }
+    console.log(this.state.user)
     let days = Date.now()-new Date(this.state.user[0].soberdate).getTime();
     const total = Math.round(days/86400000) + " days";
     this.setState({
@@ -46,7 +49,7 @@ export default class Profile extends Component {
 
   getProvidersByType = async(type) =>{
      try {
-      const found = await axios.get('http://localhost:8000/providers')
+      const found = await axios.get(`${url}/providers`)
       const filtered = await found.data.filter(ele => ele.typeID === type)
       this.setState({
         providers:filtered,
@@ -59,7 +62,7 @@ export default class Profile extends Component {
     }
     
 getAverage = async(id) => {
-await axios.get(`http://localhost:8000/reviews/providers/${id}`)
+await axios.get(`${url}/reviews/providers/${id}`)
       .then((result)=>{
       const ratings = result.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b,0)
       const average = ratings/result.data.length

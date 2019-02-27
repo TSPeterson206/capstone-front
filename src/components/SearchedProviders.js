@@ -4,6 +4,7 @@ import Collapsible from 'react-collapsible';
 import Review from './Review'
 import Ratings from 'react-ratings-declarative';
 import { FaPlus } from 'react-icons/fa'
+const url = 'https://enigmatic-bayou-83491.herokuapp.com'
 
 export default class SearchedProviders extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class SearchedProviders extends Component {
 
   getUser = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/users')
+      const response = await axios.get(`${url}/users`)
       const user = await response.data.find(user => user.username === this.props.username)
 
       this.setState({
@@ -39,7 +40,7 @@ export default class SearchedProviders extends Component {
 
   getReviews = async (id) => {
     try {
-      const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
+      const reviews = await axios.get(`${url}/reviews/providers/${id}`)
       console.log(reviews.data)
       this.setState({
         selectedProviderReviews:reviews.data
@@ -57,7 +58,7 @@ export default class SearchedProviders extends Component {
       rating:this.state.addReviewRating
     }
   try {
-    await axios.post('http://localhost:8000/reviews', review)
+    await axios.post(`${url}/reviews`, review)
     this.setState({
       selectedProviderReviews:[...this.state.selectedProviderReviews, review],
       addReviewFormOpenClose:false
@@ -68,12 +69,12 @@ export default class SearchedProviders extends Component {
   }
   
   deleteReview = async (id) =>{
-    await axios.delete(`http://localhost:8000/reviews/${id}`)
+    await axios.delete(`${url}/reviews/${id}`)
     this.getReviews(this.props.id)
   }
 
   getAverage = async(id) =>{
-  const reviews = await axios.get(`http://localhost:8000/reviews/providers/${id}`)
+  const reviews = await axios.get(`${url}/reviews/providers/${id}`)
       const ratings = reviews.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
       const average = ratings/reviews.data.length
       console.log(average)
@@ -87,7 +88,7 @@ export default class SearchedProviders extends Component {
     }
     console.log('hittingaddfavorite',favorite)
   try {
-    await axios.post(`http://localhost:8000/favorites`, favorite)
+    await axios.post(`${url}/favorites`, favorite)
     this.setState({
       selectedProviderFavorites:[...this.state.selectedProviderFavorites, favorite]
     })
@@ -108,7 +109,7 @@ export default class SearchedProviders extends Component {
 }
 
 deleteProvider = (id) => {
-axios.delete(`http://localhost:8000/providers/${id}`)
+axios.delete(`${url}/providers/${id}`)
 .then(result=>{return result})
 }
 

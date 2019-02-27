@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { FaTimes } from 'react-icons/fa'
+const url = 'https://enigmatic-bayou-83491.herokuapp.com'
 
 class Review extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Review extends Component {
   }
 
   getReviewerName = async (id) => {
-    const reviewer = await axios.get('http://localhost:8000/users')
+    const reviewer = await axios.get(`${url}/users`)
     const filtered = reviewer.data.filter(ele => {
       return ele.id === id
     })
