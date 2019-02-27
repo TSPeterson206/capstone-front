@@ -3,10 +3,7 @@ import axios from 'axios'
 import Collapsible from 'react-collapsible';
 import Review from './Review'
 import Ratings from 'react-ratings-declarative';
-import { FaTimes, FaPlus } from 'react-icons/fa'
-
-import { FaArrow } from 'react-icons/fa'
-
+import { FaPlus } from 'react-icons/fa'
 
 export default class SearchedProviders extends Component {
   constructor(props) {
@@ -123,8 +120,8 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <div className="col-2">
           <div className="companyname">{this.props.companyname}</div>
             <small className="text-muted">Average rating: {this.props.average}</small>
-            <Ratings
-        rating={3.5}
+            {this.props.average ? <Ratings
+        rating={Number(this.props.average)}
         widgetDimensions="40px"
         widgetSpacings="5px"
       >
@@ -133,10 +130,9 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         <Ratings.Widget widgetRatedColor="blue" />
         <Ratings.Widget widgetRatedColor="blue" />
         <Ratings.Widget widgetRatedColor="blue" />
-      </Ratings>
+      </Ratings> : null}
         </div>
         <div className="col-2">
-        {/* <div className="provider-img-top" style={{backgroundImage:`url(${this.props.businessphoto})`}}></div> */}
           <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
         </div>
         <div className="col-2">
@@ -151,7 +147,6 @@ axios.delete(`http://localhost:8000/providers/${id}`)
         {/* {this.props.user[0].id === 1 ? <button onClick={()=>{this.deleteProvider(this.props.id)}}>DELETE</button>: null} */}
         </div>
       </div>
-        {/* Add review form */}
       <div className="row reviewFormRow">
         <div className="col-12">
           <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
