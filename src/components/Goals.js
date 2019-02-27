@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Progress } from 'reactstrap'
 import { FaTimes} from 'react-icons/fa'
-const url = 'https://enigmatic-bayou-83491.herokuapp.com'
+const url = process.env.REACT_APP_API_URL
 
 
 export default class Goals extends Component {

@@ -4,7 +4,7 @@ import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
 import { Card, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
-const url = 'https://enigmatic-bayou-83491.herokuapp.com'
+const url =  process.env.REACT_APP_API_URL
 
 export default class Profile extends Component {
   constructor(props) {
@@ -30,7 +30,8 @@ export default class Profile extends Component {
       const response = await axios.get(`${url}/users`)
       console.log(response)
       const user = await response.data.filter(user => user.username === this.props.match.params.username)
-      const favorites = await axios.get(`${url}/favorites/${user[0].id}`)
+      const favorites = await axios.get(`${url}/favorites/${user[0].id}/`)
+      console.log(favorites)
       const favs = favorites.data.filter(ele=>ele.user_id === user[0].id)
       this.setState({ user: [...user],
         selectedProviderFavorites:[...favs]

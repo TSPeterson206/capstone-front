@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-const url = 'https://enigmatic-bayou-83491.herokuapp.com'
+const url = process.env.REACT_APP_API_URL
 
 export default class ProviderSignup extends Component {
   constructor(props) {

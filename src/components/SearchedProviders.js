@@ -4,7 +4,7 @@ import Collapsible from 'react-collapsible';
 import Review from './Review'
 import Ratings from 'react-ratings-declarative';
 import { FaPlus } from 'react-icons/fa'
-const url = 'https://enigmatic-bayou-83491.herokuapp.com'
+const url =  process.env.REACT_APP_API_URL
 
 export default class SearchedProviders extends Component {
   constructor(props) {

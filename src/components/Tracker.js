@@ -6,7 +6,7 @@ import Search from './Search'
 import SearchedProviders from './SearchedProviders'
 import Moment from 'react-moment';
 import { FaTimes, FaPlus } from 'react-icons/fa'
-const url = 'https://enigmatic-bayou-83491.herokuapp.com'
+const url =  process.env.REACT_APP_API_URL
 
 
 export default class Tracker extends Component {
