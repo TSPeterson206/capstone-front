@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Progress } from 'reactstrap'
-import { FaTimes, FaPlus } from 'react-icons/fa'
+import { FaTimes} from 'react-icons/fa'
 
 
 export default class Goals extends Component {
@@ -70,7 +70,7 @@ export default class Goals extends Component {
         <p><strong>Goal: </strong>{this.state.goals}</p>
         <strong>Due by:</strong> {this.props.enddate} 
         <span className="cancelGoalBtn closeButton" onClick={()=>{this.deleteGoal(this.state.goalId)}}><FaTimes /></span>
-        <Progress className="goalProgressBar" animated bar color="success" value={this.state.percentage}>{this.state.percentage}%</Progress>
+        <Progress className="goalProgressBar" animated bar color="info" value={this.state.percentage}>{this.state.percentage}%</Progress>
         </div>
         </div>
     )

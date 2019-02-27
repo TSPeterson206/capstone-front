@@ -207,7 +207,7 @@ export default class Tracker extends Component {
                   providerbio={ele.providerbio}
                   getAverage={this.getAverage}
                   user={this.state.user}
-                  average={this.state.average}
+                  // average={this.state.average}
                   addFavorite={this.addFavorite}
                 />
               </div>
