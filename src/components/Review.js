@@ -38,7 +38,7 @@ class Review extends Component {
         <span>Rating: {this.props.rating} out of 5</span>
         </div>
         <div className="col-3 reviewedByColumn">
-        <span>Reviewed by: {this.state.reviewer}</span>
+        <span><strong>Reviewed by:</strong> {this.state.reviewer}</span>
         {this.state.loggedInUser === this.props.reviewUserId ? <span className="reviewDeleteSpan" onClick={()=>{this.props.deleteReview(this.props.id)}}><FaTimes /></span>:null}
         </div>
       

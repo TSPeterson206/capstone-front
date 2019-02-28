@@ -77,7 +77,6 @@ export default class SearchedProviders extends Component {
   const reviews = await axios.get(`${url}/reviews/providers/${id}`)
       const ratings = reviews.data.map(ele=> {return ele.rating}).reduce((a,b)=>a+b)
       const average = ratings/reviews.data.length
-      console.log(average)
       return average
 }
 
@@ -86,7 +85,6 @@ export default class SearchedProviders extends Component {
       user_id:this.props.user[0].id,
       provider_id:this.props.id
     }
-    console.log('hittingaddfavorite',favorite)
   try {
     await axios.post(`${url}/favorites`, favorite)
     this.setState({

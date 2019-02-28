@@ -29,9 +29,8 @@ export default class Goals extends Component {
     let difference = endTime - startTime;
     let whatsTheDifferenceBetweenMeAndYou = Math.round(difference);
     let kiddingMe = whatsTheDifferenceBetweenMeAndYou / 100;
-    console.log(kiddingMe)
-    //interval should be the var kiddingMe, set to 1000 for exhibition purposes
-    const id = setInterval(this.bumpUp, 1000)
+    //interval should be the variable kiddingMe, set to 10000 for exhibition purposes
+    const id = setInterval(this.bumpUp, 10000)
     this.setState({
       id: id
     })
@@ -39,7 +38,6 @@ export default class Goals extends Component {
 
   bumpUp = () => {
     if (this.state.percentage !== 100) {
-      console.log(typeof this.state.percentage)
       let newerVar = parseInt(this.state.percentage)
       newerVar += 1
       this.setState({
