@@ -140,7 +140,7 @@ export default class Tracker extends Component {
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
               {/* </div> */}
             </div>
-            <div className="col-4">
+            <div className="col-4 goalsColumn">
               <p className="trackerColumnHeader">Goals</p>
               {this.state.goals.map(ele=>
               <div className="goal" key={ele.id}>
@@ -159,11 +159,11 @@ export default class Tracker extends Component {
               <Collapsible className="addGoalCollapsible addButton" trigger={<FaPlus />}>
               <div className="addGoal">
                 <form className="addGoalForm" >
-                  <label>What is your goal?</label><br></br>
-                  <input type="text" name="goaldescription" placeholder="type here..." onChange={this.handleChange} required></input><br></br>
-                  <label>What is your completion date?</label><br></br>
-                  <input type="date" name="enddate" onChange={this.handleChange} required></input><br></br>
-                  <span className="addGoal addButton" onClick={()=>{this.addGoal()}}><FaPlus /></span>
+                  <label><strong>What is your goal?</strong></label><br></br>
+                  <input type="text" className="goalInput" name="goaldescription" onChange={this.handleChange} required></input><br></br>
+                  <label><strong>What is your completion date?</strong></label><br></br>
+                  <input type="date" className="goalInput" name="enddate" onChange={this.handleChange} required></input><br></br>
+                  <span className="addGoal addButton" onClick={()=>{this.addGoal()}}><FaPlus /> Done</span>
                 </form>
                 </div>
               </Collapsible>

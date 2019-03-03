@@ -7,6 +7,8 @@ import UserTracker from './UserTracker';
 import { IoIosArrowRoundDown } from 'react-icons/io'
 const url =  process.env.REACT_APP_API_URL
 
+const newTrigger = `<IoIosArrowRoundDown />{ele.companyname}`
+
 export default class Profile extends Component {
   constructor(props) {
     super(props)
@@ -105,7 +107,7 @@ this.setState({
       <div href="#" className="providersContainerHeader" onClick={this.closeProviderWindow}>Providers</div>
         {this.state.type ? this.state.providers.map(ele => 
         <div key={ele.id}>
-          <Collapsible className="providerCollapsibleName" trigger={<IoIosArrowRoundDown />} trigger={ele.companyname} onOpening={()=>{this.getAverage(ele.id)}}>
+          <Collapsible className="providerCollapsibleName" trigger={ele.companyname} onOpening={()=>{this.getAverage(ele.id)}}>
             <SearchedProviders
               key={ele.id}
               id={ele.id}

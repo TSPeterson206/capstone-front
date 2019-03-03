@@ -447,6 +447,7 @@ div .loginLogo {
 .addButton:hover {
   font-size:35;
   color:lightblue;
+  margin-top:5px;
 }
 
 .closeButton:hover {
@@ -459,4 +460,25 @@ color:rgb(190, 27, 27);
 
 .reviewDeleteSpan {
   float:right;
+}
+
+.Collapsible__trigger:after {
+  font-family: 'FontAwesome';
+  content: '\f107';
+  margin-left:10px;
+}
+
+.goalsColumn {
+  text-align:center;
+}
+
+.goalInput {
+  border-radius:20px;
+  text-align:center;
+  width:50px;
+}
+
+.goalInput:hover {
+  width:150px;
+  transition: 0.5s;
 }
