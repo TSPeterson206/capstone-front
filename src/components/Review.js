@@ -32,10 +32,10 @@ class Review extends Component {
       <div className="reviewBody">
       <div className="row">
       <div className="col-6">
-        <span>{this.props.content}</span>
+        <span>"{this.props.content}"</span>
         </div>
         <div className="col-2">
-        <span>Rating: {this.props.rating} out of 5</span>
+        <span><strong>Rating: </strong>{this.props.rating} out of 5</span>
         </div>
         <div className="col-3 reviewedByColumn">
         <span><strong>Reviewed by:</strong> {this.state.reviewer}</span>

@@ -4,10 +4,7 @@ import SearchedProviders from './SearchedProviders'
 import Collapsible from 'react-collapsible';
 import { Card, CardText, CardBody } from 'reactstrap';
 import UserTracker from './UserTracker';
-import { IoIosArrowRoundDown } from 'react-icons/io'
 const url =  process.env.REACT_APP_API_URL
-
-const newTrigger = `<IoIosArrowRoundDown />{ele.companyname}`
 
 export default class Profile extends Component {
   constructor(props) {

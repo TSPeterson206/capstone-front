@@ -41,7 +41,6 @@ export default class SearchedProviders extends Component {
   getReviews = async (id) => {
     try {
       const reviews = await axios.get(`${url}/reviews/providers/${id}`)
-      console.log(reviews.data)
       this.setState({
         selectedProviderReviews:reviews.data
       })
@@ -119,16 +118,16 @@ axios.delete(`${url}/providers/${id}`)
           <div className="companyname">{this.props.companyname}</div>
             <small className="text-muted">Average rating: {this.props.average}</small>
             {this.props.average ? <Ratings
-        rating={Number(this.props.average)}
-        widgetDimensions="40px"
-        widgetSpacings="5px"
-      >
-        <Ratings.Widget widgetRatedColor="blue" />
-        <Ratings.Widget widgetRatedColor="blue" />
-        <Ratings.Widget widgetRatedColor="blue" />
-        <Ratings.Widget widgetRatedColor="blue" />
-        <Ratings.Widget widgetRatedColor="blue" />
-      </Ratings> : null}
+                                    rating={Number(this.props.average)}
+                                    widgetDimensions="40px"
+                                    widgetSpacings="5px"
+                                  >
+                                  <Ratings.Widget widgetRatedColor="blue" />
+                                  <Ratings.Widget widgetRatedColor="blue" />
+                                  <Ratings.Widget widgetRatedColor="blue" />
+                                  <Ratings.Widget widgetRatedColor="blue" />
+                                  <Ratings.Widget widgetRatedColor="blue" />
+                                </Ratings> : null}
         </div>
         <div className="col-2">
           <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
@@ -151,9 +150,9 @@ axios.delete(`${url}/providers/${id}`)
             <div>
               <form className="addReviewForm">
                 <label>How would you describe your experience this with provider?</label><br></br>
-                <input type="text" name="addReviewText" onChange={this.handleChange}></input><br></br>
+                <input type="text" className="addReviewInput" name="addReviewText" onChange={this.handleChange}></input><br></br>
                 <label>How would you rate your experience?</label><br></br>
-                <input type="number" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
+                <input type="number" className="addRatingInput" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
                 <span className="addReviewBtn addButton" onClick={()=>{this.addReview()}}><FaPlus /></span>
               </form>
             </div>
@@ -167,8 +166,8 @@ axios.delete(`${url}/providers/${id}`)
             <p></p>
               {this.state.selectedProviderReviews ? this.state.selectedProviderReviews.map((ele)=>
                 <Review 
-                id={ele.id}
                 key={ele.id}
+                id={ele.id}
                 content={ele.content}
                 rating={ele.rating}
                 deleteReview={this.deleteReview}
