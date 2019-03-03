@@ -21,6 +21,10 @@ export default class Goals extends Component {
     this.timeBetween(this.props.createdAt, this.props.enddate)
   }
 
+  componentWillUnmount(){
+    clearInterval(this.state.id);
+  }
+
   timeBetween = (date1, date2) => {
     // let slicedStart = date1.slice(0, 10);
     // let slicedEnd = date2.slice(0, 10);
