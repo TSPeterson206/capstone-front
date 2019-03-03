@@ -127,7 +127,7 @@ render() {
         onExited={this.onExited}
         key={item.src}
       >
-      <CarouselCaption  captionHeader={item.caption}/>
+      <CarouselCaption  captionHeader={item.caption} captionText=''/>
         <img src={item.src} alt={item.altText} className="carouselImage" />
       </CarouselItem>
     );

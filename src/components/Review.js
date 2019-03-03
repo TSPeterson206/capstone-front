@@ -29,21 +29,20 @@ class Review extends Component {
 
   render(){
     return(
-      <div className="reviewBody">
+    <div className="reviewBody">
       <div className="row">
-      <div className="col-6">
-        <span>"{this.props.content}"</span>
+        <div className="col-6">
+          <span>"{this.props.content}"</span>
         </div>
         <div className="col-2">
-        <span><strong>Rating: </strong>{this.props.rating} out of 5</span>
+          <span><strong>Rating: </strong>{this.props.rating} out of 5</span>
         </div>
         <div className="col-3 reviewedByColumn">
-        <span><strong>Reviewed by:</strong> {this.state.reviewer}</span>
-        {this.state.loggedInUser === this.props.reviewUserId ? <span className="reviewDeleteSpan" onClick={()=>{this.props.deleteReview(this.props.id)}}><FaTimes /></span>:null}
+          <span><strong>Reviewed by:</strong> {this.state.reviewer}</span>
+          {this.state.loggedInUser === this.props.reviewUserId ? <span className="reviewDeleteSpan" onClick={()=>{this.props.deleteReview(this.props.id)}}><FaTimes /></span>:null}
         </div>
-      
       </div>
-      </div>
+    </div>
     )
   }
   }

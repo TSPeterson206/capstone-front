@@ -65,6 +65,7 @@ export default class SearchedProviders extends Component {
   } catch (err) {
     console.log(err)
     }
+    this.getReviews(this.props.id)
   }
   
   deleteReview = async (id) =>{
