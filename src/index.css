@@ -17,10 +17,6 @@ code {
 
 /* CARDS CONTAINER */
 
-/* .container {
-  width: 100%;
-} */
-
 .cardContainer {
   display: flex;
   align-items: center;
@@ -45,7 +41,6 @@ code {
 }
 
 .cardImage {
-  /* height: 100px; */
   width: 100%;
 }
 
@@ -65,12 +60,10 @@ code {
 
 /* HEADER DROPDOWN */
 
-/* Add a black background color to the top navigation */
 .topnav {
   background-color: lightblue;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
   float: left;
   display: block;
@@ -91,13 +84,11 @@ code {
   font-size: 30px;
 }
 
-/* Add an active class to highlight the current page */
 .active {
   background-color: #4CAF50;
   color: white;
 }
 
-/* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
   display: none;
 }
@@ -117,14 +108,8 @@ margin-top:-200px;}
 /* LOGIN, SIGNUP, EDITUSER, ADDPROVIDER FORMS */
 
 .box {
-  /* width:400px; */
   padding-bottom: 40px;
   margin-bottom:40px;
-  /* border-radius: 45px; */
-  /* position: absolute; */
-  /* top:50%; */
-  /* left:50%; */
-  /* transform:translate(-50%,-50%); */
   background: lightgrey;
   text-align: center;
 }
@@ -152,7 +137,6 @@ margin-top:-200px;}
   margin: 20px auto;
   text-align: center;
   border: 2px solid #3498db;
-  /* padding: 10px; */
   width: 200px;
   outline: none;
   color: black;
@@ -181,7 +165,6 @@ margin-top:-200px;}
   border-radius: 24px;
   transition: 0.25s;
   cursor: pointer;
-  /* margin-right:10px; */
 }
 
 .box button[type="submit"]:hover,
@@ -257,10 +240,6 @@ margin-top:-200px;}
   text-align:center;
 }
 
-.companyname {
-  /* font-size:40px; */
-}
-
 .providerCollapsibleName {
   font-size: 40px;
   text-align: center;
@@ -302,17 +281,10 @@ margin-top:-200px;}
 
 .footer {
   background-color: lightblue;
-
-  /* width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0; */
 }
 
 .providersContainer {
   text-align: center;
-  /* display:flex; */
   padding-left:25px;
   padding-right:25px;
   text-decoration: none !important;
@@ -420,9 +392,6 @@ div .loginLogo {
 }
 
 .cancelGoalBtn {
-  /* position: relative;
-    top: 0;
-    right: 0; */
     float:right;
 }
 
