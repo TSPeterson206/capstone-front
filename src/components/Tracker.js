@@ -43,6 +43,7 @@ export default class Tracker extends Component {
   }
 
   addGoal = async () => {
+    if(this.state.goals.length >=3) {alert('Maximum goals entered!'); return}
     const goal = {
       user_id: this.props.id,
       goal: this.state.goaldescription,
@@ -81,6 +82,7 @@ export default class Tracker extends Component {
       user_id: this.props.id,
       provider_id: providerId
     }
+    if(this.state.favoriteProviders.length >=13) {alert('max favorites reached!');return}
     await axios.post(`${url}/favorites`, favorite)
       .then(() =>
         this.setState({
@@ -129,16 +131,15 @@ export default class Tracker extends Component {
       submittedSearch:false
     })
   }
+
     render () {
       return (
         <div>
           <div className="row">
             <div className="col-3">
               <div className="profile-img-top" style={{backgroundImage:`url(${this.props.profilepic}`}}></div>
-              {/* <div className="row"> */}
               <p className="motto"><strong>"{this.props.tagline}"</strong></p>
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
-              {/* </div> */}
             </div>
             <div className="col-4 goalsColumn">
               <p className="trackerColumnHeader">Goals</p>
@@ -177,7 +178,6 @@ export default class Tracker extends Component {
                     <span href="#" className="deleteFavoriteBtn closeButton" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></span>
                   </div>
                 )}
-
             </div>
             <div className="col-2">
             <p className="trackerColumnHeader">Sober Time</p>
@@ -192,9 +192,7 @@ export default class Tracker extends Component {
               </div>
             </div>
           </div>
-          <div className="container">
-          {/* <div className="row">
-            <div className="col-12"> */}
+          <div className="container searchContainer">
               {this.state.submittedSearch && this.state.searchedProviders.map(ele =>
             <div className="row" key={ele.id}>
               <div className="col-11">
@@ -208,21 +206,21 @@ export default class Tracker extends Component {
                   providerbio={ele.providerbio}
                   getAverage={this.getAverage}
                   user={this.state.user}
-                  // average={this.state.average}
                   addFavorite={this.addFavorite}
                 />
               </div>
               <div className="col-1">
-              <form className="">
-              <span onClick={this.closeSearch}><FaTimes /></span><br></br>
-                <span onClick={()=>{this.addFavorite(ele.id)}}><FaPlus /></span>
-                
+                <form className="closeFavoriteSearch">
+                  <div>
+                    <label>Close</label><br></br>
+                    <span className="closeSearchSpan" onClick={this.closeSearch}><FaTimes /></span><br></br>
+                    <label>Favorites</label><br></br>
+                    <span className="favoriteSearchSpan" onClick={()=>{this.addFavorite(ele.id)}}><FaPlus /></span>
+                  </div>
                 </form>
               </div>
             </div>
             )}
-            {/* </div>
-          </div> */}
           </div>
         </div>
       )

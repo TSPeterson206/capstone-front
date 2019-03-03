@@ -65,7 +65,6 @@ export default class Login extends Component {
         return request('/auth/login')
       })
       .then(response => {
-        console.log("username", `${username.value}`, this.props)
         this.props.setAuthentication(response.data)
         this.props.history.push({
           pathname: `/profile/${username.value}`,

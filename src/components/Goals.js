@@ -22,13 +22,13 @@ export default class Goals extends Component {
   }
 
   timeBetween = (date1, date2) => {
-    let slicedStart = date1.slice(0, 10);
-    let slicedEnd = date2.slice(0, 10);
-    let startTime = parseInt(new Date(slicedStart).getTime());
-    let endTime = parseInt(new Date(slicedEnd).getTime());
-    let difference = endTime - startTime;
-    let whatsTheDifferenceBetweenMeAndYou = Math.round(difference);
-    let kiddingMe = whatsTheDifferenceBetweenMeAndYou / 100;
+    // let slicedStart = date1.slice(0, 10);
+    // let slicedEnd = date2.slice(0, 10);
+    // let startTime = parseInt(new Date(slicedStart).getTime());
+    // let endTime = parseInt(new Date(slicedEnd).getTime());
+    // let difference = endTime - startTime;
+    // let whatsTheDifferenceBetweenMeAndYou = Math.round(difference);
+    // let kiddingMe = whatsTheDifferenceBetweenMeAndYou / 100;
     //interval should be the variable kiddingMe, set to 10000 for exhibition purposes
     const id = setInterval(this.bumpUp, 10000)
     this.setState({
