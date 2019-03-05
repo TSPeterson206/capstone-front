@@ -33,7 +33,7 @@ export default class Login extends Component {
       activeIndex: 0
     }
     this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
+    this.previous = this.previous.bind(this); 
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
