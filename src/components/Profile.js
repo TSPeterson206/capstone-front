@@ -23,6 +23,7 @@ export default class Profile extends Component {
 
   componentDidMount() {
     this.getAccount();
+    console.clear();
   }
 
   getAccount = async () => {
