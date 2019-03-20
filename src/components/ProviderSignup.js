@@ -20,7 +20,6 @@ export default class ProviderSignup extends Component {
       phone:this.state.phone,
       typeID:this.state.typeID
     }  
-    console.log(newProvider)
     axios.post(`${url}/providers`, newProvider)
     .then((result)=> {return result})
     this.props.history.push({pathname:'/'})
@@ -31,7 +30,6 @@ export default class ProviderSignup extends Component {
     this.setState({
       [event.target.name] : event.target.value
     })
-    console.log(this.state.companyname, this.state.providerbio, this.state.businessphoto, this.state.address, this.state.phone, this.state.typeID)
   }
 
   render() {
