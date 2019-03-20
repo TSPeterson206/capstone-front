@@ -16,7 +16,6 @@ export default class EditProfile extends Component {
   handleEdit = event => {
     event.preventDefault()
     const { tagline, profilepic, soberdate } = event.target
-    console.log(this.props.user)
 
     request(`/users/${this.props.user.id}`, 'put', {
       profilepic: profilepic.value,
