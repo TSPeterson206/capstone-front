@@ -158,11 +158,9 @@ render() {
             <form className="box border rounded p-5" onSubmit={this.handleLogin}>
               <h1>Client Login</h1>
               <div className="form-group">
-                {/* <label htmlFor="exampleInputEmail1">Username</label> */}
                 <input type="text" className="form-control" id="username" name="username" placeholder="enter username" required />
               </div>
               <div className="form-group">
-                {/* <label htmlFor="exampleInputPassword1">Password</label> */}
                 <input type="password" className="form-control" id="password" name="password" placeholder="enter password" required />
               </div>
               <div className="submitandreset">
