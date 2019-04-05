@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "carousel": "0.0.3",
+    "eslint-plugin-markdown": "^1.0.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
     "node-sass": "^4.11.0",
