@@ -520,9 +520,9 @@ div .loginLogo {
   }
 
   .card-img-top {
-    background-size: cover;
+    /* background-size: cover;
     height: 200px;
-    width: 50px;
+    width: 50px; */
   }
 
   .card {
