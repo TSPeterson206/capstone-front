@@ -34,7 +34,7 @@ render() {
           <div className="navbar-right">
             {
               this.props.user ?
-              <span className="ml-2 username"> Hi {this.props.user.username}! </span>
+              <span className="username"> Hi {this.props.user.username}! </span>
               :
               <Link className="btn ml-2" to="/">Sign In </Link>
             }

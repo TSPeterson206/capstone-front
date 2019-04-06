@@ -123,8 +123,8 @@ this.setState({
   </div>
     <div className="flex-container cardContainer">
       <div className="row cardRow">
-        <div className="col-12 categoryCards">
-            {/* <div className="categoryCards"> */}
+        <div className="col-lg-12 col-xs-6 categoryCards">
+        {/* <div className="col-xs-12"> */}
               <div className="cardDiv">
               <span onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">
                 <Card className="card">
@@ -145,6 +145,7 @@ this.setState({
                 </Card>
                 </span>
               </div>
+              {/* </div> */}
               <div className="cardDiv">
               <span onClick={()=>{this.getProvidersByType(2)}} name="Medical" type="3">
                 <Card className="card">
@@ -185,7 +186,6 @@ this.setState({
               </Card>
               </span>
             </div>
-          {/* </div> */}
         </div>
       </div>
     </div>

@@ -82,7 +82,7 @@ export default class Tracker extends Component {
       user_id: this.props.id,
       provider_id: providerId
     }
-    if(this.state.favoriteProviders.length >=13) {alert('max favorites reached!');return}
+    if(this.state.favoriteProviders.length >=11) {alert('max favorites reached!');return}
     await axios.post(`${url}/favorites`, favorite)
       .then(() =>
         this.setState({
@@ -175,14 +175,14 @@ export default class Tracker extends Component {
               <p className="trackerColumnHeader">Favorites</p>
                 {this.state.favoriteProviders.map(ele=>
                 <div>
-                  <div className='row favoriteRow'>
+                  <div className='favoriteRow'>
                   <div className="col-3 userFavorite" key={ele.id}>
                     <img src={ele.businessphoto} alt={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
                     </div>
                     <div className='col-6'>
                     <small className='favoritesCompanyName'>{ele.companyname}</small>
                     </div>
-                    <div className='col-3'>
+                    <div className='col-2'>
                     <span href="#" className="deleteFavoriteBtn closeButton" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></span>
                     </div>
                     </div>
