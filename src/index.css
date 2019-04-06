@@ -205,9 +205,9 @@ code {
 
 .favorites {
   text-align: center;
-  margin:0 auto;
-  justify-content:center;
-  align-content:center;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
 }
 
 /* SEARCHEDPROVIDER */
@@ -249,7 +249,7 @@ code {
 }
 
 .searchBar {
-  width: 45px;
+  width: 145px;
   align-content: center;
   margin: 0 auto;
   justify-content: center;
@@ -480,17 +480,20 @@ div .loginLogo {
 }
 
 .favoritesCompanyName {
-  display:wrap;
+  display: wrap;
 }
 
 .favoriteRow {
   border: 1px solid;
-  width:100%;
+  width: 100%;
+  display: flex;
+  padding: 5px;
   /* margin-left:20px;
   margin-right:20px; */
-
+  margin-bottom: 5px;
 }
-@media only screen and (min-width: 350px) and (max-width:999px) {
+
+@media only screen and (min-width: 300px) and (max-width:999px) {
   .carousel {
     display: none;
   }
@@ -498,24 +501,56 @@ div .loginLogo {
   .categoryCards {
     display: block;
   }
-  /* .col-lg-2 {
-    width:50%;
-  } */
 
-  /* .reviewedByColumn {
-    width:50%;
-  } */
   .reviewBody {
-    margin-top:30px;
-    margin-bottom:30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
-  .Collapsible__trigger{
-    font-size:20px;
+  .Collapsible__trigger {
+    font-size: 20px;
   }
 
   .addReviewInput {
-    font-size:20px;
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 100px;
+  }
+
+  .card-img-top {
+    background-size: cover;
+    height: 200px;
+    width: 50px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+    /* width:120px; */
+
+  }
+
+  .categoryCards {}
+
+  .cardDiv {
+    /* width:100px; */
+    /* height:100px; */
+  }
+
+  .cardBody {
+    /* height:50px; */
+    /* display:flex; */
+  }
+
+  /* Header {
+  font-size:100px;
+}
+  .footer {
+    background-color:red;
+  } */
+  .col-xs-6 {
+    width: 100%;
   }
 }
 
