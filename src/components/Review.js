@@ -31,13 +31,13 @@ class Review extends Component {
     return(
     <div className="reviewBody">
       <div className="row">
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <span>"{this.props.content}"</span>
         </div>
-        <div className="col-2">
+        <div className="col-lg-2 col-xs-6">
           <span><strong>Rating: </strong>{this.props.rating} out of 5</span>
         </div>
-        <div className="col-3 reviewedByColumn">
+        <div className="col-lg-3 col-xs-6 reviewedByColumn">
           <span><strong>Reviewed by:</strong> {this.state.reviewer}</span>
           {this.state.loggedInUser === this.props.reviewUserId ? <span className="reviewDeleteSpan" onClick={()=>{this.props.deleteReview(this.props.id)}}><FaTimes /></span>:null}
         </div>

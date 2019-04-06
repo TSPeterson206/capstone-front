@@ -27,7 +27,7 @@ code {
   align-items: center;
   justify-content: center;
   margin: 30px;
-  border:2px solid;
+  border: 2px solid;
 }
 
 .cardDiv {
@@ -94,19 +94,20 @@ code {
 
 .carousel {
   padding-top: 15px;
-  height:400px;
-  overflow:hidden;
+  height: 400px;
+  overflow: hidden;
 }
 
 .carouselImage {
   width: 100%;
-margin-top:-200px;}
+  margin-top: -200px;
+}
 
 /* LOGIN, SIGNUP, EDITUSER, ADDPROVIDER FORMS */
 
 .box {
   padding-bottom: 40px;
-  margin-bottom:40px;
+  margin-bottom: 40px;
   background: lightgrey;
   text-align: center;
 }
@@ -181,13 +182,13 @@ margin-top:-200px;}
 
 .goal {
   border: 1px solid;
-  padding:5px;
-  margin:10px;
+  padding: 5px;
+  margin: 10px;
   box-shadow: inset 0 0 0 10px lightblue;
 }
 
 .addGoal {
- text-align:center;
+  text-align: center;
 }
 
 .trackerColumnHeader {
@@ -198,12 +199,15 @@ margin-top:-200px;}
 /* FAVORITES */
 .favoritesImg {
   height: 100%;
-  width:10%;
-  float:left;
+  width: 100%;
+  /* float: left; */
 }
 
 .favorites {
-  text-align:center;
+  text-align: center;
+  margin:0 auto;
+  justify-content:center;
+  align-content:center;
 }
 
 /* SEARCHEDPROVIDER */
@@ -215,8 +219,8 @@ margin-top:-200px;}
 .reviewFormRow,
 .reviewsRow {
   border: 1px solid;
-  font-size:20px;
-  padding:20px;
+  font-size: 20px;
+  padding: 20px;
 }
 
 .providerRow {
@@ -227,7 +231,7 @@ margin-top:-200px;}
 .addReviewForm,
 .seeReviewsHeader {
   font-size: 25px;
-  text-align:center;
+  text-align: center;
 }
 
 .providerCollapsibleName {
@@ -275,19 +279,20 @@ margin-top:-200px;}
 
 .providersContainer {
   text-align: center;
-  padding-left:25px;
-  padding-right:25px;
+  padding-left: 25px;
+  padding-right: 25px;
   text-decoration: none !important;
 }
 
 .providersContainerHeader {
-    font-size: 75px;
-    text-align:center;
-    text-decoration: none !important;
-    align-content:center;
+  font-size: 75px;
+  text-align: center;
+  text-decoration: none !important;
+  align-content: center;
 }
 
-a, a:hover {
+a,
+a:hover {
   text-decoration: none !important;
   color: white;
   cursor: pointer;
@@ -338,12 +343,12 @@ select {
 .profile-img-top {
   background-size: cover;
   height: 500px;
-  width:85%;
-  margin:25px;
+  width: 85%;
+  margin: 25px;
 }
 
 .provider-img-top {
-  background-position:center;
+  background-position: center;
   background-size: cover;
   height: 100%;
 }
@@ -378,115 +383,142 @@ div .loginLogo {
 
 .soberTime {
   text-align: center;
-  font-size:25px;
-  margin-top:40px;
+  font-size: 25px;
+  margin-top: 40px;
 }
 
 .cancelGoalBtn {
-    float:right;
+  float: right;
 }
 
 .addGoalCollapsible {
   text-align: center;
-  font-style:oblique;
+  font-style: oblique;
 }
 
 .deleteFavoriteBtn {
-  float:right;
+  /* float: right; */
 }
 
 .userFavorite {
-  font-size:25px;
-  border:1px solid;
-  margin:3px;
-  padding:3px;
-  height:40px;
+  font-size: 25px;
+  /* border: 1px solid; */
+  /* margin: 3px; */
+  /* padding: 3px; */
+  height: 40px;
+  /* display:flex; */
 }
 
 .addReviewBtn {
-  font-size:20px;
+  font-size: 20px;
 }
 
 .addButton:hover {
-  font-size:35;
-  color:lightblue;
-  margin-top:5px;
+  font-size: 35;
+  color: lightblue;
+  margin-top: 5px;
 }
 
 .closeButton:hover {
-color:rgb(190, 27, 27);
+  color: rgb(190, 27, 27);
 }
 
 .editProfileHeader {
-  padding-top:35px;
+  padding-top: 35px;
 }
 
 .reviewDeleteSpan {
-  float:right;
+  float: right;
 }
 
 .Collapsible__trigger:after {
   font-family: 'FontAwesome';
   content: '\f107';
-  margin-left:10px;
+  margin-left: 10px;
 }
 
 .goalsColumn {
-  text-align:center;
+  text-align: center;
 }
 
 .goalInput {
-  border-radius:20px;
-  text-align:center;
-  width:50px;
+  border-radius: 20px;
+  text-align: center;
+  width: 50px;
 }
 
 .goalInput:hover {
-  width:150px;
+  width: 150px;
   transition: 0.5s;
 }
 
 .addReviewInput {
-  border-radius:20px;
-  text-align:center;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .addRatingInput {
-    border-radius:20px;
-    text-align:center;
-    width:50px;
+  border-radius: 20px;
+  text-align: center;
+  width: 50px;
 }
 
 .searchContainer {
-  text-align:center;
+  text-align: center;
 }
 
 .closeFavoriteSearch {
-  margin-top:75%;
+  margin-top: 75%;
 }
 
 .closeSearchSpan:hover {
-background:red;
+  background: red;
 }
 
 .favoriteSearchSpan:hover {
-background:lightblue;
+  background: lightblue;
 }
 
+.favoritesCompanyName {
+  display:wrap;
+}
+
+.favoriteRow {
+  border: 1px solid;
+  width:100%;
+  /* margin-left:20px;
+  margin-right:20px; */
+
+}
 @media only screen and (min-width: 350px) and (max-width:999px) {
   .carousel {
-    display:none;
+    display: none;
   }
 
-  .col-3 {width:100%;}
-  .cardContainer {display: flex;
-    justify-content: center;
-    align-items: center;}
+  .categoryCards {
+    display: block;
+  }
+  /* .col-lg-2 {
+    width:50%;
+  } */
 
+  /* .reviewedByColumn {
+    width:50%;
+  } */
+  .reviewBody {
+    margin-top:30px;
+    margin-bottom:30px;
+  }
+
+  .Collapsible__trigger{
+    font-size:20px;
+  }
+
+  .addReviewInput {
+    font-size:20px;
+  }
 }
 
-@media only screen and (min-width: 1000px) and (max-width:1399px) {
-}
+@media only screen and (min-width: 1000px) and (max-width:1399px) {}
 
-@media only screen and (min-width: 1400px) {
-}
+@media only screen and (min-width: 1400px) {}

@@ -136,14 +136,14 @@ export default class Tracker extends Component {
       return (
         <div>
           <div className="row">
-            <div className="col-3 ">
+            <div className="col-lg-3">
               <div className="profile-img-top" style={{backgroundImage:`url(${this.props.profilepic}`}}></div>
               {/* <img className="profile-img-top" src={this.props.profilepic}></img> */}
 
               <p className="motto"><strong>"{this.props.tagline}"</strong></p>
               <Search handleSearchSubmit={this.handleSearchSubmit} handleChange={this.handleChange}/>
             </div>
-            <div className="col-4 goalsColumn">
+            <div className="col-lg-4 goalsColumn">
               <p className="trackerColumnHeader">Goals</p>
               {this.state.goals.map(ele=>
               <div className="goal" key={ele.id}>
@@ -171,17 +171,25 @@ export default class Tracker extends Component {
                 </div>
               </Collapsible>
             </div>
-            <div className="col-3 favorites">
+            <div className="col-lg-3 favorites">
               <p className="trackerColumnHeader">Favorites</p>
                 {this.state.favoriteProviders.map(ele=>
-                  <div className="userFavorite" key={ele.id}>
+                <div>
+                  <div className='row favoriteRow'>
+                  <div className="col-3 userFavorite" key={ele.id}>
                     <img src={ele.businessphoto} alt={ele.businessphoto} className="favoritesImg"></img><small>{this.props.companyname}</small>
-                    <small>{ele.companyname}</small>
+                    </div>
+                    <div className='col-6'>
+                    <small className='favoritesCompanyName'>{ele.companyname}</small>
+                    </div>
+                    <div className='col-3'>
                     <span href="#" className="deleteFavoriteBtn closeButton" onClick={()=>{this.deleteFavorite(this.state.id, ele.id)}}><FaTimes /></span>
-                  </div>
+                    </div>
+                    </div>
+                    </div>
                 )}
             </div>
-            <div className="col-2">
+            <div className="col-lg-2">
             <p className="trackerColumnHeader">Sober Time</p>
               <div className="soberTime">
                 <p><Moment diff={this.props.soberDate} unit="days"></Moment> days</p>
@@ -197,7 +205,7 @@ export default class Tracker extends Component {
           <div className="container searchContainer">
               {this.state.submittedSearch && this.state.searchedProviders.map(ele =>
             <div className="row" key={ele.id}>
-              <div className="col-11">
+              <div className="col-lg-11">
                 <SearchedProviders
                   businessphoto={ele.businessphoto}
                   companyname={ele.companyname}
@@ -211,7 +219,7 @@ export default class Tracker extends Component {
                   addFavorite={this.addFavorite}
                 />
               </div>
-              <div className="col-1">
+              <div className="col-lg-1">
                 <form className="closeFavoriteSearch">
                   <div>
                     <label>Close</label><br></br>

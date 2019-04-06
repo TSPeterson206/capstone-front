@@ -85,7 +85,6 @@ this.setState({
   <div className="trackerContainer">
     <div className="row">
       <div className="col-12">
-        <div className="">
           <UserTracker 
             user={this.state.user}
             favorites={this.state.selectedProviderFavorites}
@@ -95,7 +94,6 @@ this.setState({
             soberDays={this.state.soberDays}
             soberDate={this.state.soberDate}
           />
-        </div>
       </div>
     </div>
   </div>
@@ -125,8 +123,8 @@ this.setState({
   </div>
     <div className="flex-container cardContainer">
       <div className="row cardRow">
-        <div className="col-12">
-            <div className="categoryCards">
+        <div className="col-12 categoryCards">
+            {/* <div className="categoryCards"> */}
               <div className="cardDiv">
               <span onClick={()=>{this.getProvidersByType(1)}} name="SUD" type="1">
                 <Card className="card">
@@ -187,7 +185,7 @@ this.setState({
               </Card>
               </span>
             </div>
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </div>

@@ -56,6 +56,7 @@ export default class SearchedProviders extends Component {
       content:this.state.addReviewText,
       rating:this.state.addReviewRating
     }
+    if(this.state.addReviewRating>5){alert("Cannot give higher than a 5 rating"); return}
   try {
     await axios.post(`${url}/reviews`, review)
     this.setState({
@@ -115,7 +116,7 @@ axios.delete(`${url}/providers/${id}`)
   return (
     <div>
       <div className="row providerRow">
-        <div className="col-2">
+        <div className="col-lg-2">
           <div className="companyname">{this.props.companyname}</div>
             <small className="text-muted">Average rating: {this.props.average}</small>
             {this.props.average ? <Ratings
@@ -130,15 +131,15 @@ axios.delete(`${url}/providers/${id}`)
                                   <Ratings.Widget widgetRatedColor="blue" />
                                 </Ratings> : null}
         </div>
-        <div className="col-2">
+        <div className="col-lg-2">
           <img className="searchedProvidersImg" src={this.props.businessphoto} alt={this.props.businessphoto} /><br></br>
         </div>
-        <div className="col-2">
+        <div className="col-lg-2">
           <p className="text-muted">{this.props.address}</p>
           <p className="text-muted">{this.props.phone}</p>
 
         </div>
-        <div className="col-6">
+        <div className="col-lg-6">
           <p className="text-muted">{this.props.providerbio}</p>
         </div>
         {/* <div className="col-2">
@@ -146,14 +147,14 @@ axios.delete(`${url}/providers/${id}`)
         {/* </div> */}
       </div>
       <div className="row reviewFormRow">
-        <div className="col-12">
+        <div className="col-lg-12">
           <Collapsible className="addReviewForm" trigger="Add a review" onOpen={this.handleOpenClose}>
             <div>
               <form className="addReviewForm">
                 <label>How would you describe your experience this with provider?</label><br></br>
-                <input type="text" className="addReviewInput" name="addReviewText" onChange={this.handleChange}></input><br></br>
+                <input required type="text" className="addReviewInput" name="addReviewText" onChange={this.handleChange}></input><br></br>
                 <label>How would you rate your experience?</label><br></br>
-                <input type="number" className="addRatingInput" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
+                <input required type="number" className="addRatingInput" max="5" name="addReviewRating" onChange={this.handleChange}></input><br></br>
                 <span className="addReviewBtn addButton" onClick={()=>{this.addReview()}}><FaPlus /></span>
               </form>
             </div>
@@ -161,11 +162,12 @@ axios.delete(`${url}/providers/${id}`)
         </div>
       </div>
         <div className="row reviewsRow">
-          <div className="col-12">
+          <div className="col-lg-12">
             <Collapsible className="seeReviewsHeader" trigger="Reviews" onOpening={()=>this.getReviews(this.props.id)}>
           <div className="seeReviewsHeader">
             <p></p>
               {this.state.selectedProviderReviews ? this.state.selectedProviderReviews.map((ele)=>
+                <div key={ele.id}>
                 <Review 
                 key={ele.id}
                 id={ele.id}
@@ -175,6 +177,7 @@ axios.delete(`${url}/providers/${id}`)
                 user={this.props.user}
                 reviewUserId={ele.user_id}
                 />
+                </div>
               ):null}
           </div>
             </Collapsible>
