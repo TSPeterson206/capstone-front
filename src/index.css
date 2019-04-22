@@ -396,17 +396,9 @@ div .loginLogo {
   font-style: oblique;
 }
 
-.deleteFavoriteBtn {
-  /* float: right; */
-}
-
 .userFavorite {
   font-size: 25px;
-  /* border: 1px solid; */
-  /* margin: 3px; */
-  /* padding: 3px; */
   height: 40px;
-  /* display:flex; */
 }
 
 .addReviewBtn {
@@ -488,8 +480,6 @@ div .loginLogo {
   width: 100%;
   display: flex;
   padding: 5px;
-  /* margin-left:20px;
-  margin-right:20px; */
   margin-bottom: 5px;
 }
 
@@ -519,36 +509,9 @@ div .loginLogo {
     font-size: 100px;
   }
 
-  .card-img-top {
-    /* background-size: cover;
-    height: 200px;
-    width: 50px; */
-  }
-
   .card {
     margin-bottom: 20px;
-    /* width:120px; */
-
   }
-
-  .categoryCards {}
-
-  .cardDiv {
-    /* width:100px; */
-    /* height:100px; */
-  }
-
-  .cardBody {
-    /* height:50px; */
-    /* display:flex; */
-  }
-
-  /* Header {
-  font-size:100px;
-}
-  .footer {
-    background-color:red;
-  } */
   .col-xs-6 {
     width: 100%;
   }
